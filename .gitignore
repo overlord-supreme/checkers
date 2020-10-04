@@ -1,7 +1,16 @@
+
+
+
+
+##################################################################
+
+# UNITY GITIGNORES
+
+
 # This .gitignore file should be placed at the root of your Unity project directory
-#
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
+
+# Ignore these System Folders
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -57,4 +66,21 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+
+
+
+##################################################################################
+
+# PANDOC GITIGNORES
+
+# Don't keep rendered pages
+*.pdf
+
+# Don't keep intermediary pages
+*.rtf
+
+
+
+
 
