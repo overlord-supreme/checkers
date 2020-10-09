@@ -40,7 +40,7 @@ Allow a White piece to appear White
 
 
 .letter {
-    color:#000;
+    color:#ffffff;
     display:block;
     font-size:60px;
     height:80px;
@@ -86,8 +86,8 @@ This colors every-other piece of every-other row
 .board tr:nth-child(odd) td:nth-child(even),
 .board tr:nth-child(even) td:nth-child(odd) {
     background:#000;
-    background:-moz-linear-gradient(top, #ccc, #eee);
-    background:-webkit-gradient(linear,0 0, 0 100%, from(#ccc), to(#eee));
+    background:-moz-linear-gradient(top, #111111, #555555);
+    background:-webkit-gradient(linear,0 0, 0 100%, from(#111111), to(#555555));
     box-shadow:inset 0 0 10px rgba(0,0,0,.4);
     -moz-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
     -webkit-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
