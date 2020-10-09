@@ -3,104 +3,106 @@
 
 <link href="checkers.css" rel="stylesheet"></link>
 
-<table id="chess_board" cellpadding="0" cellspacing="0">
-<tr>
-    <td>8</td>
-    <td id="A8"><a href="#" class="rook black">&#9820;</a></td>
-    <td id="B8"><a href="#" class="night black">&#9822;</a></td>
-    <td id="C8"><a href="#" class="bishop black">&#9821;</a></td>
-    <td id="D8"><a href="#" class="king black">&#9819;</a></td>
-    <td id="E8"><a href="#" class="queen black">&#9818;</a></td>
-    <td id="F8"><a href="#" class="bishop black">&#9821;</a></td>
-    <td id="G8"><a href="#" class="night black">&#9822;</a></td>
-    <td id="H8"><a href="#" class="rook black">&#9820;</a></td>
-</tr>
-<tr>
-    <td><a href="#">7</a></td>
-    <td id="A7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="B7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="C7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="D7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="E7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="F7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="G7"><a href="#" class="pawn black">&#9823;</a></td>
-    <td id="H7"><a href="#" class="pawn black">&#9823;</a></td>
-</tr>
-<tr>
-    <td><a href="#">6</a></td>
-    <td id="A6"></td>
-    <td id="B6"></td>
-    <td id="C6"></td>
-    <td id="D6"></td>
-    <td id="E6"></td>
-    <td id="F6"></td>
-    <td id="G6"></td>
-    <td id="H6"></td>
-</tr>
-<tr>
-    <td><a href="#">5</a></td>
-    <td id="A5"></td>
-    <td id="B5"></td>
-    <td id="C5"></td>
-    <td id="D5"></td>
-    <td id="E5"></td>
-    <td id="F5"></td>
-    <td id="G5"></td>
-    <td id="H5"></td>
-</tr>
-<tr>
-    <td><a href="#">4</a></td>
-    <td id="A4"></td>
-    <td id="B4"></td>
-    <td id="C4"></td>
-    <td id="D4"></td>
-    <td id="E4"></td>
-    <td id="F4"></td>
-    <td id="G4"></td>
-    <td id="H4"></td>
-</tr>
-<tr>
-    <td><a href="#">3</a></td>
-    <td id="A3"></td>
-    <td id="B3"></td>
-    <td id="C3"></td>
-    <td id="D3"></td>
-    <td id="E3"></td>
-    <td id="F3"></td>
-    <td id="G3"></td>
-    <td id="H3"></td>
-</tr>
-<tr>
-    <td><a href="#">2</a></td>
-    <td id="A2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="B2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="C2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="D2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="E2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="F2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="G2"><a href="#" class="pawn white">&#9817;</a></td>
-    <td id="H2"><a href="#" class="pawn white">&#9817;</a></td>
-</tr>
-<tr>
-    <td><a href="#">1</a></td>
-    <td id="A1"><a href="#" class="rook white">&#9814;</a></td>
-    <td id="B1"><a href="#" class="night white">&#9816;</a></td>
-    <td id="C1"><a href="#" class="bishop white">&#9815;</a></td>
-    <td id="D1"><a href="#" class="king white">&#9813;</a></td>
-    <td id="E1"><a href="#" class="wife white">&#9812;</a></td>
-    <td id="F1"><a href="#" class="bishop white">&#9815;</a></td>
-    <td id="G1"><a href="#" class="night white">&#9816;</a></td>
-    <td id="H1"><a href="#" class="rook white">&#9814;</a></td>
-</tr>
-<tr>
-    <td></td>
-    <td><a href="#">A</a></td>
-    <td><a href="#">B</a></td>
-    <td><a href="#">C</a></td>
-    <td><a href="#">D</a></td>
-    <td><a href="#">E</a></td>
-    <td><a href="#">F</a></td>
-    <td><a href="#">G</a></td>
-    <td><a href="#">H</a></td>
-</tr>
-
+<div style="height:0;width:20%;padding-bottom:20%">
+    <table class="board" cellpadding="0" cellspacing="0">
+        <tr>
+            <td ><p class="letter">8</p></td>
+            <td><p></p></td>
+            <td><p class="black threatened">&#9922;</p></td>
+            <td><p></p></td>
+            <td class="selected"><p class="black selected">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p class="black hovered">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p class="black">&#9922;</p></td>
+        </tr>
+        <tr>
+            <td><p class="letter">7</p></td>
+            <td><p class="black">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p class="black selected">&#9922;</p></td>
+            <td><p></p></td>
+            <td class="threatened"><p><p class="black">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p><p class="black">&#9922;</p></td>
+            <td><p></p></td>
+        </tr>
+        <tr>
+            <td><p class="letter">6</p></td>
+            <td><p></p></td>
+            <td><p class="black">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p class="black">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p class="black">&#9922;</p></td>
+            <td><p></p></td>
+            <td><p class="black">&#9922;</p></td>
+        </tr>
+        <tr>
+            <td><p class="letter">5</p></td>
+            <td class="hovered"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="letter">4</p></td>
+            <td></td>
+            <td class="selected"></td>
+            <td></td>
+            <td></td>
+            <td class="threatened"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="letter">3</p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+        </tr>
+        <tr>
+            <td><p class="letter">2</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white selected">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+        </tr>
+        <tr>
+            <td><p class="letter">1</p></td>
+            <td><p class="white threatened">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white">&#9920;</p></td>
+            <td><p></p></td>
+            <td><p class="white hovered">&#9920;</p></td>
+            <td><p></p></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><p class="letter">A</p></td>
+            <td><p class="letter">B</p></td>
+            <td><p class="letter">C</p></td>
+            <td><p class="letter">D</p></td>
+            <td><p class="letter">E</p></td>
+            <td><p class="letter">F</p></td>
+            <td><p class="letter">G</p></td>
+            <td><p class="letter">H</p></td>
+        </tr>
+    </table>
+</div>

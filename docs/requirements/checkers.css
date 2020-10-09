@@ -1,4 +1,4 @@
-a {
+.white {
     color:#000;
     display:block;
     font-size:60px;
@@ -7,31 +7,176 @@ a {
     text-decoration:none;
     text-shadow:0 1px #fff;
     width:80px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-#chess_board {
-    border:5px solid #333;
-}
-
-#chess_board td {
-    background:#fff;
-    background:-moz-linear-gradient(top, #fff, #eee);
-    background:-webkit-gradient(linear,0 0, 0 100%, from(#fff), to(#eee));
-    box-shadow:inset 0 0 0 1px #fff;
-    -moz-box-shadow:inset 0 0 0 1px #fff;
-    -webkit-box-shadow:inset 0 0 0 1px #fff;
+.black {
+    color:#000;
+    display:block;
+    font-size:60px;
     height:80px;
+    position:relative;
+    text-decoration:none;
+    text-shadow:0 1px #fff;
+    width:80px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.letter {
+    color:#000;
+    display:block;
+    font-size:60px;
+    height:80px;
+    position:relative;
+    text-decoration:none;
+    text-shadow:0 1px #fff;
+    width:80px;
+    font-family: "georgia";
+}
+
+.board {
+    border:5px solid #333;
+    width: 90%;
+}
+
+.board td {
+    background:#f00;
+    background:-moz-linear-gradient(top, #f00, #eee);
+    background:-webkit-gradient(linear,0 0, 0 100%, from(#f00), to(#eee));
+    box-shadow:inset 0 0 0 1px #f00;
+    -moz-box-shadow:inset 0 0 0 1px #f00;
+    -webkit-box-shadow:inset 0 0 0 1px #f00;
     text-align:center;
     vertical-align:middle;
-    width:80px;
+    width:2vw;
+    position:relative;
+    height:2vh;
 }
 
-#chess_board tr:nth-child(odd) td:nth-child(even),
-#chess_board tr:nth-child(even) td:nth-child(odd) {
-    background:#ccc;
+
+.board td:after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+}
+
+.board tr:nth-child(odd) td:nth-child(even),
+.board tr:nth-child(even) td:nth-child(odd) {
+    background:#000;
     background:-moz-linear-gradient(top, #ccc, #eee);
     background:-webkit-gradient(linear,0 0, 0 100%, from(#ccc), to(#eee));
     box-shadow:inset 0 0 10px rgba(0,0,0,.4);
     -moz-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
     -webkit-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+}
+
+
+
+
+
+.white.hovered, .black.hovered{
+    -webkit-animation: hovered_piece 1s ease-in-out infinite alternate;
+    -moz-animation: hovered_piece 1s ease-in-out infinite alternate;
+    animation: hovered_piece 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes hovered_piece {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0000ff, 0 0 40px #0000ff, 0 0 50px #0000ff, 0 0 60px #0000ff, 0 0 70px #0000ff;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #4444ff, 0 0 40px #4444ff, 0 0 50px #4444ff, 0 0 60px #4444ff, 0 0 70px #4444ff, 0 0 80px #4444ff;
+    }
+}
+
+.board td.hovered{
+    -webkit-animation: hovered_cell 1s ease-in-out infinite alternate;
+    -moz-animation: hovered_cell 1s ease-in-out infinite alternate;
+    animation: hovered_cell 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes hovered_cell {
+    from {
+        box-shadow: inset 0 0 10px #fff, inset 0 0 20px #fff, inset 0 0 30px #0000ff, inset 0 0 40px #0000ff, inset 0 0 50px #0000ff, inset 0 0 60px #0000ff, inset 0 0 70px #0000ff;
+    }
+    to {
+        box-shadow: inset 0 0 20px #fff, inset 0 0 30px #4444ff, inset 0 0 40px #4444ff, inset 0 0 50px #4444ff, inset 0 0 60px #4444ff, inset 0 0 70px #4444ff, inset 0 0 80px #4444ff;
+    }
+}
+
+
+
+
+.black.selected, .white.selected {
+    -webkit-animation: selected_piece 1s ease-in-out infinite alternate;
+    -moz-animation: selected_piece 1s ease-in-out infinite alternate;
+    animation: selected_piece 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes selected_piece {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #449944, 0 0 40px #449944, 0 0 50px #449944, 0 0 60px #449944, 0 0 70px #449944, 0 0 80px #449944;
+    }
+}
+
+.board td.selected{
+    -webkit-animation: selected_cell 1s ease-in-out infinite alternate;
+    -moz-animation: selected_cell 1s ease-in-out infinite alternate;
+    animation: selected_cell 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes selected_cell {
+    from {
+        box-shadow: inset 0 0 10px #fff, inset 0 0 20px #fff, inset 0 0 30px #00ff00, inset 0 0 40px #00ff00, inset 0 0 50px #00ff00, inset 0 0 60px #00ff00, inset 0 0 70px #00ff00;
+    }
+    to {
+        box-shadow: inset 0 0 20px #fff, inset 0 0 30px #449944, inset 0 0 40px #449944, inset 0 0 50px #449944, inset 0 0 60px #449944, inset 0 0 70px #449944, inset 0 0 80px #449944;
+    }
+}
+
+
+
+
+
+
+
+.black.threatened, .white.threatened {
+    -webkit-animation: threatened_piece 1s ease-in-out infinite alternate;
+    -moz-animation: threatened_piece 1s ease-in-out infinite alternate;
+    animation: threatened_piece 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes threatened_piece {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+.board td.threatened {
+    -webkit-animation: threatened_cell 1s ease-in-out infinite alternate;
+    -moz-animation: threatened_cell 1s ease-in-out infinite alternate;
+    animation: threatened_cell 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes threatened_cell {
+    from {
+        box-shadow: inset 0 0 10px #fff, inset 0 0 20px #fff, inset 0 0 30px #e60073, inset 0 0 40px #e60073, inset 0 0 50px #e60073, inset 0 0 60px #e60073, inset 0 0 70px #e60073;
+    }
+    to {
+        box-shadow: inset 0 0 20px #fff, inset 0 0 30px #ff4da6, inset 0 0 40px #ff4da6, inset 0 0 50px #ff4da6, inset 0 0 60px #ff4da6, inset 0 0 70px #ff4da6, inset 0 0 80px #ff4da6;
+    }
 }
