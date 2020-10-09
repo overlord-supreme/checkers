@@ -1,5 +1,12 @@
+
+
+
+
+/*
+Allow a White piece to appear White
+*/
 .white {
-    color:#000;
+    color:#ff0000;
     display:block;
     font-size:60px;
     height:80px;
@@ -14,8 +21,9 @@
     right: 0;
 }
 
+
 .black {
-    color:#000;
+    color:#000000;
     display:block;
     font-size:60px;
     height:80px;
@@ -29,6 +37,7 @@
     left: 0;
     right: 0;
 }
+
 
 .letter {
     color:#000;
@@ -42,10 +51,12 @@
     font-family: "georgia";
 }
 
+
 .board {
     border:5px solid #333;
     width: 90%;
 }
+
 
 .board td {
     background:#f00;
@@ -68,6 +79,10 @@
     margin-top: 100%;
 }
 
+
+/*
+This colors every-other piece of every-other row
+*/
 .board tr:nth-child(odd) td:nth-child(even),
 .board tr:nth-child(even) td:nth-child(odd) {
     background:#000;
@@ -81,7 +96,9 @@
 
 
 
-
+/*
+Add "hovered" to any `td` or white piece to apply a blue glow to it
+*/
 .white.hovered, .black.hovered{
     -webkit-animation: hovered_piece 1s ease-in-out infinite alternate;
     -moz-animation: hovered_piece 1s ease-in-out infinite alternate;
@@ -115,6 +132,9 @@
 
 
 
+/*
+Add "hovered" to any `td` or white piece to apply a blue glow to it
+*/
 .black.selected, .white.selected {
     -webkit-animation: selected_piece 1s ease-in-out infinite alternate;
     -moz-animation: selected_piece 1s ease-in-out infinite alternate;

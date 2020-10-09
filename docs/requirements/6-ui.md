@@ -62,35 +62,35 @@
         </tr>
         <tr>
             <td><p class="letter">3</p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
         </tr>
         <tr>
             <td><p class="letter">2</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white selected">&#9920;</p></td>
+            <td><p class="white selected">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
         </tr>
         <tr>
             <td><p class="letter">1</p></td>
-            <td><p class="white threatened">&#9920;</p></td>
+            <td><p class="white threatened">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white">&#9920;</p></td>
+            <td><p class="white">&#9922;</p></td>
             <td><p></p></td>
-            <td><p class="white hovered">&#9920;</p></td>
+            <td><p class="white hovered">&#9922;</p></td>
             <td><p></p></td>
         </tr>
         <tr>
