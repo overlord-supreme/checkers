@@ -1,7 +1,5 @@
 
 
-
-
 /*
 Allow a White piece to appear White
 */
@@ -9,16 +7,16 @@ Allow a White piece to appear White
     color:#ff0000;
     display:block;
     font-size:60px;
-    position:relative;
+    /*font-size:10vw;*/
+    /*font-size:calc((75vw - 4.5rem) / 10);*/
+    /*font-size:0.5em;*/
     text-decoration:none;
     text-shadow:0 1px #fff;
-    /*height:80px;*/
-    /*width:80px;*/
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 
@@ -26,12 +24,12 @@ Allow a White piece to appear White
     color:#000000;
     display:block;
     font-size:60px;
-    /*position:relative;*/
+    /*font-size:10vw;*/
+    /*font-size:calc((75vw - 4.5rem) / 10);*/
+    /*font-size:0.5em;*/
     text-decoration:none;
     text-shadow:0 1px #fff;
-    /*height:80px;*/
-    /*width:80px;*/
-    position: absolute;
+    position:absolute;
     top:0;
     bottom:0;
     left:0;
@@ -43,22 +41,28 @@ Allow a White piece to appear White
     color:#ffffff;
     display:block;
     font-size:60px;
+    /*font-size:10vw;*/
+    /*font-size:calc((75vw - 4.5rem) / 10);*/
+    /*font-size:0.5em;*/
     height:20px;
-    position:relative;
+    position:absolute;
     text-decoration:none;
     text-shadow:0 1px #fff;
     width:80px;
-    font-family: "georgia";
+    font-family:"georgia";
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 
 .board {
     border:5px solid #333;
-    /*width: 90%;*/
 }
 
 
-.board td {
+.board tr td {
     background:#f00;
     background:-moz-linear-gradient(top, #f00, #f88);
     background:-webkit-gradient(linear,0 0, 0 100%, from(#f00), to(#f88));
@@ -70,14 +74,32 @@ Allow a White piece to appear White
     width:280px;
     position:relative;
     height:20px;
+    text-align: center;
 }
 
 
-.board td:after {
+.board tr td:after {
     content: '';
     display: block;
     margin-top: 100%;
 }
+
+
+.board_page_insert {
+    width:100%;
+    height:800px;
+}
+
+
+.board_scaler {
+    width:50%;
+    display:block;
+    position:relative;
+    margin:auto;
+    float:left;
+}
+
+
 
 
 
