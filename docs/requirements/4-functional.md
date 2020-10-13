@@ -5,7 +5,7 @@
 
 **`Tile`** A spot on the board upon which a piece could be placed or moved.
 
-**`Men`** A regular checkers piece.
+**`Man`** A regular checkers piece.
 
 **`King`** A piece that can move diagonally backward.
 
