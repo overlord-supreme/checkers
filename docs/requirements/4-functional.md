@@ -1,7 +1,7 @@
 
 # 4. Functional Requirements
 
-### Definitions
+### 4.0 Definitions
 
 **`Tile`** A spot on the board upon which a piece could be placed or moved.
 
