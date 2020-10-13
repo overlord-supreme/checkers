@@ -53,12 +53,12 @@ or more moves.
                move.
 
 #### `R?.?` Match Initialization
-- **`R?.?.?`** A player will randomly be chosen to take the first turn.
+- **`R?.?.?`** A player shall randomly be chosen to take the first turn.
 
 ### 4.? Gameplay
 
 #### `R?.?` Taking Turns
-- **`R?.?.?`** Turns are in alternating order.
+- **`R?.?.?`** Turns shall be in alternating order.
 - **`R?.?.?`** A player shall not be able to choose to pass if there is a move
                available.
 - **`R?.?.?`** If a player fails to take a turn after a long amount of time,
