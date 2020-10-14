@@ -1,4 +1,4 @@
-#6. Use Cases
+# 6. Use Cases
 
 ## 6.1 Use Case Flow
 
@@ -66,5 +66,6 @@
 * **Action**: The Man piece turns into a King piece
 * **Postcondition**: The newly promoted King piece will now be able to move diagonally backwards.
 
-6.2 Activity Diagram
+## 6.2 Activity Diagram
+
 ![Image of Activity Diagram](img/usecase-diagram.png)
