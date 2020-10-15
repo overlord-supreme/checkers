@@ -7,30 +7,44 @@
 
 <br><br><br><br>
 
-## Note
+## 6.0 Note
 For this section, `html` and `css` will be used to illustrate a Checkers board and the various hints and effects anticipated on that board.
+
+HUD elements are drawn using bitmap graphics.
 
 
 
 
 <br><br><br><br>
+<div style="break-after:page"></div>
 
-## Elements
+## 6.1 Elements
 
 The following are recognized as part of the user interface:
-- The **Checker Board**
-- The **Checkers Pieces**
-- The **Heads-Up Display**
+- The **6.2 Checkers Board**
+- The **6.3 Checkers Pieces**
+- The **6.4 Heads-Up Display**
+- The **6.5 Main Menu**
+- The **6.6 Pause Menu**
+- The **6.7 Settings Menu**
+
+Elements will reference diagrams from the  **6.8 Diagrams** section.
 
 
-<br><br>
-
-### Checkers Board
 
 
-<br><br>
+<br><br><br><br>
+<div style="break-after:page"></div>
 
-### Checkers Pieces
+## 6.2 Checkers Board
+
+
+
+
+<br><br><br><br>
+<div style="break-after:page"></div>
+
+## 6.3 Checkers Pieces
 These are the individual tokens that move around on the **Checkers Board**.
 
 They can be:
@@ -43,9 +57,12 @@ They can be:
 State-changes are communicated through highlighting the **Checkers Pieces** and **Cells** on the **Checkers Board** with different **Colors**.
 
 
-<br><br>
 
-### Heads-Up Display
+
+<br><br><br><br>
+<div style="break-after:page"></div>
+
+## 6.4 Heads-Up Display
 These are on-screen flat, 2D elements that overlay any other elements. In a 3D game, these are often ammo counters, health meters, and timers.
 
 In *Supreme Checkers*, these are:
@@ -56,11 +73,17 @@ In *Supreme Checkers*, these are:
 
 
 <br><br><br><br>
+<div style="break-after:page"></div>
 
-## Blank Checkers Board
+## 6.8 Diagrams
 
-<div class="board_page_insert">
-    <div class="board_scaler">
+
+<br><br>
+
+### Blank Checkers Board
+
+<div style="width:100%;height:800px;">
+    <div style="width:80%;display:block;position:relative;margin:auto;float:left;">
         <table class="board" cellpadding="0" cellspacing="0">
             <tr>
                 <td ><p class="letter">8</p></td>
@@ -168,13 +191,14 @@ In *Supreme Checkers*, these are:
 
 
 
-<br><br><br><br>
+<br><br>
+<div style="break-after:page"></div>
 
-## Initial Setup Positions
+### Initial Setup Positions
 
 
-<div class="board_page_insert">
-    <div class="board_scaler">
+<div style="width:100%;height:800px;">
+    <div style="width:80%;display:block;position:relative;margin:auto;float:left;">
         <table class="board" cellpadding="0" cellspacing="0">
             <tr>
                 <td ><p class="letter">8</p></td>
@@ -283,12 +307,13 @@ In *Supreme Checkers*, these are:
 
 
 
-<br><br><br><br>
+<br><br>
+<div style="break-after:page"></div>
 
-## Example Highlights
+### Example Highlights
 
-<div class="board_page_insert">
-    <div class="board_scaler">
+<div style="width:100%;height:800px;">
+    <div style="width:80%;display:block;position:relative;margin:auto;float:left;">
         <table class="board" cellpadding="0" cellspacing="0">
             <tr>
                 <td ><p class="letter">8</p></td>
@@ -394,18 +419,16 @@ In *Supreme Checkers*, these are:
 </div>
 
 
+<br><br>
+<div style="break-after:page"></div>
+
+### Hovering Over a Piece
 
 
-<br><br><br><br>
+<br><br>
+<div style="break-after:page"></div>
 
-## Hovering Over a Piece
-
-
-
-
-<br><br><br><br>
-
-## Selecting a Piece
+### Selecting a Piece
 
 
 
