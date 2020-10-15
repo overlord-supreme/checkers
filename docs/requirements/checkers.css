@@ -6,7 +6,7 @@ Allow a White piece to appear White
 .white {
     color:#ff0000;
     display:block;
-    font-size:60px;
+    font-size:40px;
     /*font-size:10vw;*/
     /*font-size:calc((75vw - 4.5rem) / 10);*/
     /*font-size:0.5em;*/
@@ -23,7 +23,7 @@ Allow a White piece to appear White
 .black {
     color:#000000;
     display:block;
-    font-size:60px;
+    font-size:40px;
     /*font-size:10vw;*/
     /*font-size:calc((75vw - 4.5rem) / 10);*/
     /*font-size:0.5em;*/
@@ -40,7 +40,7 @@ Allow a White piece to appear White
 .letter {
     color:#ffffff;
     display:block;
-    font-size:60px;
+    font-size:40px;
     /*font-size:10vw;*/
     /*font-size:calc((75vw - 4.5rem) / 10);*/
     /*font-size:0.5em;*/
@@ -64,8 +64,8 @@ Allow a White piece to appear White
 
 .board tr td {
     background:#f00;
-    background:-moz-linear-gradient(top, #f00, #f88);
-    background:-webkit-gradient(linear,0 0, 0 100%, from(#f00), to(#f88));
+    /*background:-moz-linear-gradient(top, #f00, #f88);*/
+    /*background:-webkit-gradient(linear,0 0, 0 100%, from(#f00), to(#f88));*/
     box-shadow:inset 0 0 0 1px #f00;
     -moz-box-shadow:inset 0 0 0 1px #f00;
     -webkit-box-shadow:inset 0 0 0 1px #f00;
@@ -75,6 +75,7 @@ Allow a White piece to appear White
     position:relative;
     height:20px;
     text-align: center;
+    -webkit-print-color-adjust: exact;
 }
 
 
@@ -111,11 +112,12 @@ Uses a Gradient from Black to Gray
 .board tr:nth-child(odd) td:nth-child(even),
 .board tr:nth-child(even) td:nth-child(odd) {
     background:#000;
-    background:-moz-linear-gradient(top, #111111, #555555);
-    background:-webkit-gradient(linear,0 0, 0 100%, from(#111111), to(#555555));
+    /*background:-moz-linear-gradient(top, #111111, #555555);*/
+    /*background:-webkit-gradient(linear,0 0, 0 100%, from(#111111), to(#555555));*/
     box-shadow:inset 0 0 10px rgba(0,0,0,.4);
     -moz-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
     -webkit-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -webkit-print-color-adjust: exact;
 }
 
 
