@@ -1,11 +1,11 @@
 
 # 4. Functional Requirements
 
-### Definitions
+### 4.0 Definitions
 
 **`Tile`** A spot on the board upon which a piece could be placed or moved.
 
-**`Men`** A regular checkers piece.
+**`Man`** A regular checkers piece.
 
 **`King`** A piece that can move diagonally backward.
 
@@ -27,6 +27,27 @@ or more moves.
 **`Pile`** A player's collection of captured opponent pieces.
 
 ### 4.? Matchmaking
+
+#### `R?.?` Player Identification
+- **`R?.?.?`** Upon starting the game, the player shall be prompted to enter
+               a username.
+- **`R?.?.?`** The player's username shall persist across game sessions.
+
+#### `R?.?` Menu
+- **`R?.?.?`** After entering a username, the player shall be directed to a
+               menu.
+- **`R?.?.?`** On the menu, the player shall be able to create a lobby or join
+               an existing lobby.
+- **`R?.?.?`** On the menu, the player shall be able to exit the game.
+
+#### `R?.?` Lobbies
+- **`R?.?.?`** A lobby shall be identified by the player who started it.
+- **`R?.?.?`** A lobby shall be able to be private (password-protected) or
+               public.
+- **`R?.?.?`** Once two players are in the lobby, both players shall need to
+               "ready-up" before the match is started.
+- **`R?.?.?`** After a match is completed, both players shall return to the
+               lobby.
 
 ### 4.? Environment
 
@@ -53,12 +74,12 @@ or more moves.
                move.
 
 #### `R?.?` Match Initialization
-- **`R?.?.?`** A player will randomly be chosen to take the first turn.
+- **`R?.?.?`** A player shall randomly be chosen to take the first turn.
 
 ### 4.? Gameplay
 
 #### `R?.?` Taking Turns
-- **`R?.?.?`** Turns are in alternating order.
+- **`R?.?.?`** Turns shall be in alternating order.
 - **`R?.?.?`** A player shall not be able to choose to pass if there is a move
                available.
 - **`R?.?.?`** If a player fails to take a turn after a long amount of time,
