@@ -77,6 +77,8 @@ Each Tile can give the Player a Hint, similarly to the Pieces.
 
 Pieces occupy Tiles, and indicate such by rendering over them. It is very important that the logical position ("A-2") corresponds to the on-screen position ("256 x 122") when it is rendered.
 
+See [6.10.5 Selecting a Piece and Path](#6.10.5-selecting-a-piece-and-path) for an interaction of the Board hinting to the Player the Path they are taking.
+
 **`R6.2.0`** Empty Tiles do not render any elements within them **Priority 1**
 
 **`R6.2.1`** Pieces render above correct tiles **Priority 1**
@@ -118,7 +120,9 @@ They can be:
 - **Removed:** Stop rendering
 - **Hinted:** The *Red*, *Green*, and *Blue* colors
 
-See [6.11.4 Hovering Over a Piece](#6.11.4-hovering-over-a-piece) for an example interaction with a piece
+See [6.11.4 Hovering Over a Piece](#6.11.4-hovering-over-a-piece) for an example interaction with a piece.
+
+See [6.10.2 Initial Setup Positions](#6.10.2-initial-setup-positions) for an example of logical placement.
 
 **`R6.3.0`** Pieces render to the Board **Priority 1**
 
@@ -299,6 +303,8 @@ See [6.11.6 Pause Menu](#6.11.6-pause-menu).
 
 
 
+
+
 <br><br><br><br>
 <div style="break-after:page"></div>
 
@@ -329,21 +335,7 @@ The Settings Menu include accessibility and debug options, and serves as a space
 <br><br><br><br>
 <div style="break-after:page"></div>
 
-## 6.9 Lobby Menus
-### 6.9.1 Create Menu
-The Create Menu will show a list of the currently joined participants and will have a button to start the match once full.
-
-**`R8.1`** The Start button will transition the clients into the Main Scene **Priority 1**
-
-**`R8.2`** The list of participants will update when a Player joins lobby **Priority 1**
-
-### 6.9.2 Join Menu
-The Join menu will show a list of the currently open rooms that have not yet started and will make a button for joining each room.
-
-**`R9.1`** The buttons for each room will put the Player into that lobby and update the host's game to show the status. **Priority 1**
-
-## 6.10 Main Scene
-
+## 6.9 Lobby Menu
 
 
 
@@ -355,7 +347,7 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 <br><br><br><br>
 <div style="break-after:page"></div>
 
-## 6.11 Diagrams
+## 6.10 Diagrams
 
 
 
@@ -363,7 +355,7 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 <br><br>
 
-### 6.11.0 Menu Flow
+### 6.10.0 Menu Flow
 
 ```mermaid
 graph TD;
@@ -392,8 +384,9 @@ graph TD;
 
 
 <br><br>
+<div style="break-after:page"></div>
 
-### 6.11.1 Blank Checkers Board
+### 6.10.1 Blank Checkers Board
 
 <div style="width:70%">
 
@@ -410,7 +403,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.2 Initial Setup Positions
+### 6.10.2 Initial Setup Positions
 
 <div style="width:70%">
 
@@ -427,7 +420,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.3 Example Highlights
+### 6.10.3 Example Highlights
 
 <div style="width:70%">
 
@@ -444,7 +437,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.4 Hovering Over a Piece
+### 6.10.4 Hovering Over a Piece
 
 <div style="width:70%">
 
@@ -461,7 +454,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.5 Selecting a Piece and Path
+### 6.10.5 Selecting a Piece and Path
 
 <div style="width:70%">
 
@@ -478,7 +471,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.6 Pause Menu
+### 6.10.6 Pause Menu
 
 <div style="width:70%">
 
@@ -495,7 +488,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.7 Settings Menu
+### 6.10.7 Settings Menu
 
 <div style="width:70%">
 
@@ -513,7 +506,7 @@ graph TD;
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.8 Heads Up Display
+### 6.10.8 Heads Up Display
 
 <div style="width:70%">
 
