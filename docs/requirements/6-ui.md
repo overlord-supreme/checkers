@@ -195,7 +195,10 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 ### 6.11.2 Initial Setup Positions
 
+<div style="width:70%">
 
+![Board](img/board-setup.svg)
+</div>
 
 
 
