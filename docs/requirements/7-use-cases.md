@@ -4,22 +4,23 @@
 
 6.1.1 Starting Game 
 * **Precondition**: The player is on the title screen.
-* **Action**: The player clicks "New Game".
-* **Postcondition**: A server will be created, and the player will be moved into a server automatically.
-  The IP of the server will be displayed on the side.
-  A maximum of one other player will be able to join the game using this server IP. 
+* **Action**: The player clicks "New Game". They may optionally set a password for their game lobby.
+* **Postcondition**: The player will be added into a new lobby, which can have at max one other
+  player. If a password is inputted, the lobby will be marked as private.
 
 6.1.2 Joining Game (Client)
 * **Precondition**: The player is on the title screen.
-* **Action**: The player clicks "Join Game" and inputs a valid IP address.
-* **Postcondition**: The player will join the server and the game will automatically start.
+* **Action**: The player clicks "Join Game" and chooses an available lobby. If it is private, then
+  they must enter the correct password.
+* **Postcondition**: The player will join the lobby, and the game will automatically start with one
+  of the players randomly being chosen to go first.
 
 6.1.3 Ending A Checkers Game
 * **Precondition**: A game must be in-progress.
 * **Action**: Either of the two players exits or disconnects from the game, or one of the players has captured the other
   player's final piece.
-* **Postcondition**: The game will end, and both players will return to the title screen after 30
-  seconds or after the player clicks the "Exit" button, whichever comes first.
+* **Postcondition**: The game will end, and both players will return to the lobby, or just one
+  player if the other player disconnects.
 
 6.1.4 Exiting the Game Application
 * **Precondition**: The player is on the title screen.
@@ -57,8 +58,8 @@
 * **Precondition**: The other player has left or disconnected from the game, or the other player has
   no remaining pieces, or the other player has no valid moves.
 * **Action**: The player wins the game.
-* **Postcondition**: The player will automatically return to the title screen after 30 seconds, or
-  after they click on the "Exit" button, whichever comes first.
+* **Postcondition**: Both players will automatically return to the lobby, or just the winning player
+  if the other player has disconnected.
 
 6.1.10 Turning a Man Piece into a King Piece
 * **Precondition**: A player's Man piece has moved to the opponent's closest row relative to
