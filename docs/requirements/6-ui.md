@@ -1,6 +1,8 @@
-# 6. User Interface
 
-<link href="checkers.css" rel="stylesheet"></link>
+
+
+
+# 6. User Interface
 
 
 
@@ -121,8 +123,11 @@ The main menu lists
 <div style="break-after:page"></div>
 
 ## 6.7 Pause Menu
+The Pause Menu will feature 2 buttons: Leave Game and Settings
 
+**`R5.1`** Leave Game will return player to the main menu. **Priority 1**
 
+**`R5.2`** Settings button will open up the settings options in overlaid menu. **Priority 2**
 
 
 <br><br><br><br>
@@ -130,9 +135,17 @@ The main menu lists
 
 ## 6.8 Settings
 ### 6.8.1 Main Menu Settings
+Main Menu Screen will have 3 Buttons: Exit Game, Settings, Play
+
+**`R6.1`** Exit Game will terminate the application. **Priority 1**
+
+**`R6.2`** Settings will Open up a menu screen for the game settings. **Priority 2**
+
+**`R6.3`** Play will open up the Lobby Screen. **Priority 1**
 
 ### 6.8.2 Pause Menu Settings
 
+**`R7.1`** The settings menu will show the game settings **Priority 3**
 
 
 
@@ -141,10 +154,19 @@ The main menu lists
 
 ## 6.9 Lobby Menus
 ### 6.9.1 Create Menu
+The Create Menu will show a list of the currently joined participants and will have a button to start the match once full.
+
+**`R8.1`** The Start button will transition the clients into the Main Scene **Priority 1**
+
+**`R8.2`** The list of participants will update when a user joins lobby **Priority 1**
 
 ### 6.9.2 Join Menu
+The Join menu will show a list of the currently open rooms that have not yet started and will make a button for joining each room.
+
+**`R9.1`** The buttons for each room will put the user into that lobby and update the host's game to show the status. **Priority 1**
 
 ## 6.10 Main Scene
+
 
 
 
@@ -159,6 +181,11 @@ The main menu lists
 <br><br>
 
 ### 6.11.1 Blank Checkers Board
+
+<div style="width:70%">
+
+![Board](img/board.svg)
+</div>
 
 
 
