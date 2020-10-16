@@ -235,6 +235,24 @@ See [6.11.8 Heads Up Display](#6.11.8-heads-up-display) for an example.
 
 ## 6.6 Main Menu
 
+The Main Menu lets the user know the application launched successfully.
+
+It connects to the Lobby Menu.
+
+**`R6.6.0`** Launching App opens the Main Menu **Priority 1**
+
+**`R6.6.1`** Main Menu has "Exit" Button **Priority 1**
+
+**`R6.6.2`** Main Menu has "Create Game" Button **Priority 1**
+
+**`R6.6.3`** Main Menu has "Join Game" Button **Priority 1**
+
+**`R6.6.4`** "Create Game" launches the Lobby Menu with Creation **Priority 1**
+
+**`R6.6.5`** "Join Game" launches the Lobby Menu with Joining **Priority 1**
+
+**`R6.6.6`** "Exit" closes the Application **Priority 2**
+
 
 
 
