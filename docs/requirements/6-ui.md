@@ -2,7 +2,15 @@
 
 
 
+
+
+
+
 # 6. User Interface
+
+
+
+
 
 
 
@@ -13,6 +21,10 @@
 For this section, `html` and `css` will be used to illustrate a Checkers board and the various hints and effects anticipated on that board.
 
 HUD elements are drawn using bitmap graphics.
+
+
+
+
 
 
 
@@ -37,10 +49,18 @@ Elements will reference diagrams from the  **6.9 Diagrams** section.
 
 
 
+
+
+
+
 <br><br><br><br>
 <div style="break-after:page"></div>
 
 ## 6.2 Checkers Board
+
+
+
+
 
 
 
@@ -59,6 +79,9 @@ They can be:
 - **Moved**
 
 State-changes are communicated through highlighting the **Checkers Pieces** and **Cells** on the **Checkers Board** with different **Colors**.
+
+
+
 
 
 
@@ -94,6 +117,10 @@ graph TD;
 
 
 
+
+
+
+
 ## 6.5 Heads-Up Display
 These are on-screen flat, 2D elements that overlay any other elements. In a 3D game, these are often ammo counters, health meters, and timers.
 
@@ -119,6 +146,10 @@ The main menu lists
 
 
 
+
+
+
+
 <br><br><br><br>
 <div style="break-after:page"></div>
 
@@ -128,6 +159,12 @@ The Pause Menu will feature 2 buttons: Leave Game and Settings
 **`R5.1`** Leave Game will return player to the main menu. **Priority 1**
 
 **`R5.2`** Settings button will open up the settings options in overlaid menu. **Priority 2**
+
+
+
+
+
+
 
 
 <br><br><br><br>
@@ -146,6 +183,11 @@ Main Menu Screen will have 3 Buttons: Exit Game, Settings, Play
 ### 6.8.2 Pause Menu Settings
 
 **`R7.1`** The settings menu will show the game settings **Priority 3**
+
+
+
+
+
 
 
 
@@ -172,10 +214,18 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 
 
+
+
+
 <br><br><br><br>
 <div style="break-after:page"></div>
 
 ## 6.11 Diagrams
+
+
+
+
+
 
 
 <br><br>
@@ -186,6 +236,10 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 ![Board](img/board.svg)
 </div>
+
+
+
+
 
 
 
@@ -203,10 +257,23 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 
 
+
+
+
+
 <br><br>
 <div style="break-after:page"></div>
 
 ### 6.11.3 Example Highlights
+
+<div style="width:70%">
+
+![Board](img/board-highlights.svg)
+</div>
+
+
+
+
 
 
 
@@ -215,6 +282,10 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 <div style="break-after:page"></div>
 
 ### 6.11.4 Hovering Over a Piece
+
+
+
+
 
 
 
