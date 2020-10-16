@@ -93,39 +93,39 @@ This is how the user is anticipated to flow between each menu.
 
 See [6.11.0 Menu Flow](#6.11.0-menu-flow).
 
-**`R6.4.0`** Player can open Main Menu on Application Start
+**`R6.4.0`** Player can open Main Menu on Application Start **Priority 1**
 
-**`R6.4.1`** Player can Exit Game from Main Menu
+**`R6.4.1`** Player can Exit Game from Main Menu **Priority 2**
 
-**`R6.4.2`** Exit Game closes the Application
+**`R6.4.2`** Exit Game closes the Application **Priority 2**
 
-**`R6.4.3`** Player can open Settings Menu from Main Menu
+**`R6.4.3`** Player can open Settings Menu from Main Menu **Priority 2**
 
-**`R6.4.4`** Player can Return To Last Menu from Settings Menu
+**`R6.4.4`** Player can Return To Last Menu from Settings Menu **Priority 1**
 
-**`R6.4.5`** Player can open Lobby Menu from Main Menu
+**`R6.4.5`** Player can open Lobby Menu from Main Menu **Priority 1**
 
-**`R6.4.6`** Player can Create Game from Lobby Menu
+**`R6.4.6`** Player can Create Game from Lobby Menu **Priority 1**
 
-**`R6.4.7`** Player can Join Game from Lobby Menu
+**`R6.4.7`** Player can Join Game from Lobby Menu **Priority 1**
 
-**`R6.4.8`** Player can load Main Scene from Creating Game
+**`R6.4.8`** Player can load Main Scene from Creating Game **Priority 1**
 
-**`R6.4.9`** Player can load Main Scene from Joining Game
+**`R6.4.9`** Player can load Main Scene from Joining Game **Priority 1**
 
-**`R6.4.10`** Player can End Game from Main Scene
+**`R6.4.10`** Player can End Game from Main Scene **Priority 2**
 
-**`R6.4.11`** Player can open Pause Menu from Main Scene
+**`R6.4.11`** Player can open Pause Menu from Main Scene **Priority 3**
 
-**`R6.4.12`** Player can open Settings Menu from Pause Menu
+**`R6.4.12`** Player can open Settings Menu from Pause Menu **Priority 3**
 
-**`R6.4.13`** Player can return to Pause Menu from Settings Menu
+**`R6.4.13`** Player can return to Pause Menu from Settings Menu **Priority 3**
 
-**`R6.4.14`** Player can return to Main Scene from Pause Menu
+**`R6.4.14`** Player can return to Main Scene from Pause Menu **Priority 3**
 
-**`R6.4.15`** Player can return to Main Menu from Pause Menu
+**`R6.4.15`** Player can return to Main Menu from Pause Menu **Priority 3**
 
-**`R6.4.16`** Player can return to Main Menu from End Game
+**`R6.4.16`** Player can return to Main Menu from End Game **Priority 3**
 
 
 
