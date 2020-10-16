@@ -73,6 +73,26 @@ The **Board** is rendered to the screen as an alternating sequence of red and bl
 
 Each **Tile** can give the user a **Hint**, similarly to the **Pieces**.
 
+**Pieces** occupy **Tiles**, and indicate such by rendering over them. It is very important that the logical position ("A-2") corresponds to the on-screen position ("256 x 122") when it is rendered.
+
+**`R6.2.0`** Empty Tiles do not render any elements within them **Priority 1**
+
+**`R6.2.1`** Pieces render above correct tiles **Priority 1**
+
+**`R6.2.2`** Tiles hint at being Part of Path **Priority 2**
+
+**`R6.2.3`** Tiles hint at being End of Path **Priority 2**
+
+**`R6.2.4`** Tiles hint at being threatened **Priority 3**
+
+**`R6.2.5`** Board is 8 Tiles by 8 Tiles **Priority 1**
+
+**`R6.2.6`** Board is rendered across most of screen **Priority 1**
+
+**`R6.2.7`** No important part of Board is rendered Off-Screen **Priority 1**
+
+**`R6.2.8`** Inactive Tiles do not hint at anything **Priority 2**
+
 
 
 
@@ -96,11 +116,11 @@ They can be:
 - **Removed:** Stop rendering
 - **Hinted:** The *Red*, *Green*, and *Blue* colors
 
-See 
+See [6.11.4 Hovering Over a Piece](#6.11.4-hovering-over-a-piece) for an example interaction with a piece
 
 **`R6.3.0`** Pieces render to the Board **Priority 1**
 
-**`R6.3.1`** Pieces render to the in Logical Position **Priority 1**
+**`R6.3.1`** Pieces render to Logical Positions **Priority 1**
 
 **`R6.3.2`** Man Pieces distinct from King Pieces **Priority 1**
 
@@ -108,7 +128,13 @@ See
 
 **`R6.3.4`** Pieces hint at being Selected **Priority 2**
 
-**`R6.3.4`** Pieces hint at being Threatened **Priority 2**
+**`R6.3.5`** Pieces hint at being Threatened **Priority 3**
+
+**`R6.3.6`** White Pieces are distinct from Red Pieces **Priority 1**
+
+**`R6.3.7`** Piece positions render to correct location after Moving **Priority 1**
+
+**`R6.3.8`** Piece positions render to correct location during Game Start **Priority 1**
 
 
 
@@ -175,6 +201,10 @@ In *Supreme Checkers*, these are:
 - The **Turn Controls**
 - The **Game Clock**
 
+See 
+
+See 
+
 
 
 
@@ -188,7 +218,8 @@ In *Supreme Checkers*, these are:
 <div style="break-after:page"></div>
 
 ## 6.6 Main Menu
-The main menu lists 
+
+
 
 
 
@@ -201,12 +232,8 @@ The main menu lists
 <div style="break-after:page"></div>
 
 ## 6.7 Pause Menu
-The Pause Menu will feature 2 buttons: Leave Game and Settings
 
-**`R5.1`** Leave Game will return player to the main menu. **Priority 1**
-
-**`R5.2`** Settings button will open up the settings options in overlaid menu. **Priority 2**
-
+See 
 
 
 
@@ -218,7 +245,7 @@ The Pause Menu will feature 2 buttons: Leave Game and Settings
 <div style="break-after:page"></div>
 
 ## 6.8 Settings
-### 6.8.1 Main Menu Settings
+
 Main Menu Screen will have 3 Buttons: Exit Game, Settings, Play
 
 **`R6.1`** Exit Game will terminate the application. **Priority 1**
@@ -227,9 +254,6 @@ Main Menu Screen will have 3 Buttons: Exit Game, Settings, Play
 
 **`R6.3`** Play will open up the Lobby Screen. **Priority 1**
 
-### 6.8.2 Pause Menu Settings
-
-**`R7.1`** The settings menu will show the game settings **Priority 3**
 
 
 
