@@ -283,6 +283,11 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 ### 6.11.4 Hovering Over a Piece
 
+<div style="width:70%">
+
+![Board](img/board-hover.svg)
+</div>
+
 
 
 
@@ -293,9 +298,12 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 <br><br>
 <div style="break-after:page"></div>
 
-### 6.11.5 Selecting a Piece
+### 6.11.5 Selecting a Piece and Path
 
+<div style="width:70%">
 
+![Board](img/board-select.svg)
+</div>
 
 
 
