@@ -42,6 +42,10 @@ To connect to another player using Proton, all we ask of the player is their aut
 ## 5.5 Usability
 ### R5.5.1 Playtesting
 At each stable release of Overlord Supreme, the team will attempt to run a minor playtesting session with between 5 to 10 users. Our goal with these playtesting sessions is to pull players that are mostly unfamiliar with the project to get their unbiased opinion about the game's current functionality and enjoyability. To make their reports more actionable, we will also be providing them with a form to fill out so that we can better analyze any found shortcomings of the product.
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## 5.6 Maintainability
 ### R5.6.1 Potential Future of Updates
