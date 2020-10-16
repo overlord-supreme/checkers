@@ -39,7 +39,7 @@ The game will game the following functionality:
 <br />
 
 ## 3.3 User Description
-The necessary number of players for Overlord-Supreme Checkers is 2 players
+The necessary number of players for Overlord-Supreme Checkers is 2 players. 
 <br />
 <br />
 <br />
