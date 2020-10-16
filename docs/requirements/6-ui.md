@@ -304,13 +304,19 @@ See [6.11.6 Pause Menu](#6.11.6-pause-menu).
 
 ## 6.8 Settings
 
-Main Menu Screen will have 3 Buttons: Exit Game, Settings, Play
+The Settings Menu include accessibility and debug options, and serves as a space to add future options.
 
-**`R6.1`** Exit Game will terminate the Game. **Priority 1**
+**`R6.8.0`** Closing the Settings Menu stops rendering the Settings Menu, updates the Game with the new values, and returns to the Last Screen **Priority 1**
 
-**`R6.2`** Settings will Open up a menu screen for the game settings. **Priority 2**
+**`R6.8.1`** "Ok" Button exists **Priority 1**
 
-**`R6.3`** Play will open up the Lobby Screen. **Priority 1**
+**`R6.8.2`** "Cancel" Button exists **Priority 1**
+
+**`R6.8.3`** Selecting "Ok" closes the Settings Menu **Priority 1**
+
+**`R6.8.4`** Selecting "Cancel" closes the Settings Menu without Applying Changes **Priority 1**
+
+**`R6.8.5`** Any included Options render correctly and apply effects correctly **Priority 3**
 
 
 
