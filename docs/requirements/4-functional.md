@@ -50,10 +50,10 @@ or more moves.
                **Priority 1**
 - **`R1.3.2`** A lobby shall be able to be private (password-protected) or
                public.
-               **Priority 4**
+               **Priority 3**
 - **`R1.3.3`** Once two players are in the lobby, both players shall need to
                "ready-up" before the match is started.
-               **Priority 2**
+               **Priority 1**
 - **`R1.3.4`** After a match is completed, both players shall return to the
                lobby.
                **Priority 2**
