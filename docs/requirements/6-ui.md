@@ -22,7 +22,7 @@ Pieces and Tiles can provide colors as hints, mostly to show if they are Selecte
 - **Selected:** *Green*, such as on-mouse-click, or end of path
 - **Threatened:** *Red*, such as attacked pieces, or attacking squares
 
-See [6.11.3 Example Highlights](#6.11.3-example-highlights) for some of these.
+See [6.10.3 Example Highlights](#6103-example-highlights) for some of these.
 
 
 
@@ -41,7 +41,7 @@ The following are recognized as part of the user interface:
 - The **6.8 Settings Menu**
 - The **6.9 Lobby Menu**
 
-Elements will reference diagrams from the  **6.9 Diagrams** section.
+Elements will reference diagrams from the  **6.10 Diagrams** section.
 
 **`R6.1.0`** There is a Board **Priority 1**
 
@@ -71,13 +71,13 @@ Elements will reference diagrams from the  **6.9 Diagrams** section.
 
 ## 6.2 Checkers Board
 
-The Board is rendered to the screen as an alternating sequence of red and black squares called Tiles. See [6.11.1 Blank Checkers Board](#6.11.1-blank-checkers-board).
+The Board is rendered to the screen as an alternating sequence of red and black squares called Tiles. See [6.10.1 Blank Checkers Board](#6101-blank-checkers-board).
 
 Each Tile can give the Player a Hint, similarly to the Pieces.
 
 Pieces occupy Tiles, and indicate such by rendering over them. It is very important that the logical position ("A-2") corresponds to the on-screen position ("256 x 122") when it is rendered.
 
-See [6.10.5 Selecting a Piece and Path](#6.10.5-selecting-a-piece-and-path) for an interaction of the Board hinting to the Player the Path they are taking.
+See [6.10.5 Selecting a Piece and Path](#6105-selecting-a-piece-and-path) for an interaction of the Board hinting to the Player the Path they are taking.
 
 **`R6.2.0`** Empty Tiles do not render any elements within them **Priority 1**
 
@@ -120,9 +120,9 @@ They can be:
 - **Removed:** Stop rendering
 - **Hinted:** The *Red*, *Green*, and *Blue* colors
 
-See [6.11.4 Hovering Over a Piece](#6.11.4-hovering-over-a-piece) for an example interaction with a piece.
+See [6.10.4 Hovering Over a Piece](#6104-hovering-over-a-piece) for an example interaction with a piece.
 
-See [6.10.2 Initial Setup Positions](#6.10.2-initial-setup-positions) for an example of logical placement.
+See [6.10.2 Initial Setup Positions](#6102-initial-setup-positions) for an example of logical placement.
 
 **`R6.3.0`** Pieces render to the Board **Priority 1**
 
@@ -155,7 +155,7 @@ See [6.10.2 Initial Setup Positions](#6.10.2-initial-setup-positions) for an exa
 
 This is how the Player is anticipated to flow between each menu.
 
-See [6.11.0 Menu Flow](#6.11.0-menu-flow).
+See [6.10.0 Menu Flow](#6100-menu-flow).
 
 **`R6.4.0`** Player can open Main Menu on Game Start **Priority 1**
 
@@ -213,7 +213,7 @@ In *Supreme Checkers*, these are:
 - The **Game Clock**
 - Any **Accessibility Features** (such as an escape-key alternative)
 
-See [6.11.8 Heads Up Display](#6.11.8-heads-up-display) for an example.
+See [6.10.8 Heads Up Display](#6108-heads-up-display) for an example.
 
 **`R6.5.0`** HUD is updated in real-time **Priority 1**
 
@@ -241,11 +241,9 @@ See [6.11.8 Heads Up Display](#6.11.8-heads-up-display) for an example.
 
 ## 6.6 Main Menu
 
-The Main Menu lets the Player know the Game launched successfully.
+The Main Menu lets the Player know the Game launched successfully and connect to the Lobby Menu.
 
-It connects to the Lobby Menu.
-
-**`R6.6.0`** Launching App opens the Main Menu **Priority 1**
+**`R6.6.0`** Launching Game opens the Main Menu **Priority 1**
 
 **`R6.6.1`** Main Menu has "Exit" Button **Priority 1**
 
@@ -275,7 +273,7 @@ It connects to the Lobby Menu.
 
 The Pause Menu lets Players adjust Settings and exit the Game during play.
 
-See [6.11.6 Pause Menu](#6.11.6-pause-menu).
+See [6.10.6 Pause Menu](#6106-pause-menu).
 
 **`R6.7.0`** Pause Menu renders to the screen when open **Priority 1**
 
@@ -339,7 +337,7 @@ The Settings Menu include accessibility and debug options, and serves as a space
 
 This gives Players a chance to discover over matches and other players. It should be a list of open matches, with names.
 
-See [6.10.9 Lobby Menu](#6.10.9-lobby-menu) for example.
+See [6.10.9 Lobby Menu](#6109-lobby-menu) for example.
 
 **`R6.9.0`** Lobby Menu updated and re-rendered frequently **Priority 1**
 
@@ -545,5 +543,5 @@ graph TD;
 
 <div style="width:70%">
 
-![Board](img/hud.png)
+![Board](img/lobby.png)
 </div>
