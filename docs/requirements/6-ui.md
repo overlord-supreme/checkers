@@ -194,16 +194,32 @@ See [6.11.0 Menu Flow](#6.11.0-menu-flow).
 
 
 
+
+<br><br><br><br>
+<div style="break-after:page"></div>
+
 ## 6.5 Heads-Up Display
-These are on-screen flat, 2D elements that overlay any other elements. In a 3D game, these are often ammo counters, health meters, and timers.
+
+These are on-screen, flat, 2D elements that overlay any other elements. In a 3D game, these are often ammo counters, health meters, and timers.
 
 In *Supreme Checkers*, these are:
 - The **Turn Controls**
 - The **Game Clock**
+- Any **Accessibility Features** (such as an escape-key alternative)
 
-See 
+See [6.11.8 Heads Up Display](#6.11.8-heads-up-display) for an example.
 
-See 
+**`R6.5.0`** HUD is updated in real-time **Priority 1**
+
+**`R6.5.1`** HUD responds to user mouse-clicks **Priority 1**
+
+**`R6.5.2`** An "ESC" HUD element exists for mouse-only users **Priority 3**
+
+**`R6.5.3`** "ESC" opens the Pause Menu **Priority 1**
+
+**`R6.5.4`** An "End Turn" HUD element exists **Priority 3**
+
+**`R6.5.5`** "End Turn" ends the Player's Turn **Priority 1**
 
 
 
