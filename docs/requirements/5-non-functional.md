@@ -30,10 +30,10 @@ The Overlord Supreme client application will be downloadable from our *Github* r
 
 ## 5.4 Security
 ### R5.4.1 User Privacy
-Overlord Supreme will collect no data about the user running the game, as we believe in allowing our players to use our service without getting something back from them. In furthering our considerations about privacy, the networking tool Proton itself collects no data about the user aside from their IP and their unique Proton authentication code. 
+Overlord Supreme will collect no data about the user running the game, as we believe in allowing our players to use our service without getting something back from them. In furthering our considerations about privacy, the networking tool Proton itself collects no data about the user aside from their IP and their unique Proton authentication code. **Priority 1** 
 
 ### R5.4.2 Network Authentication / Encryption
-To connect to another player using Proton, all we ask of the player is their authentication key (which should be automatically generated on game boot). From there, that authentication gets passed along to Proton as encrypted data, keeping the details of the connection safe from any potential outside attackers.
+To connect to another player using Proton, all we ask of the player is their authentication key (which should be automatically generated on game boot). From there, that authentication gets passed along to Proton as encrypted data, keeping the details of the connection safe from any potential outside attackers. **Priority 2** 
 <br/>
 <br/>
 <br/>
