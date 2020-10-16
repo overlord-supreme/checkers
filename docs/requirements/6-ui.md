@@ -269,7 +269,29 @@ It connects to the Lobby Menu.
 
 ## 6.7 Pause Menu
 
-The Pause Menu lets Players  
+The Pause Menu lets Players adjust Settings and exit the Game during play.
+
+See [6.11.6 Pause Menu](#6.11.6-pause-menu).
+
+**`R6.7.0`** Pause Menu renders to the screen when open **Priority 1**
+
+**`R6.7.1`** Pause Menu stops rendering to the screen when closed **Priority 1**
+
+**`R6.7.2`** "Exit" Button to Main Menu exists **Priority 1**
+
+**`R6.7.3`** "Settings" Button to Settings Menu exists **Priority 2**
+
+**`R6.7.4`** "Resume" Button to Main Scene exists **Priority 1**
+
+**`R6.7.5`** Selecting "Resume" closes Pause Menu and returns to Main Scene **Priority 1**
+
+**`R6.7.6`** Pressing "Esc" closes Pause Menu and returns to Main Scene **Priority 3**
+
+**`R6.7.7`** Selecting "Exit" closes Pause Menu and Main Scene and returns to Main Menu **Priority 1**
+
+**`R6.7.8`** Selecting "Settings" opens Settings Menu **Priority 1**
+
+**`R6.7.9`** Selecting "Resume" closes the Pause Menu **Priority 1**
 
 
 
