@@ -14,7 +14,9 @@ For this section, `svg` graphics will be used to illustrate a Checkers board and
 
 HUD and menu elements are drawn using bitmap graphics.
 
-**Pieces** and **Tiles** can provide colors as hints, mostly to show if they are **Selected** or **Available**. The following is used for hints:
+We refer to the User as Player (given game terminology), and Indicate Major Concepts or References in Capitals. We refer to the Application as Game.
+
+Pieces and Tiles can provide colors as hints, mostly to show if they are Selected or Available. The following is used for hints:
 
 - **Available:** *Blue*, such as on-mouse-hover, or selecting a path
 - **Selected:** *Green*, such as on-mouse-click, or end of path
@@ -69,11 +71,11 @@ Elements will reference diagrams from the  **6.9 Diagrams** section.
 
 ## 6.2 Checkers Board
 
-The **Board** is rendered to the screen as an alternating sequence of red and black squares called **Tiles**. See [6.11.1 Blank Checkers Board](#6.11.1-blank-checkers-board).
+The Board is rendered to the screen as an alternating sequence of red and black squares called Tiles. See [6.11.1 Blank Checkers Board](#6.11.1-blank-checkers-board).
 
-Each **Tile** can give the user a **Hint**, similarly to the **Pieces**.
+Each Tile can give the Player a Hint, similarly to the Pieces.
 
-**Pieces** occupy **Tiles**, and indicate such by rendering over them. It is very important that the logical position ("A-2") corresponds to the on-screen position ("256 x 122") when it is rendered.
+Pieces occupy Tiles, and indicate such by rendering over them. It is very important that the logical position ("A-2") corresponds to the on-screen position ("256 x 122") when it is rendered.
 
 **`R6.2.0`** Empty Tiles do not render any elements within them **Priority 1**
 
@@ -105,14 +107,14 @@ Each **Tile** can give the user a **Hint**, similarly to the **Pieces**.
 
 ## 6.3 Checkers Pieces
 
-These are the individual tokens that move around on the **Board**. They are **Men** and **Kings**, with particular movement rules covered elsewhere.
+These are the individual tokens that move around on the Board. They are Men and Kings, with particular movement rules covered elsewhere.
 
 They can be:
 - **(None):** No special statuses or effects
-- **Hovered-Over:** Inspect their **Availability**
+- **Hovered-Over:** Inspect their Availability
 - **Selected:** By clicking on it
 - **Threatened:** By a piece when drawing move path
-- **Moved:** To a new location on the **Board**
+- **Moved:** To a new location on the Board
 - **Removed:** Stop rendering
 - **Hinted:** The *Red*, *Green*, and *Blue* colors
 
@@ -147,15 +149,15 @@ See [6.11.4 Hovering Over a Piece](#6.11.4-hovering-over-a-piece) for an example
 
 ## 6.4 Menu Flow
 
-This is how the user is anticipated to flow between each menu.
+This is how the Player is anticipated to flow between each menu.
 
 See [6.11.0 Menu Flow](#6.11.0-menu-flow).
 
-**`R6.4.0`** Player can open Main Menu on Application Start **Priority 1**
+**`R6.4.0`** Player can open Main Menu on Game Start **Priority 1**
 
 **`R6.4.1`** Player can Exit Game from Main Menu **Priority 2**
 
-**`R6.4.2`** Exit Game closes the Application **Priority 2**
+**`R6.4.2`** Exit Game closes the Game **Priority 2**
 
 **`R6.4.3`** Player can open Settings Menu from Main Menu **Priority 2**
 
@@ -211,9 +213,9 @@ See [6.11.8 Heads Up Display](#6.11.8-heads-up-display) for an example.
 
 **`R6.5.0`** HUD is updated in real-time **Priority 1**
 
-**`R6.5.1`** HUD responds to user mouse-clicks **Priority 1**
+**`R6.5.1`** HUD responds to Player mouse-clicks **Priority 1**
 
-**`R6.5.2`** An "ESC" HUD element exists for mouse-only users **Priority 3**
+**`R6.5.2`** An "ESC" HUD element exists for mouse-only Players **Priority 3**
 
 **`R6.5.3`** "ESC" opens the Pause Menu **Priority 1**
 
@@ -235,7 +237,7 @@ See [6.11.8 Heads Up Display](#6.11.8-heads-up-display) for an example.
 
 ## 6.6 Main Menu
 
-The Main Menu lets the user know the application launched successfully.
+The Main Menu lets the Player know the Game launched successfully.
 
 It connects to the Lobby Menu.
 
@@ -251,7 +253,7 @@ It connects to the Lobby Menu.
 
 **`R6.6.5`** "Join Game" launches the Lobby Menu with Joining **Priority 1**
 
-**`R6.6.6`** "Exit" closes the Application **Priority 2**
+**`R6.6.6`** "Exit" closes the Game **Priority 2**
 
 
 
@@ -267,7 +269,7 @@ It connects to the Lobby Menu.
 
 ## 6.7 Pause Menu
 
-See 
+The Pause Menu lets Players  
 
 
 
@@ -282,7 +284,7 @@ See
 
 Main Menu Screen will have 3 Buttons: Exit Game, Settings, Play
 
-**`R6.1`** Exit Game will terminate the application. **Priority 1**
+**`R6.1`** Exit Game will terminate the Game. **Priority 1**
 
 **`R6.2`** Settings will Open up a menu screen for the game settings. **Priority 2**
 
@@ -305,12 +307,12 @@ The Create Menu will show a list of the currently joined participants and will h
 
 **`R8.1`** The Start button will transition the clients into the Main Scene **Priority 1**
 
-**`R8.2`** The list of participants will update when a user joins lobby **Priority 1**
+**`R8.2`** The list of participants will update when a Player joins lobby **Priority 1**
 
 ### 6.9.2 Join Menu
 The Join menu will show a list of the currently open rooms that have not yet started and will make a button for joining each room.
 
-**`R9.1`** The buttons for each room will put the user into that lobby and update the host's game to show the status. **Priority 1**
+**`R9.1`** The buttons for each room will put the Player into that lobby and update the host's game to show the status. **Priority 1**
 
 ## 6.10 Main Scene
 
@@ -337,11 +339,11 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 ```mermaid
 graph TD;
-     App_Start            --> Main_Menu;
+     OPEN                 --> Main_Menu;
      Main_Menu            --> Exit_Game;
      Main_Menu            --> Settings;
      Settings             --> Main_Menu;
-     Exit_Game            --> App_Exit;
+     Exit_Game            --> EXIT;
      Main_Menu            --> Lobby_Screen;
      Lobby_Screen         --> Create_Lobby;
      Lobby_Screen         --> Join_Lobby;
