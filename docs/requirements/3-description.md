@@ -60,8 +60,8 @@ The art assets for the game will be Two-Dimensional and will be either free use 
 
 | Priority Level | Description |
 |:--------------:|:-----------:|
-| 1 | **Priority 1** requirements are essential to the product and must be in the final build. These requirements must be tested and verified to esnure proper functionality |
-| 2 | **Priority 2** requirements are not required for the final build but will be provided if there is sufficient time. The system will be designed to allow features to be expanded and added with relative ease |
-| 3 | **Priority 3** requirements are not required and will not be considered in the design. If there is sufficient time then the team will consider adding them.
+| 1 | **Priority 1** requirements are essential to the correct functionality of the system. These requirements must be extensively tested and verified to ensure the system fundamentally works. |
+| 2 | **Priority 2** requirements are non-essential, but may be considered in the design. These requirements are not guaranteed to be in the final build of the system. The system should function as expected without fulfilling these requirements. If all requirements of priority 1 are fulfilled, the team will consider fulfilling requirements of priority 2. |
+| 3 | **Priority 3** requirements are non-essential and will not be considered in the design. These requirements are not likely to be in the final build of the system. The system should function as expected without fulfilling these requirements. If all requirements of priority 1 and 2 are fulfilled, the team will consider fulfilling requirements of priority 3.
 
 </div>
