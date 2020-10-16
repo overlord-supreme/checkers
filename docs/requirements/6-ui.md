@@ -337,6 +337,24 @@ The Settings Menu include accessibility and debug options, and serves as a space
 
 ## 6.9 Lobby Menu
 
+This gives Players a chance to discover over matches and other players. It should be a list of open matches, with names.
+
+See [6.10.9 Lobby Menu](#6.10.9-lobby-menu) for example.
+
+**`R6.9.0`** Lobby Menu updated and re-rendered frequently **Priority 1**
+
+**`R6.9.1`** Joining Lobby Menu does not create a New Game **Priority 1**
+
+**`R6.9.2`** Creating Lobby Menu creates a New Game and add it to the list of Games **Priority 1**
+
+**`R6.9.3`** Games can be Joined from the Lobby Menu **Priority 1**
+
+**`R6.9.4`** Games can be Private/Closed **Priority 3**
+
+**`R6.9.5`** Lobby Menu renders to screen on opening **Priority 1**
+
+**`R6.9.6`** Lobby Menu stops rendering to screen on close **Priority 1**
+
 
 
 
@@ -507,6 +525,23 @@ graph TD;
 <div style="break-after:page"></div>
 
 ### 6.10.8 Heads Up Display
+
+<div style="width:70%">
+
+![Board](img/hud.png)
+</div>
+
+
+
+
+
+
+
+
+<br><br>
+<div style="break-after:page"></div>
+
+### 6.10.9 Lobby Menu
 
 <div style="width:70%">
 
