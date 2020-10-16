@@ -18,9 +18,9 @@
 <br><br><br><br>
 
 ## 6.0 Note
-For this section, `html` and `css` will be used to illustrate a Checkers board and the various hints and effects anticipated on that board.
+For this section, `svg` graphics will be used to illustrate a Checkers board and the various hints and effects anticipated on that board.
 
-HUD elements are drawn using bitmap graphics.
+HUD and menu elements are drawn using bitmap graphics.
 
 
 
@@ -308,3 +308,51 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 
 
+
+
+
+
+<br><br>
+<div style="break-after:page"></div>
+
+### 6.11.6 Pause Menu
+
+<div style="width:70%">
+
+![Board](img/paused.png)
+</div>
+
+
+
+
+
+
+
+
+<br><br>
+<div style="break-after:page"></div>
+
+### 6.11.7 Settings Menu
+
+<div style="width:70%">
+
+![Board](img/settings.png)
+</div>
+
+
+
+
+
+
+
+
+
+<br><br>
+<div style="break-after:page"></div>
+
+### 6.11.8 Heads Up Display
+
+<div style="width:70%">
+
+![Board](img/hud.png)
+</div>
