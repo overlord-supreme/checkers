@@ -20,6 +20,8 @@ HUD and menu elements are drawn using bitmap graphics.
 - **Selected:** *Green*, such as on-mouse-click, or end of path
 - **Threatened:** *Red*, such as attacked pieces, or attacking squares
 
+See [6.11.3 Example Highlights](#6.11.3-example-highlights) for some of these.
+
 
 
 
@@ -38,6 +40,22 @@ The following are recognized as part of the user interface:
 - The **6.9 Lobby Menu**
 
 Elements will reference diagrams from the  **6.9 Diagrams** section.
+
+**`R6.1.0`** There is a Board **Priority 1**
+
+**`R6.1.1`** There is a complete set of Red and White Pieces **Priority 1**
+
+**`R6.1.2`** There is a Menu Flow **Priority 1**
+
+**`R6.1.3`** There is a Heads-Up Display **Priority 3**
+
+**`R6.1.4`** There is a Main Menu **Priority 1**
+
+**`R6.1.5`** There is a Pause Menu **Priority 3**
+
+**`R6.1.6`** There is a Settings Menu **Priority 3**
+
+**`R6.1.7`** There is a Lobby Menu **Priority 1**
 
 
 
@@ -67,7 +85,7 @@ Each **Tile** can give the user a **Hint**, similarly to the **Pieces**.
 
 ## 6.3 Checkers Pieces
 
-These are the individual tokens that move around on the **Board**.
+These are the individual tokens that move around on the **Board**. They are **Men** and **Kings**, with particular movement rules covered elsewhere.
 
 They can be:
 - **(None):** No special statuses or effects
@@ -77,6 +95,20 @@ They can be:
 - **Moved:** To a new location on the **Board**
 - **Removed:** Stop rendering
 - **Hinted:** The *Red*, *Green*, and *Blue* colors
+
+See 
+
+**`R6.3.0`** Pieces render to the Board **Priority 1**
+
+**`R6.3.1`** Pieces render to the in Logical Position **Priority 1**
+
+**`R6.3.2`** Man Pieces distinct from King Pieces **Priority 1**
+
+**`R6.3.3`** Pieces hint at being Selectable **Priority 2**
+
+**`R6.3.4`** Pieces hint at being Selected **Priority 2**
+
+**`R6.3.4`** Pieces hint at being Threatened **Priority 2**
 
 
 
@@ -121,7 +153,7 @@ See [6.11.0 Menu Flow](#6.11.0-menu-flow).
 
 **`R6.4.13`** Player can return to Pause Menu from Settings Menu **Priority 3**
 
-**`R6.4.14`** Player can return to Main Scene from Pause Menu **Priority 3**
+**`R6.4.14`** Player can return to Main Scene from Pause Menu **Priority 1**
 
 **`R6.4.15`** Player can return to Main Menu from Pause Menu **Priority 3**
 
