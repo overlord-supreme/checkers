@@ -1,16 +1,7 @@
 
 
 
-
-
-
-
-
 # 6. User Interface
-
-
-
-
 
 
 
@@ -18,19 +9,21 @@
 <br><br><br><br>
 
 ## 6.0 Note
+
 For this section, `svg` graphics will be used to illustrate a Checkers board and the various hints and effects anticipated on that board.
 
 HUD and menu elements are drawn using bitmap graphics.
 
+**Pieces** and **Tiles** can provide colors as hints, mostly to show if they are **Selected** or **Available**. The following is used for hints:
 
-
-
+- **Available:** *Blue*, such as on-mouse-hover, or selecting a path
+- **Selected:** *Green*, such as on-mouse-click, or end of path
+- **Threatened:** *Red*, such as attacked pieces, or attacking squares
 
 
 
 
 <br><br><br><br>
-<div style="break-after:page"></div>
 
 ## 6.1 Elements
 
@@ -58,6 +51,10 @@ Elements will reference diagrams from the  **6.9 Diagrams** section.
 
 ## 6.2 Checkers Board
 
+The **Board** is rendered to the screen as an alternating sequence of red and black squares called **Tiles**. See [6.11.1 Blank Checkers Board](#6.11.1-blank-checkers-board).
+
+Each **Tile** can give the user a **Hint**, similarly to the **Pieces**.
+
 
 
 
@@ -69,16 +66,17 @@ Elements will reference diagrams from the  **6.9 Diagrams** section.
 <div style="break-after:page"></div>
 
 ## 6.3 Checkers Pieces
-These are the individual tokens that move around on the **Checkers Board**.
+
+These are the individual tokens that move around on the **Board**.
 
 They can be:
-- **Hovered-Over**
-- **Selected**
-- **Hinted**
-- **Threatened**
-- **Moved**
-
-State-changes are communicated through highlighting the **Checkers Pieces** and **Cells** on the **Checkers Board** with different **Colors**.
+- **(None):** No special statuses or effects
+- **Hovered-Over:** Inspect their **Availability**
+- **Selected:** By clicking on it
+- **Threatened:** By a piece when drawing move path
+- **Moved:** To a new location on the **Board**
+- **Removed:** Stop rendering
+- **Hinted:** The *Red*, *Green*, and *Blue* colors
 
 
 
@@ -93,26 +91,43 @@ State-changes are communicated through highlighting the **Checkers Pieces** and 
 
 This is how the user is anticipated to flow between each menu.
 
-```mermaid
-graph TD;
-     Start_Screen-->Main_Menu_Screen;
-     Main_Menu_Screen-->Exit_Game;
-     Main_Menu_Screen-->Main_Menu_Settings;
-     Main_Menu_Settings-->Main_Menu_Screen;
-     Exit_Game-->ExitApplication
-     Main_Menu_Screen-->Lobby_Screen;
-     Lobby_Screen-->Create_Lobby;
-     Lobby_Screen-->Join_Lobby;
-     Create_Lobby-->Main_Scene;
-     Join_Lobby-->Main_Scene;
-     Main_Scene-->End_Scene;
-     Main_Scene-->Pause_Menu;
-     Pause_Menu-->Pause_Menu_Settings;
-     Pause_Menu_Settings-->Pause_Menu;
-     Pause_Menu-->Main_Menu_Screen;
-     Pause_Menu-->Main_Scene;
-     End_Scene-->Main_Menu_Screen;
-```
+See [6.11.0 Menu Flow](#6.11.0-menu-flow).
+
+**`R6.4.0`** Player can open Main Menu on Application Start
+
+**`R6.4.1`** Player can Exit Game from Main Menu
+
+**`R6.4.2`** Exit Game closes the Application
+
+**`R6.4.3`** Player can open Settings Menu from Main Menu
+
+**`R6.4.4`** Player can Return To Last Menu from Settings Menu
+
+**`R6.4.5`** Player can open Lobby Menu from Main Menu
+
+**`R6.4.6`** Player can Create Game from Lobby Menu
+
+**`R6.4.7`** Player can Join Game from Lobby Menu
+
+**`R6.4.8`** Player can load Main Scene from Creating Game
+
+**`R6.4.9`** Player can load Main Scene from Joining Game
+
+**`R6.4.10`** Player can End Game from Main Scene
+
+**`R6.4.11`** Player can open Pause Menu from Main Scene
+
+**`R6.4.12`** Player can open Settings Menu from Pause Menu
+
+**`R6.4.13`** Player can return to Pause Menu from Settings Menu
+
+**`R6.4.14`** Player can return to Main Scene from Pause Menu
+
+**`R6.4.15`** Player can return to Main Menu from Pause Menu
+
+**`R6.4.16`** Player can return to Main Menu from End Game
+
+
 
 
 
@@ -222,6 +237,34 @@ The Join menu will show a list of the currently open rooms that have not yet sta
 
 ## 6.11 Diagrams
 
+
+
+
+
+<br><br>
+
+### 6.11.0 Menu Flow
+
+```mermaid
+graph TD;
+     App_Start            --> Main_Menu;
+     Main_Menu            --> Exit_Game;
+     Main_Menu            --> Settings;
+     Settings             --> Main_Menu;
+     Exit_Game            --> App_Exit;
+     Main_Menu            --> Lobby_Screen;
+     Lobby_Screen         --> Create_Lobby;
+     Lobby_Screen         --> Join_Lobby;
+     Create_Lobby         --> Main_Scene;
+     Join_Lobby           --> Main_Scene;
+     Main_Scene           --> End_Scene;
+     Main_Scene           --> Pause_Menu;
+     Pause_Menu           --> Settings;
+     Settings             --> Pause_Menu;
+     Pause_Menu           --> Main_Menu;
+     Pause_Menu           --> Main_Scene;
+     End_Scene            --> Main_Menu;
+```
 
 
 
