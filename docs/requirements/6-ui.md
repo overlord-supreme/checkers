@@ -375,23 +375,23 @@ See [6.10.9 Lobby Menu](#6109-lobby-menu) for example.
 
 ```mermaid
 graph TD;
-     OPEN                 --> Main_Menu;
-     Main_Menu            --> Exit_Game;
-     Main_Menu            --> Settings;
-     Settings             --> Main_Menu;
-     Exit_Game            --> EXIT;
-     Main_Menu            --> Lobby_Screen;
-     Lobby_Screen         --> Create_Lobby;
-     Lobby_Screen         --> Join_Lobby;
-     Create_Lobby         --> Main_Scene;
-     Join_Lobby           --> Main_Scene;
-     Main_Scene           --> End_Scene;
-     Main_Scene           --> Pause_Menu;
-     Pause_Menu           --> Settings;
-     Settings             --> Pause_Menu;
-     Pause_Menu           --> Main_Menu;
-     Pause_Menu           --> Main_Scene;
-     End_Scene            --> Main_Menu;
+     OPEN         --> Main_Menu;
+     Main_Menu    --> Exit_Game;
+     Main_Menu    --> Settings;
+     Settings     --> Main_Menu;
+     Exit_Game    --> EXIT;
+     Main_Menu    --> Lobby_Screen;
+     Lobby_Screen --> Create_Lobby;
+     Lobby_Screen --> Join_Lobby;
+     Create_Lobby --> Main_Scene;
+     Join_Lobby   --> Main_Scene;
+     Main_Scene   --> End_Scene;
+     Main_Scene   --> Pause_Menu;
+     Pause_Menu   --> Settings;
+     Settings     --> Pause_Menu;
+     Pause_Menu   --> Main_Menu;
+     Pause_Menu   --> Main_Scene;
+     End_Scene    --> Main_Menu;
 ```
 
 
