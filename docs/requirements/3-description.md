@@ -3,18 +3,18 @@ Overlord-Supreme checkers is a recreation of the classic board game checkers tha
 
 <div id = figure1 style="text-align:center">
 
-![placeholdergamescreen](placeholdergamescreen.png)
+<!-- ![placeholdergamescreen](placeholdergamescreen.png) -->
 
-**Figure 1:** Player's View of the main menu screen (mockup)
+<!-- **Figure 1:** Player's View of the main menu screen (mockup) -->
 </div>
 
 The game itself will be 2-D, and the camera will show a top-down view of the board. The board will consist of the standard 8x8 square grid with offset colored tiles. The theme will be futuristic with hologram looking assets (similar to Tron).
 
 <div id = figure2 style="text-align:center">
 
-![placeholderstyleguide](placeholderstyleguide.png)
+<!-- ![placeholderstyleguide](placeholderstyleguide.png) -->
 
-**Figure 2:**  style mockup
+<!-- **Figure 2:**  style mockup -->
 </div>
 
 The game will play the same as classic chess where each player will have the goal of eliminating the other's pieces in order to win.
