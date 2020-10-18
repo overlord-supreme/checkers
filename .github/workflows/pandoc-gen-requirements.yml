@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - run: echo "::set-env name=FILELIST::$(printf '"%s" ' *.md)"
+      - run: echo "::set-env name=FILELIST::$(cd docs/requirements && printf '"docs/requirements/%s" ' *.md)"
       - uses: docker://pandoc/latex:2.9
         with:
           args: --output=requirements.pdf ${{ env.FILELIST }}
