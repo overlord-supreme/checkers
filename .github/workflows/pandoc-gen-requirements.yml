@@ -1,0 +1,23 @@
+name: Document Conversion
+
+on:
+  push:
+    branches: 
+      - master
+    paths: 
+      - docs/requirements/*
+  workflow_dispatch:
+
+jobs:
+  convert_via_pandoc:
+    name: Convert via Pandoc
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: docker://pandoc/latex:2.9
+        with:
+          args: "*.md -o output/requirements.pdf"
+      - uses: actions/upload-artifact@master
+        with:
+          name: output
+          path: output
