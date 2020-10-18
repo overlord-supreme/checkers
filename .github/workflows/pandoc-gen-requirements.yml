@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - run: cd "docs/requirements"
+      - run: echo "::set-env name=FILELIST::$(printf '"%s" ' *.md)"
       - uses: docker://pandoc/latex:2.9
         with:
-          args: "*.md -o output/requirements.pdf"
+          args: --output=output/requirements.pdf ${{ env.FILELIST }}
       - uses: actions/upload-artifact@master
         with:
           name: output
