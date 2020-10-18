@@ -75,10 +75,11 @@ crashlytics-build.properties
 # PANDOC GITIGNORES
 
 # Don't keep rendered pages
-*.pdf
+#*.pdf # 2020-10-18: Removed to enable pre-rendering
 
 # Don't keep intermediary pages
-*.rtf
+#*.rtf # 2020-10-18: Removed to enable 2-step finalization
+#*.docx # 2020-10-18: Removed to enable 2-step finalization
 
 
 

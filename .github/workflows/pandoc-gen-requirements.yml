@@ -1,0 +1,24 @@
+name: Document Conversion
+
+on:
+  push:
+    branches: 
+      - master
+    paths: 
+      - docs/requirements/*
+  workflow_dispatch:
+
+jobs:
+  convert_via_pandoc:
+    name: Generate Requirements Doc
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - run: echo "::set-env name=FILELIST::$(cd docs/requirements && printf '"docs/requirements/%s" ' *.md)"
+      - uses: docker://pandoc/latex:2.9
+        with:
+          args: --output=requirements.pdf ${{ env.FILELIST }}
+      - uses: actions/upload-artifact@master
+        with:
+          name: Requirements Doc
+          path: requirements.pdf
