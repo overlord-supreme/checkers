@@ -10,10 +10,11 @@ on:
 
 jobs:
   convert_via_pandoc:
-    name: Convert via Pandoc
+    name: Generate Requirements Doc
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
+      - run: cd "docs/requirements"
       - uses: docker://pandoc/latex:2.9
         with:
           args: "*.md -o output/requirements.pdf"
