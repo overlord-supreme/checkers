@@ -20,5 +20,5 @@ jobs:
           args: --output=requirements.pdf ${{ env.FILELIST }}
       - uses: actions/upload-artifact@master
         with:
-          name: output
-          path: output
+          name: Requirements Doc
+          path: requirements.pdf
