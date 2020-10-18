@@ -3,7 +3,7 @@ Overlord-Supreme checkers is a recreation of the classic board game checkers tha
 
 <div id = figure1 style="text-align:center">
 
-![placeholdergamescreen](placeholdergamescreen.png)
+![placeholdergamescreen](./img/placeholdergamescreen.png)
 
 **Figure 1:** Player's View of the main menu screen (mockup)
 </div>
@@ -12,7 +12,7 @@ The game itself will be 2-D, and the camera will show a top-down view of the boa
 
 <div id = figure2 style="text-align:center">
 
-![placeholderstyleguide](placeholderstyleguide.png)
+![placeholderstyleguide](./img/placeholderstyleguide.png)
 
 **Figure 2:**  style mockup
 </div>
