@@ -13,9 +13,9 @@ The target platform will be Microsoft Windows and Linux, and the development env
 ## 2.3 System Architecture
 
 This system will be constructed from the following components:
+* Game Model - All of the classes related to creating our checkers game, such as the Board, Piece, Player, etc. All of the game data during a checkers game is stored in-memory inside of the game model and updated/synchronized using Photon PUN.
 * Photon PUN - A networking cloud service that integrates with the Unity engine through a marketplace asset and is used to handle data synchronization between clients. 
 * Game Interface - The UI that the player will interact with to play checkers.
-* Game Model - All of the classes related to creating our checkers game, such as the Board, Piece, Player, etc. All of the game data during a checkers game is stored in-memory inside of the game model and updated/synchronized using Photon PUN.
 * Local Storage - Storage for data across sessions, like names. 
 
 ```mermaid
