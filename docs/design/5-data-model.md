@@ -9,8 +9,8 @@ classDiagram
     class Profile {
           -Name: String
           +Profile(Name: String)
-          +getName() String
-          +setName(name: String)
+          +GetName() String
+          +SetName(name: String)
     }
 ```
 
@@ -23,15 +23,15 @@ classDiagram
 
     class DataModel {
         -ProfileStore: IProfileStore
-        +setName(name: String)
-        +getName() name
+        +SetName(name: String)
+        +GetName() name
     }
 
     class IProfileStore {
-        +getProfile() Profile
-        +setProfile(Profile profile)
-        +save()
-        +load()
+        +GetProfile() Profile
+        +SetProfile(Profile profile)
+        +Save()
+        +Load()
     }
     <<interface>> IProfileStore
 
@@ -39,10 +39,10 @@ classDiagram
         -profile: Profile
         +JSONProfileStore(file: String)
         +JSONProfileStore()
-        +getProfile() Profile
-        +setProfile(Profile profile)
-        +save()
-        +load()   
+        +GetProfile() Profile
+        +SetProfile(Profile profile)
+        +Save()
+        +Load()   
     }
 ```
 
@@ -59,13 +59,13 @@ classDiagram
 
 #### 5.1.2 Methods
 
-| setName(name: String) |                                                    |
+| SetName(name: String) |                                                    |
 |-----------------------|----------------------------------------------------|
 | Input                 | The player's new username.                         |
 | Output                | Void                                               |
 | Description           | Modifies the user's current username and saves it. |
 
-| getName(): String |                                          |
+| GetName(): String |                                          |
 |-------------------|------------------------------------------|
 | Input             | Void                                     |
 | Output            | The player's current username.           |
@@ -79,25 +79,25 @@ user's profile.
 
 #### 5.2.1 Methods
 
-| getProfile(): Profile |                                                     |
+| GetProfile(): Profile |                                                     |
 |-----------------------|-----------------------------------------------------|
 | Input                 | Void                                                |
 | Output                | The player's current profile.                       |
 | Description           | Retrieves the player's current profile from memory. |
 
-| setProfile(profile: Profile) |                                                  |
+| SetProfile(profile: Profile) |                                                  |
 |------------------------------|--------------------------------------------------|
 | Input                        | The player's new profile.                        |
 | Output                       | Void                                             |
 | Description                  | Modifies the player's current profile in memory. |
 
-| save()      |                                                            |
+| Save()      |                                                            |
 |-------------|------------------------------------------------------------|
 | Input       | Void                                                       |
 | Output      | Void                                                       |
 | Description | Saves the state of the player's current profile in memory. |
 
-| load()      |                                                              |
+| Load()      |                                                              |
 |-------------|--------------------------------------------------------------|
 | Input       | Void                                                         |
 | Output      | Void                                                         |
@@ -116,25 +116,25 @@ player's profile in a JSON file.
 
 #### 5.3.2 Methods
 
-| getProfile(): Profile |                                                     |
+| GetProfile(): Profile |                                                     |
 |-----------------------|-----------------------------------------------------|
 | Input                 | Void                                                |
 | Output                | The player's current profile.                       |
 | Description           | Retrieves the player's current profile from memory. |
 
-| setProfile(profile: Profile) |                                                  |
+| SetProfile(profile: Profile) |                                                  |
 |------------------------------|--------------------------------------------------|
 | Input                        | The player's new profile.                        |
 | Output                       | Void                                             |
 | Description                  | Modifies the player's current profile in memory. |
 
-| save()      |                                                                 |
+| Save()      |                                                                 |
 |-------------|-----------------------------------------------------------------|
 | Input       | Void                                                            |
 | Output      | Void                                                            |
 | Description | Saves the state of the player's current profile to a JSON file. |
 
-| load()      |                                                                               |
+| Load()      |                                                                               |
 |-------------|-------------------------------------------------------------------------------|
 | Input       | Void                                                                          |
 | Output      | Void                                                                          |
