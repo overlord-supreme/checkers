@@ -18,7 +18,6 @@ The figure below depicts the UML for the data storage.
 
 ```mermaid
 classDiagram
-    IProfileStore <|-- XMLProfileStore: implements
     IProfileStore <|-- JSONProfileStore: implements
     IProfileStore *-- DataModel: composition
 
@@ -35,16 +34,6 @@ classDiagram
         +load()
     }
     <<interface>> IProfileStore
-
-    class XMLProfileStore {
-        -profile: Profile
-        +XMLProfileStore(file: String)
-        +XMLProfileStore()
-        +getProfile() Profile
-        +setProfile(Profile profile)
-        +save()
-        +load()   
-    }
 
     class JSONProfileStore {
         -profile: Profile
@@ -114,11 +103,10 @@ user's profile.
 | Output      | Void                                                         |
 | Description | Loads the state of the player's current profile into memory. |
 
+### 5.3 JSONProfileStore
 
-### 5.3 XMLProfileStore
-
-`XMLProfileStore` is an implementation of `IProfileStore` that stores the
-player's profile in an XML file.
+`JSONProfileStore` is an implementation of `IProfileStore` that stores the
+player's profile in a JSON file.
 
 #### 5.3.1 Attributes
 
@@ -126,46 +114,7 @@ player's profile in an XML file.
 |---------|---------|-----------------------------------------------------|
 | Profile | Profile | An in-memory state of the player's current profile. |
 
-
 #### 5.3.2 Methods
-
-| getProfile(): Profile |                                                     |
-|-----------------------|-----------------------------------------------------|
-| Input                 | Void                                                |
-| Output                | The player's current profile.                       |
-| Description           | Retrieves the player's current profile from memory. |
-
-| setProfile(profile: Profile) |                                                  |
-|------------------------------|--------------------------------------------------|
-| Input                        | The player's new profile.                        |
-| Output                       | Void                                             |
-| Description                  | Modifies the player's current profile in memory. |
-
-| save()      |                                                                 |
-|-------------|-----------------------------------------------------------------|
-| Input       | Void                                                            |
-| Output      | Void                                                            |
-| Description | Saves the state of the player's current profile to an XML file. |
-
-| load()      |                                                                               |
-|-------------|-------------------------------------------------------------------------------|
-| Input       | Void                                                                          |
-| Output      | Void                                                                          |
-| Description | Loads the state of the player's current profile into memory from an XML file. |
-
-
-### 5.4 JSONProfileStore
-
-`JSONProfileStore` is an implementation of `IProfileStore` that stores the
-player's profile in a JSON file.
-
-#### 5.4.1 Attributes
-
-| Name    | Type    | Description                                         |
-|---------|---------|-----------------------------------------------------|
-| Profile | Profile | An in-memory state of the player's current profile. |
-
-#### 5.4.2 Methods
 
 | getProfile(): Profile |                                                     |
 |-----------------------|-----------------------------------------------------|
