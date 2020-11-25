@@ -6,7 +6,9 @@
         "Board",
         "LobbyMenu",
         "MainMenu",
-        "Player"
+        "Player",
+        "Man",
+        "King"
     ],
     "includePlatforms": [
         "Editor"
