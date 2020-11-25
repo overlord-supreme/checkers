@@ -137,7 +137,7 @@ namespace Photon.Pun.Demo.PunBasics
             // 5
             if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
             {
-                PhotonNetwork.LoadLevel("MainArena");
+                PhotonNetwork.LoadLevel("CheckersGame");
             }
             else
             {

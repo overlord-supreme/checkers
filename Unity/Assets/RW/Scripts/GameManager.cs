@@ -39,15 +39,6 @@ namespace Photon.Pun.Demo.PunBasics
     {
         public GameObject winnerUI;
 
-        public GameObject player1SpawnPosition;
-        public GameObject player2SpawnPosition;
-
-        public GameObject ballSpawnTransform;
-
-        private GameObject ball;
-        private GameObject player1;
-        private GameObject player2;
-
         // Start Method
         void Start()
         {
@@ -62,21 +53,11 @@ namespace Photon.Pun.Demo.PunBasics
                 if (PhotonNetwork.IsMasterClient) // 2
                 {
                     Debug.Log("Instantiating Player 1");
-                    // 3
-                    player1 = PhotonNetwork.Instantiate("Car",
-                        player1SpawnPosition.transform.position,
-                        player1SpawnPosition.transform.rotation, 0);
-                    // 4
-                    ball = PhotonNetwork.Instantiate("Ball",
-                        ballSpawnTransform.transform.position,
-                        ballSpawnTransform.transform.rotation, 0);
-                    ball.name = "Ball";
+
                 }
                 else // 5
                 {
-                    player2 = PhotonNetwork.Instantiate("Car",
-                        player2SpawnPosition.transform.position,
-                        player2SpawnPosition.transform.rotation, 0);
+                    Debug.Log("Instantiating Player 2");
                 }
             }
         }
