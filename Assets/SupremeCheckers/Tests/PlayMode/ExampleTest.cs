@@ -6,9 +6,8 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-
     /// <summary>
-    /// An Example Test
+    /// An Example PlayMode Test
     /// </summary>
     public class ExampleTest
     {
@@ -16,8 +15,8 @@ namespace Tests
         [Test]
         public void ExampleTestSimplePasses()
         {
-            Debug.Log("Running Test!");
             // Use the Assert class to test conditions
+            Debug.Log("Hello World!");
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
