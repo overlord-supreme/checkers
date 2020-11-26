@@ -182,6 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7262240269965142262}
+  - component: {fileID: 6668955282576292504}
   m_Layer: 0
   m_Name: Black - Piece
   m_TagString: Untagged
@@ -197,14 +198,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2961036102473875454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0328482, y: -0.29296875, z: -5.182713}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.35, z: 1}
   m_Children:
   - {fileID: 7689598947602959500}
   - {fileID: 4501135733966651622}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6668955282576292504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961036102473875454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea3b673c9dad8b44b8d53d2fe6bd1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  king: {fileID: 4888357440914243304}
 --- !u!1 &3287208574803782496
 GameObject:
   m_ObjectHideFlags: 0

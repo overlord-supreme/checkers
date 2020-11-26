@@ -2,18 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// <see href="https://stackoverflow.com/questions/6709072/c-getter-setter" />
+/// </summary>
 public class Piece : MonoBehaviour
 {
+
+    // Allow us to Promote to King
+    [SerializeField] private GameObject king;
+
+
+    // Identify which player we belong to
     public enum PieceColor {BLACK, WHITE, NONE};
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public PieceColor color {get;private set;} = PieceColor.BLACK;
+
+
+    /// <summary>
+    /// Why is this here?
+    /// </summary>
+    public void setColor(PieceColor color)
     {
-        
+        this.color = color;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    /// <summary>
+    /// Promote a Man to a King
+    /// </summary>
+    public void promotePiece()
     {
-        
+        // Display the "Crown"
+        king.SetActive(true);
     }
 }
