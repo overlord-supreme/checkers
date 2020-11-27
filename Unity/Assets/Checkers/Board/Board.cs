@@ -248,6 +248,29 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         
         // Move the Found Piece to the END LOCATION
         GetSpaceByLoc(endX,endY).setCurrentOccupant(piece);
+
+        if(piece.color == Piece.PieceColor.BLACK)
+        {
+            if(endY == 0)
+            {
+                //king if not king
+                if(!piece.isKing)
+                {
+                    piece.promotePiece();
+                }
+            }
+        }
+        else
+        {
+            if(endY == 7)
+            {
+                //king if not king
+                if(!piece.isKing)
+                {
+                    piece.promotePiece();
+                }
+            }
+        }
     }
 
     
