@@ -356,19 +356,26 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     int jumpX = x - direction;
                     int jumpY = y + direction;
-                    if(GetPieceByLoc(jumpX,jumpY).color != color)
+                    if(jumpX <= 7 && jumpX >= 0)
                     {
-                        Space jumpSpace = GetSpaceByLoc(jumpX,jumpY);
-                        if(jumpSpace.getCurrentOccupant() == null)
+                        if(jumpY <= 7 && jumpY >= 0)
                         {
-                            //Add jump
-                            ValidMove newMove = new ValidMove();
-                            newMove.targetSpace = jumpSpace;
-                            newMove.jumped = new int[]{x,y};
-                            newMove.isJump = true;
-                            return newMove;
+                            if(GetPieceByLoc(jumpX,jumpY).color != color)
+                            {
+                                Space jumpSpace = GetSpaceByLoc(jumpX,jumpY);
+                                if(jumpSpace.getCurrentOccupant() == null)
+                                {
+                                    //Add jump
+                                    ValidMove newMove = new ValidMove();
+                                    newMove.targetSpace = jumpSpace;
+                                    newMove.jumped = new int[]{x,y};
+                                    newMove.isJump = true;
+                                    return newMove;
+                                }
+                            }
                         }
                     }
+                    
                 }
             }
         }
