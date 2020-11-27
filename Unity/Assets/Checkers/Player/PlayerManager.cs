@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
     /// <summary>
     /// Check for Mouse Clicks
     /// Does a thing if it hits something
+    /// 2020-11-27T11:04: INCOMPLETE, DOES find target, DOES NOT talk to <see cref="Board.cs" />
     /// </summary>
     void raycastMouse()
     {
