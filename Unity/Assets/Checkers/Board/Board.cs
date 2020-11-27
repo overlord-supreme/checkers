@@ -338,7 +338,42 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
 
-
+    private object checkSpace(int x, int y, int direction, Piece.PieceColor color)
+    {
+        if(x >= 0 && x <= 7)
+        {
+            if(y >= 0 && y <= 7)
+            {
+                Space space = GetSpaceByLoc(x,y);
+                if(space.getCurrentOccupant() == null)
+                {
+                    //Empty space, can jump, add to validmoves
+                    ValidMove newMove = new ValidMove();
+                    newMove.targetSpace = space;
+                    newMove.isJump = false;
+                   return newMove;
+                } else
+                {
+                    int jumpX = x - direction;
+                    int jumpY = y + direction;
+                    if(GetPieceByLoc(jumpX,jumpY).color != color)
+                    {
+                        Space jumpSpace = GetSpaceByLoc(jumpX,jumpY);
+                        if(jumpSpace.getCurrentOccupant() == null)
+                        {
+                            //Add jump
+                            ValidMove newMove = new ValidMove();
+                            newMove.targetSpace = jumpSpace;
+                            newMove.jumped = new int[]{x,y};
+                            newMove.isJump = true;
+                            return newMove;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
     /// <summary>
     /// Returns a List of Valid Moves
@@ -362,90 +397,42 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         int leftX = startX - direction;
         int forwardY = startY + direction;
         int rightX = startX + direction;
-        
-        // If a SET of moves contains any moves that are jumps
-        bool hasJump = false;
 
         // Where we add Valid Moves
         List<ValidMove> moves = new List<ValidMove>();
         
-        // DOCS NEED FIXING
-        if(leftX >= 0 && leftX <= 7)
+        object forwardLeftMove = checkSpace(leftX,forwardY, direction, color);
+        if(forwardLeftMove != null)
         {
-            if(forwardY >= 0 && forwardY <= 7)
+            moves.Add((ValidMove)forwardLeftMove);
+        }
+        object forwardRightMove = checkSpace(rightX, forwardY, direction, color);
+        if(forwardRightMove != null)
+        {
+            moves.Add((ValidMove)forwardRightMove);
+        }
+        if(isKing)
+        {
+            int backY = startY - direction;
+            object backLeftMove = checkSpace(leftX,backY,-direction,color);
+            if(backLeftMove != null)
             {
-                Space space = GetSpaceByLoc(leftX,forwardY);
-                if(space.getCurrentOccupant() != null)
-                {
-                    if(space.getCurrentOccupant().color != color)
-                    {
-                        int jumpLeftX = leftX - direction;
-                        int jumpForwardY = forwardY + direction;
-                        if(jumpLeftX >= 0 && jumpLeftX <= 7)
-                        {
-                            if(jumpForwardY >= 0 && jumpForwardY <= 7)
-                            {
-                                Space jumpSpace = GetSpaceByLoc(jumpLeftX,jumpForwardY);
-                                if(jumpSpace.getCurrentOccupant() == null)
-                                {
-                                    ValidMove newMove = new ValidMove();
-                                    newMove.targetSpace = jumpSpace;
-                                    newMove.jumped = new int[]{leftX,forwardY};
-                                    newMove.isJump = true;
-                                    moves.Add(newMove);
-                                    hasJump = true;
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    ValidMove newMove = new ValidMove();
-                    newMove.targetSpace = space;
-                    newMove.isJump = false;
-                    moves.Add(newMove);
-                }
+                moves.Add((ValidMove)backLeftMove);
+            }
+            object backRightMove = checkSpace(rightX,backY,-direction,color);
+            if(backRightMove != null)
+            {
+                moves.Add((ValidMove)backRightMove);
             }
         }
-        
-        // DOCS NEED FIXING
-        if(rightX <= 7 && rightX >= 0)
+
+        bool hasJump = false;
+        foreach (ValidMove move in moves)
         {
-            if(forwardY >= 0 && forwardY <= 7)
+            if(move.isJump)
             {
-                Space space = GetSpaceByLoc(rightX,forwardY);
-                if(space.getCurrentOccupant() != null)
-                {
-                     if(space.getCurrentOccupant().color != color)
-                    {
-                        int jumpRightX = rightX + direction;
-                        int jumpForwardY = forwardY + direction;
-                        if (jumpRightX <= 7 && jumpRightX >= 0)
-                        {
-                            if(jumpForwardY >= 0 && jumpForwardY <= 7)
-                            {
-                                Space jumpSpace = GetSpaceByLoc(jumpRightX,jumpForwardY);
-                                if (jumpSpace.getCurrentOccupant() == null)
-                                {
-                                    ValidMove newMove = new ValidMove();
-                                    newMove.targetSpace = jumpSpace;
-                                    newMove.jumped = new int[]{rightX,forwardY};
-                                    newMove.isJump = true;
-                                    moves.Add(newMove);
-                                    hasJump = true;
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    ValidMove newMove = new ValidMove();
-                    newMove.targetSpace = space;
-                    newMove.isJump = false;
-                    moves.Add(newMove);
-                }
+                hasJump = true;
+                break;
             }
         }
         if(hasJump)
