@@ -358,7 +358,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                     {
                         int jumpLeftX = leftX - direction;
                         int jumpForwardY = forwardY + direction;
-                        if(jumpLeftX >= 0)
+                        if(jumpLeftX >= 0 && jumpLeftX <= 7)
                         {
                             if(jumpForwardY >= 0 && jumpForwardY <= 7)
                             {
@@ -398,7 +398,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                     {
                         int jumpRightX = rightX + direction;
                         int jumpForwardY = forwardY + direction;
-                        if (jumpRightX <= 7)
+                        if (jumpRightX <= 7 && jumpRightX >= 0)
                         {
                             if(jumpForwardY >= 0 && jumpForwardY <= 7)
                             {
