@@ -206,12 +206,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213472551b50c6a4f9b706e7f9753318, type: 3}
---- !u!1 &902059590 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4621317538668766796, guid: 4db5d7e2fc9fdb444947f109b958ae53,
-    type: 3}
-  m_PrefabInstance: {fileID: 1074321863393569401}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054607671
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,17 +548,6 @@ PrefabInstance:
       propertyPath: TempLoc
       value: 
       objectReference: {fileID: 25967937}
-    - target: {fileID: 2249678472362876073, guid: 4db5d7e2fc9fdb444947f109b958ae53,
-        type: 3}
-      propertyPath: gameObject
-      value: 
-      objectReference: {fileID: 902059590}
-    - target: {fileID: 2249678472362876073, guid: 4db5d7e2fc9fdb444947f109b958ae53,
-        type: 3}
-      propertyPath: RedPiecePrefab
-      value: 
-      objectReference: {fileID: 2961036102473875454, guid: c0aa80ac990f8aa4ea5963febc9a71aa,
-        type: 3}
     - target: {fileID: 2294397498484451436, guid: 4db5d7e2fc9fdb444947f109b958ae53,
         type: 3}
       propertyPath: x

@@ -351,7 +351,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                     ValidMove newMove = new ValidMove();
                     newMove.targetSpace = space;
                     newMove.isJump = false;
-                   return newMove;
+                    return newMove;
                 } else
                 {
                     int jumpX = x - direction;
@@ -407,14 +407,15 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
         // Where we add Valid Moves
         List<ValidMove> moves = new List<ValidMove>();
-        
+        Debug.LogFormat("King: leftX: %d backY: %d Direction: %d",leftX,forwardY,direction);
         object forwardLeftMove = checkSpace(leftX,forwardY, direction, color);
         if(forwardLeftMove != null)
         {
             moves.Add((ValidMove)forwardLeftMove);
-            ValidMove tSpace = (ValidMove)forwardLeftMove;
-            tSpace.targetSpace.GetComponent<MeshRenderer> ().material = selectableMaterial;
+            //ValidMove tSpace = (ValidMove)forwardLeftMove;
+            //tSpace.targetSpace.GetComponent<MeshRenderer> ().material = selectableMaterial;
         }
+        Debug.LogFormat("Man: rightX: %d backY: %d Direction: %d",rightX,forwardY,direction);
         object forwardRightMove = checkSpace(rightX, forwardY, direction, color);
         if(forwardRightMove != null)
         {
@@ -423,11 +424,13 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         if(isKing)
         {
             int backY = startY - direction;
+            Debug.LogFormat("King: leftX: %d backY: %d Direction: %d",leftX,backY,-direction);
             object backLeftMove = checkSpace(leftX,backY,-direction,color);
             if(backLeftMove != null)
             {
                 moves.Add((ValidMove)backLeftMove);
             }
+            Debug.LogFormat("King: rightX: %d backY: %d Direction: %d",rightX,backY,-direction);
             object backRightMove = checkSpace(rightX,backY,-direction,color);
             if(backRightMove != null)
             {
