@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7262240269965142262}
   - component: {fileID: 4257559078897468937}
   m_Layer: 0
-  m_Name: Red-Piece
+  m_Name: Red - Piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   king: {fileID: 4888357440914243304}
+  color: 1
 --- !u!1 &3287208574803782496
 GameObject:
   m_ObjectHideFlags: 0

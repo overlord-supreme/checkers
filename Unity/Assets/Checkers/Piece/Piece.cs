@@ -14,8 +14,13 @@ public class Piece : MonoBehaviour
 
 
     // Identify which player we belong to
-    public enum PieceColor {BLACK, RED, NONE};
-    [SerializeField] public PieceColor color {get;private set;} = PieceColor.BLACK;
+    public enum PieceColor {
+        BLACK,
+        RED,
+        NONE
+        };
+    [SerializeField] public PieceColor color;
+    public bool isKing {get; private set;} = false;
 
 
     /// <summary>
@@ -34,5 +39,6 @@ public class Piece : MonoBehaviour
     {
         // Display the "Crown"
         king.SetActive(true);
+        isKing = true;
     }
 }

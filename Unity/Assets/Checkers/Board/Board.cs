@@ -8,6 +8,21 @@ using Photon.Pun;
 
 
 /// <summary>
+/// Stores the TARGET space and the LOGICAL POSITION of the jumped piece
+/// Generated FROM a particular space (not included in the struct)
+/// ((The START POSITION is IMPLIED, and not listed explicitly))
+/// WARN jumped can be EMPTY
+/// Jumped should only be ZERO elements (No Positions) or TWO elements (X, Y)
+/// </summary>
+public struct ValidMove
+{
+    public Space targetSpace;
+    public int[] jumped;
+    public bool isJump;
+}
+
+
+/// <summary>
 /// Responsibilities:
 ///     Local Piece Management
 ///     Rule Adjudication
@@ -56,6 +71,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
     /// <summary>
     /// Sets up Board with Single Reference and Logical Positions
+    /// Builds the Board
     /// </summary>
     private void Start() 
     {
@@ -72,20 +88,30 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
             boardGrid[space.x,space.y] = space;
         }
 
+        // Build the Board
         for(int i = 0; i < 3; i++)
         {
-            int secondHalf = 8 - i - 1; 
+            // FIXME MR E
+            int secondHalf = 8 - i - 1;
+            
+            // FIXME MR E
             for(int g = 0; g < 8; g++)
             {
-                if(i % 2 == 0) // row logic
+                // FIXME MR E
+                // row logic
+                if(i % 2 == 0)
                 {
-                    if(g % 2 == 0) // column logic
+                    // FIXME MR E
+                    // column logic
+                    if(g % 2 == 0)
                     {
+                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
                         boardGrid[g,secondHalf].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
                     else
                     {
+                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
                         boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
@@ -94,11 +120,13 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     if(g % 2 == 1)
                     {
+                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
                         boardGrid[g,secondHalf].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
                     else
                     {
+                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
                         boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
@@ -110,6 +138,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
     /// <summary>
     /// Begin listening to the network
+    /// 2020-11-27: WORKS
     /// </summary>
     private void OnEnable()
     {
@@ -119,15 +148,16 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
     /// <summary>
     /// Stop listening to the network
+    /// 2020-11-27: WORKS
     /// </summary>
     private void OnDisable()
     {
         PhotonNetwork.RemoveCallbackTarget(this);
     }
 
-
     /// <summary>
     /// Switches on event code
+    /// 2020-11-27: WORKS
     /// </summary>
     /// <see href="https://doc.photonengine.com/en-us/pun/current/gameplay/rpcsandraiseevent#ioneventcallback_callback">IOnEventCallback Callback</see>
     public void OnEvent(EventData photonEvent)
@@ -139,7 +169,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         // If someone wants to destroy a piece
         if (eventCode == pieceDestroyCode)
         {
-            DestroyPiece((int[])photonEvent.Parameters[pieceDestroyCode]);
+            DestroyPiece((int)data[0],(int)data[1]);
         }
 
         // If someone wants to move a piece
@@ -164,6 +194,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
     /// <summary>
     /// Replace a King Piece by LOGICAL POSITION
+    /// 2020-11-27: WIP
     /// </summary>
     private void PromotePiece(int[] logicalPositions)
     {
@@ -172,22 +203,30 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         int y = logicalPositions[1];
     }
  
-
+    public void RequestDestroy(int x, int y)
+    {
+        object[] content = new object[] { x, y};
+        
+        // Build the Event
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
+        
+        // Raise the Event
+        PhotonNetwork.RaiseEvent(pieceDestroyCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+    
     /// <summary>
     /// Destroys a Piece by LOGICAL POSITION
+    /// 2020-11-27: WIP
     /// </summary>
-    private void DestroyPiece(int[] logicalPositions)
+    private void DestroyPiece(int x, int y)
     {
-        // Find the Location
-        int x = logicalPositions[0];
-        int y = logicalPositions[1];
-
+        // Get the Piece and Delete it
+        // gameObject != GameObject
+        GameObject.Destroy(GetPieceByLoc(x,y).gameObject);
         // Get the Space and Clear it
         GetSpaceByLoc(x,y).clearCurrentOccupant();
 
-        // Get the Piece and Delete it
-        // gameObject != GameObject
-        GameObject.Destroy(GetPieceByLoc(x,y));
+        
     }
 
 
@@ -197,11 +236,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// This is called from the NETWORK, not from the PLAYER
     /// It is NOT OK for this method to FAIL
     /// (Disagreement on the Network is not good)
+    /// 2020-11-27: WORKS!
     /// </summary>
     private void MovePiece(int startX, int startY, int endX, int endY)
-    {
-        // First two elements of the array are the START POSITION
-        
+    {   
         // Find the Piece
         Piece piece = GetPieceByLoc(startX,startY);
         
@@ -212,9 +250,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         GetSpaceByLoc(endX,endY).setCurrentOccupant(piece);
     }
 
+    
 
     /// <summary>
-    /// LOGICAL position on board
+    /// Use a LOGICAL position on board to get a <see cref="Piece" />
     /// </summary>
     private Piece GetPieceByLoc(int x, int y)
     {
@@ -223,7 +262,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
     /// <summary>
-    /// LOGICAL position on board
+    /// Use a LOGICAL position on the board to get a <see cref="Space.cs" />
     /// </summary>
     private Space GetSpaceByLoc(int x, int y)
     {
@@ -252,9 +291,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
 
-
-
-
     /// <summary>
     /// This takes in a Player's request
     /// CHECKS to see if it is legal
@@ -268,8 +304,13 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     public void RequestMove(int startX, int startY, int endX, int endY)
     {
+        // Pacakge the Parameters as a New Object
         object[] content = new object[] { startX, startY, endX, endY };
+        
+        // Build the Event
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
+        
+        // Raise the Event
         PhotonNetwork.RaiseEvent(pieceMoveCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
@@ -277,93 +318,126 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
     /// <summary>
-    /// EXPECTS <see cref="PlayerManager" /> to call this method
-    /// Upon a user mouse click
-    /// We DO NOT expect EVERY kind of GameObject
-    /// We Expect ONLY Tile GameObjects (Locked by mask)
-    /// And return what the user can do with it as SIDE EFFECTS
-    /// Checks to see if the START LOCATION is valid
-    /// Part of <see cref="RequestMove" />
-    /// Empty/Enemy Space = Highlight with "Not Selected"
-    /// Friendly Space = Highlight with "Selected"
-    /// Manages Side Effects
-    /// Manages Validation
-    /// NO Options, see: <see cref="GetOptions" />
-    /// Returns Space Occupant IF the user can select this space
-    /// Returns NULL if the user CANNOT select this space
-    /// </summary>
-    public Piece RequestFirstClick(Space targetSpace, Piece.PieceColor playerColor)
-    {
-        // Empty
-        if (!targetSpace.isOccupied())
-        {
-            // REPLACE ME WITH NICE SIDE EFFECTS!!!
-            Debug.Log("RequestFirstClick: EMPTY, DO NOT select me");
-            return null;
-        }
-        
-        // Get the piece
-        Piece piece;
-        piece = targetSpace.getCurrentOccupant();
-        // TODO FOR CHRIS -- If a piece is on the tile, now highlight the tile and the potential move locations
-        
-        // Friendly
-        if (piece.color == playerColor)
-        {
-            // REPLACE ME WITH NICE SIDE EFFECTS!!!
-            Debug.Log("RequestFirstClick: FRIENDLY, SELECT ME");
-            return piece;
-        }
-        
-        // Anything Else
-        // REPLACE ME WITH NICE SIDE EFFECTS!!!
-        Debug.Log("RequestFirstClick: ENEMY, DO NOT select me");
-        return null;
-    }
-
-
-
-
-
-    /// <summary>
-    /// EXPECTS <see cref="PlayerManager" /> to call this method
-    /// Upon a user mouse click *following* a successful mouse click
-    /// Checks to see if the END LOCATION is valid
-    /// Part of <see cref="RequestMove" />
-    /// Manages Side Effects
-    /// Manages Validation
-    /// NO Options, see: <see cref="GetOptions" />
-    /// Returns TRUE IF the user can select this space
-    /// Returns FALSE if the user CANNOT select this space
-    /// </summary>
-    public bool RequestSecondClick(Space targetSpace)
-    {   
-        // Empty
-        if (!targetSpace.isOccupied())
-        {
-            // REPLACE ME WITH NICE SIDE EFFECTS!!!
-            Debug.Log("RequestFirstClick: EMPTY, SELECT ME");
-            return true;
-        }
-        
-        // Anything Else
-        // REPLACE ME WITH NICE SIDE EFFECTS!!!
-        Debug.Log("RequestFirstClick: NOT empty, DO NOT select me");
-        return false;
-    }
-    
-
-    /// <summary>
-    /// Could return EMPTY
-    /// Or Return ANY in Cardinal Diagonals
+    /// Returns a List of Valid Moves
     /// Expects <see cref="PlayerManager" /> to call this method
     /// ASSUMES both <see cref="Board.RequestFirstClick" /> and <see cref="Board.RequestSecondClick" /> have run successfully
-    /// FIXME NOT IMPLEMENTED !!!
     /// </summary>
-    // public ArrayList<Space> GetOptions(int playerColor)
-    // {
+    /// <param name="startX">The Horizontal STARTING LOGICAL Location of the Move</param>
+    /// <param name="startY">The vertical STARTING LOGICAL Location of the Move</param>
+    /// <param name="color">Which color the PLAYER is</param>
+    /// <param name="isKing">Whether the PIECE being moved is a MAN or a KING</param>
+    public List<ValidMove> GetValidMoves(int startX, int startY, Piece.PieceColor color, bool isKing)
+    {
+        // Defaults to the direction of the red pieces
+        int direction = 1;
+        
+        // Change Direction if other player
+        if(color == Piece.PieceColor.BLACK)
+            direction = direction * - 1;
+        
+        // The Cardinal Directions to Check
+        int leftX = startX - direction;
+        int forwardY = startY + direction;
+        int rightX = startX + direction;
+        
+        // If a SET of moves contains any moves that are jumps
+        bool hasJump = false;
 
-    // }
+        // Where we add Valid Moves
+        List<ValidMove> moves = new List<ValidMove>();
+        
+        // DOCS NEED FIXING
+        if(leftX >= 0 && leftX <= 7)
+        {
+            if(forwardY >= 0 && forwardY <= 7)
+            {
+                Space space = GetSpaceByLoc(leftX,forwardY);
+                if(space.getCurrentOccupant() != null)
+                {
+                    if(space.getCurrentOccupant().color != color)
+                    {
+                        int jumpLeftX = leftX - direction;
+                        int jumpForwardY = forwardY + direction;
+                        if(jumpLeftX >= 0)
+                        {
+                            if(jumpForwardY >= 0 && jumpForwardY <= 7)
+                            {
+                                Space jumpSpace = GetSpaceByLoc(jumpLeftX,jumpForwardY);
+                                if(jumpSpace.getCurrentOccupant() == null)
+                                {
+                                    ValidMove newMove = new ValidMove();
+                                    newMove.targetSpace = jumpSpace;
+                                    newMove.jumped = new int[]{leftX,forwardY};
+                                    newMove.isJump = true;
+                                    moves.Add(newMove);
+                                    hasJump = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ValidMove newMove = new ValidMove();
+                    newMove.targetSpace = space;
+                    newMove.isJump = false;
+                    moves.Add(newMove);
+                }
+            }
+        }
+        
+        // DOCS NEED FIXING
+        if(rightX <= 7 && rightX >= 0)
+        {
+            if(forwardY >= 0 && forwardY <= 7)
+            {
+                Space space = GetSpaceByLoc(rightX,forwardY);
+                if(space.getCurrentOccupant() != null)
+                {
+                     if(space.getCurrentOccupant().color != color)
+                    {
+                        int jumpRightX = rightX + direction;
+                        int jumpForwardY = forwardY + direction;
+                        if (jumpRightX <= 7)
+                        {
+                            if(jumpForwardY >= 0 && jumpForwardY <= 7)
+                            {
+                                Space jumpSpace = GetSpaceByLoc(jumpRightX,jumpForwardY);
+                                if (jumpSpace.getCurrentOccupant() == null)
+                                {
+                                    ValidMove newMove = new ValidMove();
+                                    newMove.targetSpace = jumpSpace;
+                                    newMove.jumped = new int[]{rightX,forwardY};
+                                    newMove.isJump = true;
+                                    moves.Add(newMove);
+                                    hasJump = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ValidMove newMove = new ValidMove();
+                    newMove.targetSpace = space;
+                    newMove.isJump = false;
+                    moves.Add(newMove);
+                }
+            }
+        }
+        if(hasJump)
+        {
+            List<ValidMove> returnMoves = new List<ValidMove>();
+            foreach (ValidMove move in moves)
+            {
+                if(move.isJump)
+                    returnMoves.Add(move);
+            }
+            return returnMoves;
+        }
+        return moves;
+    }
+
 
 
 }
