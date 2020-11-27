@@ -360,7 +360,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                     {
                         if(jumpY <= 7 && jumpY >= 0)
                         {
-                            if(GetPieceByLoc(jumpX,jumpY).color != color)
+                            if(GetPieceByLoc(x,y).color != color)
                             {
                                 Space jumpSpace = GetSpaceByLoc(jumpX,jumpY);
                                 if(jumpSpace.getCurrentOccupant() == null)
