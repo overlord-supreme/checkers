@@ -42,7 +42,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] private GameObject RedPiecePrefab;
     [SerializeField] private GameObject BlackPiecePrefab;
     [SerializeField] private GameObject PiecesList;
-
+     public Material selectableMaterial;
 
     // How we Track Logical Position
     private Space[,] boardGrid = new Space[8,8];
@@ -412,6 +412,8 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         if(forwardLeftMove != null)
         {
             moves.Add((ValidMove)forwardLeftMove);
+            ValidMove tSpace = (ValidMove)forwardLeftMove;
+            tSpace.targetSpace.GetComponent<MeshRenderer> ().material = selectableMaterial;
         }
         object forwardRightMove = checkSpace(rightX, forwardY, direction, color);
         if(forwardRightMove != null)

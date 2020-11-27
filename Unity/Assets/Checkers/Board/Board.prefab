@@ -234,12 +234,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc68e576303bdc54ea2c69f0a37c87c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhitePiecePrefab: {fileID: 2961036102473875454, guid: c0aa80ac990f8aa4ea5963febc9a71aa,
+  RedPiecePrefab: {fileID: 2961036102473875454, guid: c0aa80ac990f8aa4ea5963febc9a71aa,
     type: 3}
   BlackPiecePrefab: {fileID: 2961036102473875454, guid: b527abd5958f0024d915b29a28e6c968,
     type: 3}
   PiecesList: {fileID: 4426197651212536332}
-  gameObject: {fileID: 0}
+  selectableMaterial: {fileID: 2100000, guid: 8e58a7ceeeee743039137531767398c0, type: 2}
+  gameObject: {fileID: 4621317538668766796}
 --- !u!1 &4901133950769651343
 GameObject:
   m_ObjectHideFlags: 0
