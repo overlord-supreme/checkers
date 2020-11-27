@@ -24,7 +24,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 {
 
     // Piece Management (LOCAL)
-    [SerializeField] private GameObject WhitePiecePrefab;
+    [SerializeField] private GameObject RedPiecePrefab;
     [SerializeField] private GameObject BlackPiecePrefab;
     [SerializeField] private GameObject PiecesList;
 
@@ -39,7 +39,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
     // Player Management
-    public enum PlayerColor {BLACK, WHITE, NONE};
+    public enum PlayerColor {BLACK, RED, NONE};
 
 
     // Event Codes
@@ -71,8 +71,40 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             boardGrid[space.x,space.y] = space;
         }
-        GameObject temp = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
-        boardGrid[0,0].setCurrentOccupant(temp.GetComponent<Piece>());
+
+        for(int i = 0; i < 3; i++)
+        {
+            int secondHalf = 8 - i - 1; 
+            for(int g = 0; g < 8; g++)
+            {
+                if(i % 2 == 0) // row logic
+                {
+                    if(g % 2 == 0) // column logic
+                    {
+                        GameObject piece = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
+                        boardGrid[g,secondHalf].setCurrentOccupant(piece.GetComponent<Piece>());
+                    }
+                    else
+                    {
+                        GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
+                        boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
+                    }
+                }
+                else
+                {
+                    if(g % 2 == 1)
+                    {
+                        GameObject piece = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
+                        boardGrid[g,secondHalf].setCurrentOccupant(piece.GetComponent<Piece>());
+                    }
+                    else
+                    {
+                        GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
+                        boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
+                    }
+                }
+            }
+        }
     }
 
 

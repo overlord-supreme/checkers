@@ -14,7 +14,7 @@ public class Piece : MonoBehaviour
 
 
     // Identify which player we belong to
-    public enum PieceColor {BLACK, WHITE, NONE};
+    public enum PieceColor {BLACK, RED, NONE};
     [SerializeField] public PieceColor color {get;private set;} = PieceColor.BLACK;
 
 

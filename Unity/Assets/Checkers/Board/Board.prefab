@@ -239,7 +239,7 @@ MonoBehaviour:
   BlackPiecePrefab: {fileID: 2961036102473875454, guid: b527abd5958f0024d915b29a28e6c968,
     type: 3}
   PiecesList: {fileID: 4426197651212536332}
-  TempLoc: {fileID: 0}
+  gameObject: {fileID: 0}
 --- !u!1 &4901133950769651343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,11 +1509,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed4e4079e2e99084d8d914283565fc5c, type: 2}
-    - target: {fileID: 5585996207055051453, guid: 2796c27084d6a794ca8efec226d4b300,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6453188875692174596, guid: 2796c27084d6a794ca8efec226d4b300,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -559,6 +559,12 @@ PrefabInstance:
       propertyPath: gameObject
       value: 
       objectReference: {fileID: 902059590}
+    - target: {fileID: 2249678472362876073, guid: 4db5d7e2fc9fdb444947f109b958ae53,
+        type: 3}
+      propertyPath: RedPiecePrefab
+      value: 
+      objectReference: {fileID: 2961036102473875454, guid: c0aa80ac990f8aa4ea5963febc9a71aa,
+        type: 3}
     - target: {fileID: 2294397498484451436, guid: 4db5d7e2fc9fdb444947f109b958ae53,
         type: 3}
       propertyPath: x
