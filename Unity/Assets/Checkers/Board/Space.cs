@@ -19,7 +19,7 @@ public class Space : MonoBehaviour
     public Transform piecePosition;
     
     // Stores a reference to the current occupant of itself
-    private Piece currentOccupant = null;
+    [SerializeField] private Piece currentOccupant = null;
     
     // Whether the current space is the "edge" of the board for king check
     private bool isEdge = false;

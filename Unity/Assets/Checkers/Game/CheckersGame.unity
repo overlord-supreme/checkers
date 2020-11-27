@@ -189,6 +189,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1826153401665821746, guid: 213472551b50c6a4f9b706e7f9753318,
+        type: 3}
+      propertyPath: currentPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826153401665821746, guid: 213472551b50c6a4f9b706e7f9753318,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 5234563238774508486, guid: 213472551b50c6a4f9b706e7f9753318,
         type: 3}
       propertyPath: m_Name

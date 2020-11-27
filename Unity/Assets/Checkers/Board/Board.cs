@@ -49,13 +49,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     private const byte playerSwapCode = 4;
 
 
-    // Parameter Codes
-    private const byte pieceMoveData = 60;
-    private const byte piecePromoteData = 61;
-    private const byte pieceDestroyData = 62;
-    private const byte playerSwapData = 63;
-
-
     // Board MUST BE SINGLETON
     private static Board singleton = null;
     public static Board getInstance() {return singleton;}
@@ -78,6 +71,8 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             boardGrid[space.x,space.y] = space;
         }
+        GameObject temp = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
+        boardGrid[0,0].setCurrentOccupant(temp.GetComponent<Piece>());
     }
 
 
@@ -108,7 +103,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         // Extract the Event Code (to switch on)
         byte eventCode = photonEvent.Code;
 
-
+        object[] data = (object[])photonEvent.CustomData;
         // If someone wants to destroy a piece
         if (eventCode == pieceDestroyCode)
         {
@@ -118,13 +113,13 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         // If someone wants to move a piece
         if (eventCode == pieceMoveCode)
         {
-            MovePiece((int[])photonEvent.Parameters[pieceMoveData]);
+            MovePiece((int)data[0],(int)data[1],(int)data[2],(int)data[3]);
         }
 
         // If someone wants to promote a piece
         if (eventCode == piecePromoteCode)
         {
-            PromotePiece((int[]) photonEvent.Parameters[piecePromoteData]);
+            //
         }
 
         // 2020-11-25T19:21:00-05: Not Used, Still WIP
@@ -171,24 +166,18 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// It is NOT OK for this method to FAIL
     /// (Disagreement on the Network is not good)
     /// </summary>
-    private void MovePiece(int[] logicalPositions)
+    private void MovePiece(int startX, int startY, int endX, int endY)
     {
         // First two elements of the array are the START POSITION
-        int firstX = logicalPositions[0];
-        int firstY = logicalPositions[1];
-        
-        // Last two are the END POSITION
-        int secondX = logicalPositions[2];
-        int secondY = logicalPositions[3];
         
         // Find the Piece
-        Piece piece = GetPieceByLoc(firstX,firstY);
+        Piece piece = GetPieceByLoc(startX,startY);
         
         // Remove Occupants from the START LOCATION
-        GetSpaceByLoc(firstX,firstY).clearCurrentOccupant();
+        GetSpaceByLoc(startX,startY).clearCurrentOccupant();
         
         // Move the Found Piece to the END LOCATION
-        GetSpaceByLoc(secondX,secondY).setCurrentOccupant(piece);
+        GetSpaceByLoc(endX,endY).setCurrentOccupant(piece);
     }
 
 
@@ -245,10 +234,11 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// Checks EACH of the Cardinal Diagonals (NE, NW, SW, SE)
     /// QUESTION, do we want to allow greater than 1 space hops? (ie, 2, 3, etc)
     /// </summary>
-    public void RequestMove(int[] start, int[] end)
+    public void RequestMove(int startX, int startY, int endX, int endY)
     {
-        
-        // FIXME
+        object[] content = new object[] { startX, startY, endX, endY };
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
+        PhotonNetwork.RaiseEvent(pieceMoveCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
 

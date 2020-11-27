@@ -17,13 +17,17 @@ public class PlayerManager : MonoBehaviour
 
 
     // Which kind of player is this?
-    public enum PlayerColor {BLACK, WHITE, NONE};
+    public Piece.PieceColor color = Piece.PieceColor.BLACK;
 
 
     // Determines if we can interact with the board
     // Set by Board
     public bool currentPlayer = false;
     
+    // Holds a reference to the currently selected piece of the user
+    // Set below in the raycastMouse() function
+    private Piece currentPieceSelected = null;
+    private Space currentSpaceSelected = null;
     
     // Start is called before the first frame update
     void Start()
@@ -59,11 +63,30 @@ public class PlayerManager : MonoBehaviour
                 Debug.Log("Hit");
                 Debug.DrawLine(ray.origin, hit.point);
                 GameObject hitObject = hit.collider.gameObject;
-
+                Space space = hitObject.GetComponent<Space>();
                 // Print what we hit
                 Debug.Log(hitObject);
                 Debug.Log(hitObject.name);
                 Debug.Log(hitObject.transform.parent.name);
+                //If we do not already have a piece selected
+                if(currentPieceSelected == null)
+                {
+                    //if they are our piece, select them
+                    if(space.getCurrentOccupant() != null && space.getCurrentOccupant().color == color)
+                    {
+                        currentPieceSelected = space.getCurrentOccupant();
+                        currentSpaceSelected = space;
+                    }
+                }
+                else
+                {
+                    if(space.getCurrentOccupant() == null)
+                    {
+                        Board.getInstance().RequestMove(currentSpaceSelected.x,currentSpaceSelected.y,space.x,space.y);
+                        currentSpaceSelected = null;
+                        currentPieceSelected = null;
+                    }
+                }
             }
         }
     }
