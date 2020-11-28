@@ -82,10 +82,8 @@
 - Otherwise, note the issue in the script location of the problem, eg on a **Method** or on a **Class** as a *comment**
 
 ## Branches
-- (last updated 2020-11-27T11:47:00-05)
-- **`master`:** Out of date, do **not** use
-- **`BasicLogic`:** Where we are currently working
-- **`tom-pun`:** Soon to be deleted
+- (last updated 2020-11-28T11:55:00-05)
+- **`master`:** The current branch
 
 ## Future Work
 - We need to add a **Code Reports** folder that details whether our **[Test Cases](https://docs.google.com/spreadsheets/d/1UExj35ewBux2ftpgoRd4cAy85XGLS10_uxYvNaTXQ-8/edit#gid=0)** document is passing *for each test**
@@ -94,3 +92,5 @@
 - Add *Feature Requests* as *Issues*
 - finish linking `.asmdef`'s to test `.asmdef`'s
 - Add *Overview* to Wiki
+- combine meeting notes and readme for better overview
+- update readme for accuracy
