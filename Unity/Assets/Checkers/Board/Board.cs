@@ -43,7 +43,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] private GameObject RedPiecePrefab;
     [SerializeField] private GameObject BlackPiecePrefab;
     [SerializeField] private GameObject PiecesList;
-     public Material selectableMaterial;
+    public Material selectableMaterial;
 
     // How we Track Logical Position
     private Space[,] boardGrid = new Space[8,8];
