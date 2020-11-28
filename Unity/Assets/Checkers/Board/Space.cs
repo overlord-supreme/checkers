@@ -21,8 +21,6 @@ public class Space : MonoBehaviour
     // Stores a reference to the current occupant of itself
     [SerializeField] private Piece currentOccupant = null;
     
-    // Whether the current space is the "edge" of the board for king check
-    private bool isEdge = false;
     
     // Used for edge, color of side
     [SerializeField] private Piece.PieceColor color = Piece.PieceColor.NONE;
@@ -47,16 +45,5 @@ public class Space : MonoBehaviour
     /// sets held piece
     /// </summary>
     public void setCurrentOccupant(Piece occupant) {currentOccupant = occupant; currentOccupant.transform.position = piecePosition.position;}
-    
 
-    /// <summary>
-    /// sets edge
-    /// </summary>
-    public void setEdge(bool isEdge) {this.isEdge = isEdge;}
-    
-
-    /// <summary>
-    /// sets color
-    /// </summary>
-    public void setColor(Piece.PieceColor color) {this.color = color;}
 }
