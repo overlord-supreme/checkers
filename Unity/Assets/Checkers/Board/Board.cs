@@ -16,6 +16,7 @@ using Photon.Pun;
 /// </summary>
 public struct ValidMove
 {
+    public Piece piece;
     public Space targetSpace;
     public int[] jumped;
     public bool isJump;
@@ -165,16 +166,18 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         // Extract the Event Code (to switch on)
         byte eventCode = photonEvent.Code;
 
-        object[] data = (object[])photonEvent.CustomData;
+        
         // If someone wants to destroy a piece
         if (eventCode == pieceDestroyCode)
         {
+            object[] data = (object[])photonEvent.CustomData;
             DestroyPiece((int)data[0],(int)data[1]);
         }
 
         // If someone wants to move a piece
         if (eventCode == pieceMoveCode)
         {
+            object[] data = (object[])photonEvent.CustomData;
             MovePiece((int)data[0],(int)data[1],(int)data[2],(int)data[3]);
         }
 
@@ -220,9 +223,11 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     private void DestroyPiece(int x, int y)
     {
+        Piece piece = GetPieceByLoc(x,y);
+
         // Get the Piece and Delete it
         // gameObject != GameObject
-        GameObject.Destroy(GetPieceByLoc(x,y).gameObject);
+        GameObject.Destroy(piece.gameObject);
         // Get the Space and Clear it
         GetSpaceByLoc(x,y).clearCurrentOccupant();
 
@@ -338,8 +343,9 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
 
-    private object checkSpace(int x, int y, int direction, Piece.PieceColor color)
+    private object checkSpace(int x, int y, int directionX, int directionY, Piece.PieceColor color, Piece originalPiece)
     {
+        
         if(x >= 0 && x <= 7)
         {
             if(y >= 0 && y <= 7)
@@ -347,15 +353,17 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                 Space space = GetSpaceByLoc(x,y);
                 if(space.getCurrentOccupant() == null)
                 {
+                    Debug.LogFormat("Empty Space: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}",x,y,directionX,directionY);
                     //Empty space, can jump, add to validmoves
                     ValidMove newMove = new ValidMove();
                     newMove.targetSpace = space;
                     newMove.isJump = false;
+                    newMove.piece = originalPiece;
                     return newMove;
                 } else
                 {
-                    int jumpX = x - direction;
-                    int jumpY = y + direction;
+                    int jumpX = x - directionX;
+                    int jumpY = y + directionY;
                     if(jumpX <= 7 && jumpX >= 0)
                     {
                         if(jumpY <= 7 && jumpY >= 0)
@@ -366,10 +374,12 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                                 if(jumpSpace.getCurrentOccupant() == null)
                                 {
                                     //Add jump
+                                    Debug.LogFormat("Jump: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}",x,y,directionX,directionY);
                                     ValidMove newMove = new ValidMove();
                                     newMove.targetSpace = jumpSpace;
                                     newMove.jumped = new int[]{x,y};
                                     newMove.isJump = true;
+                                    newMove.piece = originalPiece;
                                     return newMove;
                                 }
                             }
@@ -394,44 +404,43 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     public List<ValidMove> GetValidMoves(int startX, int startY, Piece.PieceColor color, bool isKing)
     {
         // Defaults to the direction of the red pieces
-        int direction = 1;
+        int directionX = 1;
+        int directionY = 1;
         
         // Change Direction if other player
         if(color == Piece.PieceColor.BLACK)
-            direction = direction * - 1;
+        {
+            directionY = directionY * - 1;
+        }
         
         // The Cardinal Directions to Check
-        int leftX = startX - direction;
-        int forwardY = startY + direction;
-        int rightX = startX + direction;
+        int leftX = startX - 1;
+        int forwardY = startY + directionY;
+        int rightX = startX + 1;
 
         // Where we add Valid Moves
         List<ValidMove> moves = new List<ValidMove>();
-        Debug.LogFormat("Man: leftX: {0} backY: {1} Direction: {2}",leftX,forwardY,direction);
-        object forwardLeftMove = checkSpace(leftX,forwardY, direction, color);
+        object forwardLeftMove = checkSpace(leftX,forwardY, directionX, directionY, color, GetPieceByLoc(startX,startY));
         if(forwardLeftMove != null)
         {
             moves.Add((ValidMove)forwardLeftMove);
             //ValidMove tSpace = (ValidMove)forwardLeftMove;
             //tSpace.targetSpace.GetComponent<MeshRenderer> ().material = selectableMaterial;
         }
-        Debug.LogFormat("Man: rightX: {0} backY: {1} Direction: {2}",rightX,forwardY,direction);
-        object forwardRightMove = checkSpace(rightX, forwardY, direction, color);
+        object forwardRightMove = checkSpace(rightX, forwardY, -directionX, directionY, color, GetPieceByLoc(startX,startY));
         if(forwardRightMove != null)
         {
             moves.Add((ValidMove)forwardRightMove);
         }
         if(isKing)
         {
-            int backY = startY - direction;
-            Debug.LogFormat("King: leftX: {0} backY: {1} Direction: {2}",leftX,backY,-direction);
-            object backLeftMove = checkSpace(leftX,backY,-direction,color);
+            int backY = startY - directionY;
+            object backLeftMove = checkSpace(leftX,backY, directionX, -directionY,color, GetPieceByLoc(startX,startY));
             if(backLeftMove != null)
             {
                 moves.Add((ValidMove)backLeftMove);
             }
-            Debug.LogFormat("King: rightX: {0} backY: {1} Direction: {2}",rightX,backY,-direction);
-            object backRightMove = checkSpace(rightX,backY,-direction,color);
+            object backRightMove = checkSpace(rightX,backY,-directionX,-directionY,color, GetPieceByLoc(startX,startY));
             if(backRightMove != null)
             {
                 moves.Add((ValidMove)backRightMove);
@@ -460,6 +469,35 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         return moves;
     }
 
-
-
+    public List<ValidMove> GetAllValidMoves(Piece.PieceColor color)
+    {
+        List<ValidMove> moves = new List<ValidMove>();
+        foreach (Space space in boardGrid)
+        {
+            if(space.getCurrentOccupant() != null && space.getCurrentOccupant().color == color)
+            {
+                moves.AddRange(GetValidMoves(space.x,space.y,color,space.getCurrentOccupant().isKing));
+            }
+        }
+        List<ValidMove> returnMoves = new List<ValidMove>();
+        bool hasJump = false;
+        foreach(ValidMove move in moves)
+        {
+            if(move.isJump)
+            {
+                hasJump = true;
+                break;
+            }
+        }
+        if(hasJump)
+        {
+            foreach(ValidMove move in moves)
+            {
+                if (move.isJump)
+                    returnMoves.Add(move);
+            }
+            return returnMoves;
+        }
+        return moves;
+    }
 }

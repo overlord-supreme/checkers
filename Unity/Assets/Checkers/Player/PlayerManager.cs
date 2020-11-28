@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -12,7 +13,7 @@ using Photon.Realtime;
 /// <see href="//https://answers.unity.com/questions/34795/how-to-perform-a-mouse-click-on-game-object.html">How To Perform A Mouse Click On Game Object</see>
 /// <see href="https://www.raywenderlich.com/5441-how-to-make-a-chess-game-with-unity">How to Make a Chess Game with Unity</see>
 /// </summary>
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
 
     // Where we check for mouse clicks
@@ -27,24 +28,59 @@ public class PlayerManager : MonoBehaviour
     // Set by Board
     public bool currentPlayer = false;
     
+    private const byte playerSwapCode = 6;
+    
     // Holds a reference to the currently selected piece of the user
     // Set below in the raycastMouse() function
     private Piece currentPieceSelected = null;
     private Space currentSpaceSelected = null;
 
     private List<ValidMove> moves = new List<ValidMove>();
+    private List<ValidMove> allMoves = new List<ValidMove>();
 
 
     private void Start() {
         if(PhotonNetwork.IsMasterClient)
         {
             color = Piece.PieceColor.BLACK;
+            currentPlayer = true;
         }
         else
         {
             color = Piece.PieceColor.RED;
         }
     }
+
+    /// <summary>
+    /// Begin listening to the network
+    /// 2020-11-27: WORKS
+    /// </summary>
+    private void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+
+
+    /// <summary>
+    /// Stop listening to the network
+    /// 2020-11-27: WORKS
+    /// </summary>
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        // Extract the Event Code (to switch on)
+        byte eventCode = photonEvent.Code;
+        
+        if (eventCode == playerSwapCode)
+        {
+            SwapPlayer();
+        }
+    }
+
     /// <summary>
     /// Check for Mouse Clicks each frame
     /// </summary>
@@ -64,6 +100,9 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if(!currentPlayer)
+                return;
+            
             // Draw the RayCast
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -82,18 +121,35 @@ public class PlayerManager : MonoBehaviour
                 // Debug.Log(hitObject.name);
                 // Debug.Log(hitObject.transform.parent.name);
 
-                // (FIRST CLICK) Find a Piece
+
+                //First we generate all legal moves
+                //If we click on a piece (not empty) then we check if that piece is part of any valid move
                 if(currentPieceSelected == null)
                 {
-                    SelectPiece(space);
-                    if(currentPieceSelected != null)
+                    allMoves = Board.getInstance().GetAllValidMoves(color);
+                    Piece clickedPiece = space.getCurrentOccupant();
+                    if(clickedPiece != null && clickedPiece.color == color)
                     {
-                        moves = Board.getInstance().GetValidMoves(space.x, space.y, currentPieceSelected.color, currentPieceSelected.isKing);
+                        bool isWithinValidMoves = false;
+                        foreach(ValidMove move in allMoves)
+                        {
+                            if(move.piece == clickedPiece)
+                            {
+                                isWithinValidMoves = true;
+                                moves.Add(move);
+                            }
+                        }
+                        //if so select that piece
+                        if(isWithinValidMoves)
+                            SelectPiece(space);
+                        //else do not select piece
                     }
                 }
-                // (SECOND CLICK) Find and Move to New Space
+                //Second click
                 else if(currentPieceSelected != null)
                 {
+                    bool wasJump = false;
+                    //get all moves related to selected piece
                     // Check the Valid Moves
                     foreach (ValidMove move in moves)
                     {
@@ -101,6 +157,8 @@ public class PlayerManager : MonoBehaviour
                         if (move.targetSpace == space)
                         {
                             // Execute the Move
+                            if(move.isJump)
+                                wasJump = true;
                             MovePiece(space);
                             
                             // SPECIAL CASE: Is a Jump (Deletes Pieces)
@@ -108,16 +166,34 @@ public class PlayerManager : MonoBehaviour
                             {
                                 DeletePiece(move.jumped[0],move.jumped[1]);
                             }
-                            
-                            // Reset the variables and break
-                            currentSpaceSelected = null;
-                            currentPieceSelected = null;
                             break;
+                            
                         }
+                    }
+                    if(wasJump)
+                    {
+                        allMoves.Clear();
+                        moves.Clear();
+                        Debug.LogFormat("currentPieceSelected is null? : {0}",(currentPieceSelected == null));
+                        moves = Board.getInstance().GetValidMoves(space.x,space.y,color,currentPieceSelected.isKing);
+
+                        if(moves.Count > 0 && moves[0].isJump)
+                            return;
                     }
                     currentSpaceSelected = null;
                     currentPieceSelected = null;
+                    moves.Clear();
+                    //Change turn
+                    RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
+        
+                    // Raise the Event
+                    PhotonNetwork.RaiseEvent(playerSwapCode, true, raiseEventOptions, SendOptions.SendReliable);
+
                 }
+
+                // (FIRST CLICK) Find a Piece
+                
+                // (SECOND CLICK) Find and Move to New Space
             }
         }
     }
@@ -177,9 +253,6 @@ public class PlayerManager : MonoBehaviour
         // Execute the Move
         Board.getInstance().RequestMove(currentSpaceSelected.x, currentSpaceSelected.y, space.x, space.y);
 
-        // Reset the variables and return on a valid click
-        currentSpaceSelected = null;
-        currentPieceSelected = null;
         return;
     }
 
@@ -195,7 +268,9 @@ public class PlayerManager : MonoBehaviour
         Board.getInstance().RequestDestroy(x, y);
     }
 
-
+    private void SwapPlayer(){
+        currentPlayer = !currentPlayer;
+    }
 
 
 }
