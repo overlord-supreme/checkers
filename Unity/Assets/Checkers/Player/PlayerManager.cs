@@ -16,7 +16,7 @@ using Photon.Realtime;
 public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
 
-    // Where we check for mouse clicks
+    // Where we check for (limited) mouse clicks
     [SerializeField] public LayerMask mask;
 
 
@@ -81,6 +81,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
+
+
+
     /// <summary>
     /// Check for Mouse Clicks each frame
     /// </summary>
@@ -88,6 +91,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         raycastMouse();
     }
+
+
 
 
     /// <summary>
@@ -190,13 +195,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     PhotonNetwork.RaiseEvent(playerSwapCode, true, raiseEventOptions, SendOptions.SendReliable);
 
                 }
-
-                // (FIRST CLICK) Find a Piece
-                
-                // (SECOND CLICK) Find and Move to New Space
             }
         }
     }
+
+
 
 
     /// <summary>
@@ -259,7 +262,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
 
-
     /// <summary>
     ///
     /// </summary>
@@ -268,7 +270,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
         Board.getInstance().RequestDestroy(x, y);
     }
 
-    private void SwapPlayer(){
+
+
+
+    private void SwapPlayer()
+    {
         currentPlayer = !currentPlayer;
     }
 

@@ -92,27 +92,21 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         // Build the Board
         for(int i = 0; i < 3; i++)
         {
-            // FIXME MR E
             int secondHalf = 8 - i - 1;
-            
-            // FIXME MR E
+
             for(int g = 0; g < 8; g++)
             {
-                // FIXME MR E
                 // row logic
                 if(i % 2 == 0)
                 {
-                    // FIXME MR E
                     // column logic
                     if(g % 2 == 0)
                     {
-                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
                         boardGrid[g,secondHalf].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
                     else
                     {
-                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
                         boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
@@ -121,13 +115,11 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     if(g % 2 == 1)
                     {
-                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(BlackPiecePrefab,PiecesList.transform);
                         boardGrid[g,secondHalf].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
                     else
                     {
-                        // FIXME MR E
                         GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
                         boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
                     }
@@ -145,7 +137,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         PhotonNetwork.AddCallbackTarget(this);
     }
-
 
     /// <summary>
     /// Stop listening to the network
@@ -180,30 +171,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
             object[] data = (object[])photonEvent.CustomData;
             MovePiece((int)data[0],(int)data[1],(int)data[2],(int)data[3]);
         }
-
-        // If someone wants to promote a piece
-        if (eventCode == piecePromoteCode)
-        {
-            //
-        }
-
-        // 2020-11-25T19:21:00-05: Not Used, Still WIP
-        // if (eventCode == playerSwapCode)
-        // {
-        //     SwapPlayer((int)photonEvent.Parameters[playerSwapData]);
-        // }
-    }
-
-
-    /// <summary>
-    /// Replace a King Piece by LOGICAL POSITION
-    /// 2020-11-27: WIP
-    /// </summary>
-    private void PromotePiece(int[] logicalPositions)
-    {
-        // Find the Location
-        int x = logicalPositions[0];
-        int y = logicalPositions[1];
     }
  
     public void RequestDestroy(int x, int y)
@@ -297,28 +264,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         return boardGrid[x,y];
     }
 
-
-    /// <summary>
-    /// Swaps who is the ACTIVE player
-    /// Uses INT to indicate next Player
-    /// NOTICE, not in use right now, WIP, FIXME !!!
-    /// </summary>
-    private void SwapPlayer(int nextPlayer)
-    {
-        // Player 1's Turn
-        // if (nextPlayer == players.player1)
-        // {
-
-        // }
-        
-        // // Player 2's Turn
-        // if (nextPlayer == players.player2)
-        // {
-
-        // }
-    }
-
-
     /// <summary>
     /// This takes in a Player's request
     /// CHECKS to see if it is legal
@@ -374,7 +319,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                                 if(jumpSpace.getCurrentOccupant() == null)
                                 {
                                     //Add jump
-                                    Debug.LogFormat("Jump: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}",x,y,directionX,directionY);
+                                    //Debug.LogFormat("Jump: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}",x,y,directionX,directionY);
                                     ValidMove newMove = new ValidMove();
                                     newMove.targetSpace = jumpSpace;
                                     newMove.jumped = new int[]{x,y};
