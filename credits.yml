@@ -1,4 +1,6 @@
 
+credits:
+
 - filename: ui-hover.ogg
   filepath: FIXME
   utility:  UI Element Hover Sound
@@ -47,3 +49,9 @@
   utility:  Loss of Piece
   creator:  https://freesound.org/people/zgump/
   location: https://freesound.org/people/zgump/sounds/82523/
+
+- filename: ui-select.ogg
+  filepath: FIXME
+  utility:  First Part of Two-Part Audio Sequence for UI Elements
+  creator:  https://freesound.org/people/patchytherat/
+  location: https://freesound.org/people/patchytherat/sounds/531404/

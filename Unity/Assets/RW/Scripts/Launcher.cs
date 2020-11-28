@@ -72,6 +72,16 @@ namespace Photon.Pun.Demo.PunBasics
         string playerName = "";
         string roomName = "";
 
+        [Header("Menu Audio")]
+        public AudioSource menuAudio;
+        public AudioClip audioHover;
+        public AudioClip audioSelect;
+        public AudioClip audioBack;
+        public AudioClip audioConfirm;
+        public AudioClip audioError;
+
+
+
         // Start Method
         void Start()
         {

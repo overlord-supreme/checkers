@@ -10,8 +10,10 @@ using Photon.Realtime;
 ///     Mouse Input
 ///     Turn Control
 ///     Move Requests
-/// <see href="//https://answers.unity.com/questions/34795/how-to-perform-a-mouse-click-on-game-object.html">How To Perform A Mouse Click On Game Object</see>
+/// <see href="https://answers.unity.com/questions/34795/how-to-perform-a-mouse-click-on-game-object.html">How To Perform A Mouse Click On Game Object</see>
 /// <see href="https://www.raywenderlich.com/5441-how-to-make-a-chess-game-with-unity">How to Make a Chess Game with Unity</see>
+/// <see href="https://docs.unity3d.com/ScriptReference/AudioSource.PlayOneShot.html">AudioSource.PlayOneShot</see>
+/// <see href="https://docs.unity3d.com/ScriptReference/HeaderAttribute.html">HeaderAttribute</see>
 /// </summary>
 public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
@@ -38,6 +40,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private List<ValidMove> moves = new List<ValidMove>();
     private List<ValidMove> allMoves = new List<ValidMove>();
 
+    [Header("Piece Audio")]
+    public AudioSource pieceAudio;
+    public AudioClip pieceHover;
+    public AudioClip pieceSelect;
+    public AudioClip pieceDeselect;
+    public AudioClip pieceMove;
+    public AudioClip pieceError;
+    
+    [Header("Piece Event Audio")]
+    public AudioSource pieceEventAudio;
+    public AudioClip pieceCapture;
+    public AudioClip pieceLost;
+    
+    [Header("Round Audio")]
+    public AudioSource roundAudio;
+    public AudioClip roundStart;
+    public AudioClip gameOver;
 
     private void Start() {
         if(PhotonNetwork.IsMasterClient)
