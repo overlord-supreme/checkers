@@ -19,17 +19,10 @@ public class Piece : MonoBehaviour
         RED,
         NONE
         };
+
+
     [SerializeField] public PieceColor color;
     public bool isKing {get; private set;} = false;
-
-
-    /// <summary>
-    /// Why is this here?
-    /// </summary>
-    public void setColor(PieceColor color)
-    {
-        this.color = color;
-    }
 
 
     /// <summary>
