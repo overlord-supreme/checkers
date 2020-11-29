@@ -12,20 +12,13 @@ public class Piece : MonoBehaviour
     // Allow us to Promote to King
     [SerializeField] private GameObject king;
 
+    public bool kinged { get; private set; } = false;
 
     // Identify which player we belong to
     public enum PieceColor {BLACK, RED, NONE};
-    [SerializeField] public PieceColor color {get;private set;} = PieceColor.BLACK;
 
-
-    /// <summary>
-    /// Why is this here?
-    /// </summary>
-    public void setColor(PieceColor color)
-    {
-        this.color = color;
-    }
-
+    // The current color of the piece.
+    [SerializeField] public PieceColor color {get; set;} = PieceColor.BLACK;
 
     /// <summary>
     /// Promote a Man to a King
@@ -34,5 +27,6 @@ public class Piece : MonoBehaviour
     {
         // Display the "Crown"
         king.SetActive(true);
+        kinged = true;
     }
 }

@@ -86,8 +86,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                     }
                     else
                     {
-                        GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
-                        boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
+                        GameObject pieceObj = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
+                        Piece piece = pieceObj.GetComponent<Piece>();
+                        boardGrid[g,i].setCurrentOccupant(piece);
+                        piece.color = Piece.PieceColor.RED;
                     }
                 }
                 else
@@ -99,8 +101,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                     }
                     else
                     {
-                        GameObject piece = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
-                        boardGrid[g,i].setCurrentOccupant(piece.GetComponent<Piece>());
+                        GameObject pieceObj = GameObject.Instantiate(RedPiecePrefab,PiecesList.transform);
+                        Piece piece = pieceObj.GetComponent<Piece>();
+                        boardGrid[g,i].setCurrentOccupant(piece);
+                        piece.color = Piece.PieceColor.RED;
                     }
                 }
             }
@@ -216,7 +220,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>
     /// LOGICAL position on board
     /// </summary>
-    private Piece GetPieceByLoc(int x, int y)
+    public Piece GetPieceByLoc(int x, int y)
     {
         return boardGrid[x,y].getCurrentOccupant();
     }
@@ -225,9 +229,42 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>
     /// LOGICAL position on board
     /// </summary>
-    private Space GetSpaceByLoc(int x, int y)
+    public Space GetSpaceByLoc(int x, int y)
     {
         return boardGrid[x,y];
+    }
+
+
+    /// <summary>
+    /// Gets the logical position on board of the space.
+    /// Returns null if the space is not on the board.
+    /// </summary>
+    public Tuple<int, int> GetLocBySpace(Space space)
+    {
+        for (int i = 0; i < boardGrid.GetLength(0); i++) {
+            for (int j = 0; j < boardGrid.GetLength(1); j++) {
+                if (boardGrid[i, j].Equals(space))
+                    return new Tuple<int, int>(i, j);
+            }
+        }
+        return null;
+    }
+
+
+    /// <summary>
+    /// Gets the logical position on board of the piece.
+    /// Returns null if the piece is not on the board.
+    /// </summary>
+    public Tuple<int, int> GetLocByPiece(Piece piece)
+    {
+        for (int i = 0; i < boardGrid.GetLength(0); i++) {
+            for (int j = 0; j < boardGrid.GetLength(1); j++) {
+                Piece mbOccupant = boardGrid[i, j].getCurrentOccupant();
+                if (mbOccupant != null && mbOccupant.Equals(piece))
+                    return new Tuple<int, int>(i, j);
+            }
+        }
+        return null;
     }
 
 
@@ -252,9 +289,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
 
-
-
-
     /// <summary>
     /// This takes in a Player's request
     /// CHECKS to see if it is legal
@@ -272,8 +306,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
         PhotonNetwork.RaiseEvent(pieceMoveCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
-
-
 
 
     /// <summary>
@@ -306,6 +338,12 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         Piece piece;
         piece = targetSpace.getCurrentOccupant();
         // TODO FOR CHRIS -- If a piece is on the tile, now highlight the tile and the potential move locations
+
+        IEnumerable<Space> possibleMoves = AvailableMoves(targetSpace);
+        
+        // Highlight each available move for the current player
+        foreach (Space move in possibleMoves)
+            move.setHighlighted(true);
         
         // Friendly
         if (piece.color == playerColor)
@@ -322,7 +360,25 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
 
+    /// <summary>
+    /// Yields each available move the player can make from some starting position.
+    /// </summary>
+    private IEnumerable<Space> AvailableMoves(Space start)
+    {
+        IEnumerable<MoveRule> moves = new List<MoveRule>()
+        {
+            new BasicMoveRule(this),
+            new JumpMoveRule(this)
+        };
 
+        foreach (MoveRule move in moves)
+        {
+            foreach (Space space in move.GetMoves(start))
+            {
+                yield return space;
+            }
+        }
+    }
 
 
     /// <summary>
@@ -338,32 +394,22 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     public bool RequestSecondClick(Space targetSpace)
     {   
-        // Empty
-        if (!targetSpace.isOccupied())
+        // Unhighlight all spaces no matter what the user does
+        for (int i = 0; i < boardGrid.GetLength(0); i++)
+            for (int j = 0; j < boardGrid.GetLength(1); j++)
+                boardGrid[i,j]?.setHighlighted(false);
+
+        // Target space represents an available move.
+        if (targetSpace.isHighlighted())
         {
             // REPLACE ME WITH NICE SIDE EFFECTS!!!
-            Debug.Log("RequestFirstClick: EMPTY, SELECT ME");
+            Debug.Log("RequestSecondClick: EMPTY, SELECT ME");
             return true;
         }
         
         // Anything Else
         // REPLACE ME WITH NICE SIDE EFFECTS!!!
-        Debug.Log("RequestFirstClick: NOT empty, DO NOT select me");
+        Debug.Log("RequestSecondClick: NOT empty, DO NOT select me");
         return false;
     }
-    
-
-    /// <summary>
-    /// Could return EMPTY
-    /// Or Return ANY in Cardinal Diagonals
-    /// Expects <see cref="PlayerManager" /> to call this method
-    /// ASSUMES both <see cref="Board.RequestFirstClick" /> and <see cref="Board.RequestSecondClick" /> have run successfully
-    /// FIXME NOT IMPLEMENTED !!!
-    /// </summary>
-    // public ArrayList<Space> GetOptions(int playerColor)
-    // {
-
-    // }
-
-
 }

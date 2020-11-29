@@ -74,6 +74,7 @@ public class PlayerManager : MonoBehaviour
                     //if they are our piece, select them
                     if(space.getCurrentOccupant() != null && space.getCurrentOccupant().color == color)
                     {
+                        Board.getInstance().RequestFirstClick(space, color);
                         currentPieceSelected = space.getCurrentOccupant();
                         currentSpaceSelected = space;
                     }
@@ -82,6 +83,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     if(space.getCurrentOccupant() == null)
                     {
+                        Board.getInstance().RequestSecondClick(space);
                         Board.getInstance().RequestMove(currentSpaceSelected.x,currentSpaceSelected.y,space.x,space.y);
                         currentSpaceSelected = null;
                         currentPieceSelected = null;
