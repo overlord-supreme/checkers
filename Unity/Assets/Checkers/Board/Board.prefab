@@ -244,6 +244,7 @@ MonoBehaviour:
   gameObject: {fileID: 4621317538668766796}
   boardAudio: {fileID: 2483904300049814519}
   gameOver: {fileID: 8300000, guid: 92f1300142f1d174db007875a1246c69, type: 3}
+  player: {fileID: 0}
 --- !u!82 &2483904300049814519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -253,7 +254,8 @@ AudioSource:
   m_GameObject: {fileID: 4621317538668766796}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: aea3bc3f9bc9b1b4db0593e827c21e93,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
