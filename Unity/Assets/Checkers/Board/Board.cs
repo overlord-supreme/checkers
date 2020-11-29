@@ -394,79 +394,113 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>
     /// FIXME
     /// </summary>
-    /// <param name="currentX">The Current Position of the PIECE (Column)</param>
-    /// <param name="y">The Current Position of the PIECE (Row)</param>
+    /// <param name="currentX">The Current Position of the SPACE that a piece COULD jump into (Column)</param>
+    /// <param name="currentY">The Current Position of the SPACE that a piece COULD jump into (Row)</param>
     /// <param name="directionX">The X Direction that the PIECE CAN move in</param>
     /// <param name="directionY">The Y Direction that the PIECE CAN move in (RED v BLACK)</param>
-    /// <param name="color">The PLAYER's color</param>
+    /// <param name="playerColor">The PLAYER's color</param>
     /// <param name="originalPiece">UNKNOWN (FIXME)</param>
-    /// <returns>An Object of all the Possible Move</returns>
-    /// TODO: CLEAN THIS UP:
-    /// - Use Early Returns (Limit Indent SIGNIFICANTLY)
-    /// - Finish Renaming variables
-    private object checkSpace(int currentX, int y, int directionX, int directionY, Piece.PieceColor color, Piece originalPiece)
+    /// <returns>An Object that can be NULL or a ValidMove</returns>
+    private object checkSpace(int currentX, int currentY, int directionX, int directionY, Piece.PieceColor playerColor, Piece originalPiece)
     {
-        // If the piece is not Horizontally out of bounds
-        if (currentX >= 0 && currentX <= 7)
+        // Do not handle moves outside the board
+        if (OutOfBounds(currentX, currentY))
         {
-            // If the piece is not Vertically out of bounds
-            if (y >= 0 && y <= 7)
-            {
-                // Find the Space
-                Space space = GetSpaceByLoc(currentX, y);
-
-                // If the piece is empty
-                if (space.getCurrentOccupant() == null)
-                {
-                    // Just add it as a move and stop
-                    Debug.LogFormat("Empty Space: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}", currentX, y, directionX, directionY);
-                    //Empty space, can jump, add to validmoves
-                    ValidMove newMove = new ValidMove();
-                    newMove.targetSpace = space;
-                    newMove.isJump = false;
-                    newMove.piece = originalPiece;
-                    return newMove;
-                }
-                else
-                {
-                    // calculate the jump
-                    int jumpX = currentX - directionX;
-                    int jumpY = y + directionY;
-
-                    // if the Jump is not Horizontally out of bounds
-                    if (jumpX <= 7 && jumpX >= 0)
-                    {
-                        // if the Jump is not Vertically out of bounds
-                        if (jumpY <= 7 && jumpY >= 0)
-                        {
-                            // if the piece is not the same color as the player
-                            if (GetPieceByLoc(currentX, y).color != color)
-                            {
-                                // Find the Space
-                                Space jumpSpace = GetSpaceByLoc(jumpX,jumpY);
-
-                                // if the Jump EndSpace is empty
-                                if (jumpSpace.getCurrentOccupant() == null)
-                                {
-                                    // add it as a move and stop
-                                    //Debug.LogFormat("Jump: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}", currentX, y, directionX, directionY);
-                                    ValidMove newMove = new ValidMove();
-                                    newMove.targetSpace = jumpSpace;
-                                    newMove.jumped = new int[]{ currentX, y};
-                                    newMove.isJump = true;
-                                    newMove.piece = originalPiece;
-                                    return newMove;
-                                }
-                            }
-                        }
-                    }
-                    
-                }
-            }
+            return null;
         }
 
-        // Anything Else, Cannot Proceed, Return No Moves
+        // Find the Space
+        Space space = GetSpaceByLoc(currentX, currentY);
+
+        // If the piece is empty, add it as a move
+        if (!space.getCurrentOccupant())
+        {
+            // DEBUG
+            Debug.LogFormat("Empty Space: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}", currentX, currentY, directionX, directionY);
+
+            // Return the new move
+            return NewMove(space, new int[]{}, false, originalPiece);
+        }
+
+        // If the piece is NOT empty, Check if we can JUMP over it
+        if (space.getCurrentOccupant())
+        {
+            // Calculate the jump
+            int jumpX = currentX - directionX;
+            int jumpY = currentY + directionY;
+
+            // Do not handle jumps outside the board
+            if (OutOfBounds(jumpX, jumpY))
+            {
+                return null;
+            }
+
+            // If the current occupany is not the same color as the player
+            if (GetPieceByLoc(currentX, currentY).color != playerColor)
+            {
+                // Find the Space we would jump into
+                Space jumpSpace = GetSpaceByLoc(jumpX,jumpY);
+
+                // And if the Jump EndSpace is empty, add it
+                if (!jumpSpace.getCurrentOccupant())
+                {
+                    return NewMove(jumpSpace, new int[] { currentX, currentY }, true, originalPiece);
+                }
+
+                // Otherwise, don't return anything
+                return null;
+            }
+
+            // Otherwise, don't return anything
+            return null;
+        }
+
+        // Otherwise, don't return anything
         return null;
+    }
+
+
+
+
+    /// <summary>
+    /// Builds a New Valid Move
+    /// Constructor for the <See cref="Board.ValidMove"></See>
+    /// </summary>
+    /// <param name="target">where we jump to</param>
+    /// <param name="jumped">what piece we jumped (if any)</param>
+    /// <param name="isJump">Are we a jump?</param>
+    /// <param name="piece">what are we jumping with</param>
+    /// <returns></returns>
+    private ValidMove NewMove(Space target, int[] jumped, bool isJump, Piece piece)
+    {
+        ValidMove newMove   = new ValidMove();
+        newMove.targetSpace = target;
+        newMove.jumped      = jumped;
+        newMove.isJump      = false;
+        newMove.piece       = piece;
+        return newMove;
+    }
+
+
+
+
+    /// <summary>
+    /// Is the coordinate within the Board?
+    /// </summary>
+    /// <param name="x">Horizontal (Column) Position</param>
+    /// <param name="y">Vertical (Row) Position</param>
+    /// <returns>True if outside bounds of board, False otherwise</returns>
+    private bool OutOfBounds(int x, int y)
+    {
+        // If both X and Y are within range
+        if (x <= 7 && x >= 0 && y <= 7 && y >= 0)
+        {
+            // (Within Bounds)
+            return false;
+        }
+
+        // Anything else (Outside Bounds)
+        return true;
     }
 
 
@@ -502,19 +536,26 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 
         // Where we add Valid Moves
         List<ValidMove> moves = new List<ValidMove>();
-        object forwardLeftMove = checkSpace(leftX,forwardY, directionX, directionY, color, GetPieceByLoc(startX,startY));
-        if(forwardLeftMove != null)
+
+        // MAN Movement
         {
-            moves.Add((ValidMove)forwardLeftMove);
-            //ValidMove tSpace = (ValidMove)forwardLeftMove;
-            //tSpace.targetSpace.GetComponent<MeshRenderer> ().material = selectableMaterial;
+            // Check Forward Left
+            object forwardLeftMove = checkSpace(leftX, forwardY, directionX, directionY, color, GetPieceByLoc(startX, startY));
+            if (forwardLeftMove != null)
+            {
+                moves.Add((ValidMove)forwardLeftMove);
+            }
+
+            // Check Forward Right
+            object forwardRightMove = checkSpace(rightX, forwardY, -directionX, directionY, color, GetPieceByLoc(startX, startY));
+            if (forwardRightMove != null)
+            {
+                moves.Add((ValidMove)forwardRightMove);
+            }
         }
-        object forwardRightMove = checkSpace(rightX, forwardY, -directionX, directionY, color, GetPieceByLoc(startX,startY));
-        if(forwardRightMove != null)
-        {
-            moves.Add((ValidMove)forwardRightMove);
-        }
-        if(isKing)
+
+        // KING Movement
+        if (isKing)
         {
             int backY = startY - directionY;
             object backLeftMove = checkSpace(leftX,backY, directionX, -directionY,color, GetPieceByLoc(startX,startY));
@@ -529,7 +570,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
             }
         }
 
+        // JUMP movement
         bool hasJump = false;
+
+        // Check if we have any moves with jumps
         foreach (ValidMove move in moves)
         {
             if(move.isJump)
@@ -538,16 +582,26 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
                 break;
             }
         }
+
+        // If we do have a move with a jump
         if(hasJump)
         {
+            // Build and return only a list with jump moves (remove regular moves)
             List<ValidMove> returnMoves = new List<ValidMove>();
             foreach (ValidMove move in moves)
             {
                 if(move.isJump)
+                {
                     returnMoves.Add(move);
+                }
             }
+
+            // Return Jumping Moves
             return returnMoves;
         }
+
+        // Otherwise
+        // Just Return Regular Moves
         return moves;
     }
 
