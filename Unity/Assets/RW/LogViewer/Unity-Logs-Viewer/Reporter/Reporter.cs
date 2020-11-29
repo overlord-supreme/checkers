@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 #if UNITY_CHANGE3
 using UnityEngine.SceneManagement;
+using System;
 #endif
 
 
@@ -1778,6 +1779,11 @@ public class Reporter : MonoBehaviour
 		}
 	}
 
+	/// added: 2002-11-29
+	/// by:    Overlord-Supreme
+	/// why:   too many errors reported on line "if( sceneIndex != -1 && string.IsNullOrEmpty( scenes[sceneIndex] ))"
+	/// what:  try-catch
+	/// <see href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-catch">try-catch (C# Reference)</see>
 	void Update()
 	{
 		fpsText = fps.ToString("0.000");
@@ -1785,9 +1791,16 @@ public class Reporter : MonoBehaviour
 		//addSample();
 
 #if UNITY_CHANGE3
-		int sceneIndex = SceneManager.GetActiveScene().buildIndex ;
-		if( sceneIndex != -1 && string.IsNullOrEmpty( scenes[sceneIndex] ))
-			scenes[ SceneManager.GetActiveScene().buildIndex ] = SceneManager.GetActiveScene().name ;
+		try
+		{
+			int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+			if (sceneIndex != -1 && string.IsNullOrEmpty(scenes[sceneIndex]))
+				scenes[SceneManager.GetActiveScene().buildIndex] = SceneManager.GetActiveScene().name;
+		}
+		catch (NullReferenceException e)
+		{
+
+		}
 #else
 		int sceneIndex = Application.loadedLevel;
 		if (sceneIndex != -1 && string.IsNullOrEmpty(scenes[Application.loadedLevel]))
