@@ -37,6 +37,10 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
+// begin:   audio-import
+using UnityEngine.Audio;
+// end:     audio-import
+
 
 
 
@@ -52,6 +56,8 @@ namespace Photon.Pun.Demo.PunBasics
     /// Play audio with: <see href="https://docs.unity3d.com/ScriptReference/AudioSource.PlayOneShot.html">AudioSource.PlayOneShot</see>
     /// Exit game with: <see href="https://docs.unity3d.com/ScriptReference/Application.Quit.html">Application.Quit</see>
     /// Muting audio: <see href="https://forum.unity.com/threads/mute-all-sounds-in-a-game.125202/">Mute all sounds in a game</see>
+    /// Settings Menu: <see href="https://www.youtube.com/watch?v=YOaYQrN1oYQ">SETTINGS MENU in Unity</see>
+    /// Audio Mixing: <see href="https://www.raywenderlich.com/532-audio-tutorial-for-unity-the-audio-mixer">Audio tutorial for Unity: the Audio Mixer</see>
     [RequireComponent(typeof(AudioSource))]
     public class Launcher : MonoBehaviourPunCallbacks
     {
@@ -95,11 +101,15 @@ namespace Photon.Pun.Demo.PunBasics
         public GameObject optionsCancel;
         public GameObject optionsConfirm;
         public GameObject optionsButtonAudioToggle;
-        public AudioListener cameraListener;
+        public AudioMixer masterMixer;
         
         // Each Option has a Current and Prior State (set on confirm/cancel)
         private bool muted = false;
         private bool wasMuted = false;
+
+        private float volume = 0f;
+        private float oldVolume = 0f;
+        
         // end:     options-variables
 
         string playerName = "";
@@ -265,6 +275,10 @@ namespace Photon.Pun.Demo.PunBasics
             // Play Confirmation
             menuAudio.PlayOneShot(audioConfirm, 1f);
 
+            // Close all other Menus
+            mainMenuUI.SetActive(false);
+            roomJoinUI.SetActive(false);
+
             // Open the Menu
             optionsMenuUI.SetActive(true);
         }
@@ -286,6 +300,13 @@ namespace Photon.Pun.Demo.PunBasics
             {
                 wasMuted = false;
             }
+
+            // Check Volume
+            oldVolume = volume;
+
+            // Re-open all other Menus
+            mainMenuUI.SetActive(true);
+            roomJoinUI.SetActive(true);
         }
 
         public void CancelOptions()
@@ -301,6 +322,36 @@ namespace Photon.Pun.Demo.PunBasics
             {
                 muteAudio();
             }
+
+            // Check Volume
+            if (volume != oldVolume)
+            {
+                setAudio(oldVolume);
+            }
+
+            // Re-open all other Menus
+            mainMenuUI.SetActive(true);
+            roomJoinUI.SetActive(true);
+        }
+
+        public void setAudio(float newVolume)
+        {
+            // Play Select
+            menuAudio.PlayOneShot(audioSelect, 0.1f);
+
+            // Handle Mute State
+            if (muted)
+            {
+                // UN-Mute it
+                muted = false;
+            }
+
+            // DEBUG
+            Debug.Log(newVolume);
+
+            // Set it
+            masterMixer.SetFloat("volume", newVolume);
+            volume = newVolume;
         }
 
         public void muteAudio()
@@ -311,7 +362,7 @@ namespace Photon.Pun.Demo.PunBasics
             if (!muted)
             {
                 // Mute it
-                cameraListener.enabled = false;
+                masterMixer.SetFloat("volume", -80f);
                 muted = true;
                 return;
             }
@@ -319,7 +370,7 @@ namespace Photon.Pun.Demo.PunBasics
             if (muted)
             {
                 // UN-Mute it
-                cameraListener.enabled = true;
+                masterMixer.SetFloat("volume", volume);
                 muted = false;
                 return;
             }
