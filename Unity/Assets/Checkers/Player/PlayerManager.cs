@@ -159,6 +159,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                         {
                             if(move.piece == clickedPiece)
                             {
+                                move.targetSpace.setHighlighted(true);
                                 isWithinValidMoves = true;
                                 moves.Add(move);
                             }
@@ -173,6 +174,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 else if(currentPieceSelected != null)
                 {
                     bool wasJump = false;
+                    allMoves = Board.getInstance().GetAllValidMoves(color);
+                    foreach (ValidMove move in allMoves)
+                        move.targetSpace.setHighlighted(false);
+
                     //get all moves related to selected piece
                     // Check the Valid Moves
                     foreach (ValidMove move in moves)

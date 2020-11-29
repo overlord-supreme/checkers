@@ -20,7 +20,9 @@ public class Space : MonoBehaviour
     
     // Stores a reference to the current occupant of itself
     [SerializeField] private Piece currentOccupant = null;
-    
+
+    // The highlight that tells us whether a player can make a move. Hidden by default.
+    [SerializeField] private GameObject TileHighlight;
     
     // Used for edge, color of side
     [SerializeField] private Piece.PieceColor color = Piece.PieceColor.NONE;
@@ -28,6 +30,10 @@ public class Space : MonoBehaviour
     // returns bool for if the space is currently occupied
     public bool isOccupied() {return currentOccupant != null;}
 
+    private void Start()
+    {
+        TileHighlight.SetActive(false);
+    }
 
     /// <summary>
     /// returns reference to current occupant
@@ -46,4 +52,8 @@ public class Space : MonoBehaviour
     /// </summary>
     public void setCurrentOccupant(Piece occupant) {currentOccupant = occupant; currentOccupant.transform.position = piecePosition.position;}
 
+    /// <summary>
+    /// sets whether the highlight is visible
+    /// </summary>
+    public void setHighlighted(bool isHighlighted) { TileHighlight.SetActive(isHighlighted); }
 }
