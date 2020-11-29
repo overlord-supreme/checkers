@@ -3,10 +3,9 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
+        "RW",
         "Board",
-        "Piece",
-        "Player",
-        "RW"
+        "Piece"
     ],
     "includePlatforms": [
         "Editor"
