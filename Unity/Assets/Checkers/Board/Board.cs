@@ -5,7 +5,7 @@ using System;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun;
-
+using Space = BoardSpace.Space;
 
 /// <summary>
 /// Stores the TARGET space and the LOGICAL POSITION of the jumped piece

@@ -4,6 +4,7 @@ using UnityEngine;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using Space = BoardSpace.Space;
 
 /// <summary>
 /// RESPONSIBILITIES:
