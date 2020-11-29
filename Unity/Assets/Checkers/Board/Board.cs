@@ -69,6 +69,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     private static Board singleton = null;
     public static Board getInstance() {return singleton;}
 
+    // Audio
+    public AudioSource boardAudio;
+    public AudioClip gameOver;
+
 
     /// <summary>
     /// Sets up Board with Single Reference and Logical Positions
@@ -156,7 +160,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         // Extract the Event Code (to switch on)
         byte eventCode = photonEvent.Code;
-
         
         // If someone wants to destroy a piece
         if (eventCode == pieceDestroyCode)
@@ -193,12 +196,13 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         Piece piece = GetPieceByLoc(x,y);
 
         // Get the Piece and Delete it
-        // gameObject != GameObject
+        // NOTE: gameObject != GameObject
         GameObject.Destroy(piece.gameObject);
+
         // Get the Space and Clear it
         GetSpaceByLoc(x,y).clearCurrentOccupant();
 
-        
+        // Let the Local player know
     }
 
 

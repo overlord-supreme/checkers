@@ -56,7 +56,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [Header("Round Audio")]
     public AudioSource roundAudio;
     public AudioClip roundStart;
-    public AudioClip gameOver;
 
     private void Start() {
         if(PhotonNetwork.IsMasterClient)
@@ -122,14 +121,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     void raycastMouse()
     {
+
+        // Draw the RayCast
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        // If Player is Trying to Select
         if (Input.GetMouseButtonDown(0))
         {
-            if(!currentPlayer)
+
+
+            if (!currentPlayer)
+            {
+                // Play Error Sound
+                pieceAudio.PlayOneShot(pieceError, 1F);
                 return;
-            
-            // Draw the RayCast
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            }
 
             if (Physics.Raycast(ray, out hit, 100, mask))
             {
@@ -204,9 +211,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                         if(moves.Count > 0 && moves[0].isJump)
                             return;
                     }
+
+                    // Clear References
                     currentSpaceSelected = null;
                     currentPieceSelected = null;
                     moves.Clear();
+
                     //Change turn
                     RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
         
@@ -291,10 +301,39 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
 
+    /// <summary>
+    /// Called from <see cref="Board"></see>
+    /// </summary>
+    /// <param name="color">The color of the destroyed piece</param>
+    /// NOTE: NOT CONNECTED YET!!!
+    public void PieceWasDeleted(Piece.PieceColor pieceColor)
+    {
+        // THEY captured OUR piece
+        if (pieceColor == color)
+        {
+            pieceEventAudio.PlayOneShot(pieceLost, 1F);
+        }
+
+        // WE captured THEIR piece
+        if (pieceColor != color)
+        {
+            pieceEventAudio.PlayOneShot(pieceCapture, 1F);
+        }
+    }
+
+
+
 
     private void SwapPlayer()
     {
+        // Swap Players
         currentPlayer = !currentPlayer;
+
+        // Play Sound
+        roundAudio.PlayOneShot(roundStart, 1F);
+
+        // Show UI
+
     }
 
 
