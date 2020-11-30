@@ -55,6 +55,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     // If we successfully complete a move
     private bool moved = false;
 
+    // Make Permanent, is getting weirdly deleted
+    Space space;
+
 
     // Audio
     [Header("Piece Audio")]
@@ -199,6 +202,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
             if (!currentPlayer)
                 return;
 
+            Debug.Log("-1: Plain Call");
+
             // Draw the RayCast
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -210,7 +215,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 // Get the Target
                 GameObject hitObject = hit.collider.gameObject;
-                Space space = hitObject.GetComponent<Space>();
+                space = hitObject.GetComponent<Space>();
+                Debug.Log("space: " + space);
 
                 // DEBUG Print what we hit
                 // Debug.Log(hitObject);
@@ -245,6 +251,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 //Second click
                 else if (currentPieceSelected != null)
                 {
+                    Debug.Log("0: CLICK");
                     bool wasJump = false;
                     allMoves = Board.getInstance().GetAllValidMoves(color);
                     foreach (ValidMove move in allMoves)
@@ -254,18 +261,27 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     // Check the Valid Moves
                     foreach (ValidMove move in moves)
                     {
+                        Debug.Log("0.5: Checking Each Move");
+                        Debug.Log("space: " + space);
+
                         // If the Desired Move is in Valid Moves
                         if (move.targetSpace == space)
                         {
                             // Execute the Move
                             if (move.isJump)
+                            {
+                                Debug.Log("BOING");
                                 wasJump = true;
+                            }
+
+                            Debug.Log("1: Please Move");
                             MovePiece(space);
 
                             // SPECIAL CASE: Is a Jump (Deletes Pieces)
                             if (move.isJump)
                             {
                                 DeletePiece(move.jumped[0], move.jumped[1]);
+                                Debug.Log("1a: Please Die");
                             }
                             break;
 
@@ -367,6 +383,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         // Log it
         Debug.Log("_____2nd_____: EMPTY, SELECT ME");
+        Debug.Log("2: Got it, Moving");
 
         // Play UI Effect
         // FIXME
@@ -390,6 +407,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     private void DeletePiece(int x, int y)
     {
+        Debug.Log("2a: Try Dying");
         Board.getInstance().RequestDestroy(x, y);
     }
 

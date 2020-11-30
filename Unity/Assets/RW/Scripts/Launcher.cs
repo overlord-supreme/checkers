@@ -347,7 +347,7 @@ namespace Photon.Pun.Demo.PunBasics
             }
 
             // DEBUG
-            Debug.Log(newVolume);
+            // Debug.Log(newVolume);
 
             // Set it
             masterMixer.SetFloat("volume", newVolume);

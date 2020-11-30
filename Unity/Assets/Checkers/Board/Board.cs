@@ -240,6 +240,9 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <param name="y">The Vertical (Row) Position of the Piece</param>
     public void RequestDestroy(int x, int y)
     {
+        // Debug
+        Debug.Log("3a: I hear you, standby");
+
         // Build the Packet Data
         object[] content = new object[] {x, y};
         
@@ -258,6 +261,9 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     private void DestroyPiece(int x, int y)
     {
+        // Debug
+        Debug.Log("4a: Goodbye pest!");
+
         // Find the Piece
         Piece piece = GetPieceByLoc(x,y);
 
@@ -287,7 +293,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <param name="endX">Which Column we are moving TO</param>
     /// <param name="endY">Which Row we are moving TO</param>
     private void MovePiece(int startX, int startY, int endX, int endY)
-    {   
+    {
+        // Debug
+        Debug.Log("4: Moving");
+
         // Find the Piece
         Piece piece = GetPieceByLoc(startX, startY);
         
@@ -378,6 +387,9 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <param name="endY">Which Row we are moving TO</param>
     public void RequestMove(int startX, int startY, int endX, int endY)
     {
+        // Debug
+        Debug.Log("3: Requesting");
+
         // Pacakge the Parameters as a New Object
         object[] content = new object[] { startX, startY, endX, endY };
         
@@ -416,7 +428,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         if (!space.getCurrentOccupant())
         {
             // DEBUG
-            Debug.LogFormat("Empty Space: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}", currentX, currentY, directionX, directionY);
+            // Debug.LogFormat("Empty Space: x-coord: {0} y-coord: {1} directionX: {2} directionY: {3}", currentX, currentY, directionX, directionY);
 
             // Return the new move
             return NewMove(space, new int[]{}, false, originalPiece);
