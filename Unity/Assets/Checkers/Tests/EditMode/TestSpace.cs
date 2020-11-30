@@ -25,6 +25,9 @@ namespace Tests
             space.setCurrentOccupant(piece);
             Assert.AreEqual(space.getCurrentOccupant(), piece);
             Assert.IsTrue(space.isOccupied());
+
+            space.clearCurrentOccupant();
+            Assert.IsNull(space.getCurrentOccupant());
         }
     }
 }
