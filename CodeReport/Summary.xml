@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>11/30/2020 - 12:02:15 AM</Generatedon>
+    <Parser>OpenCoverParser</Parser>
+    <Assemblies>14</Assemblies>
+    <Classes>242</Classes>
+    <Files>206</Files>
+    <Coveredlines>171</Coveredlines>
+    <Uncoveredlines>17769</Uncoveredlines>
+    <Coverablelines>17940</Coverablelines>
+    <Totallines>41809</Totallines>
+    <Linecoverage>0.9</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+  </Summary>
+  <Coverage>
+    <Assembly name="Assembly-CSharp" classes="117" coverage="0" coveredlines="0" coverablelines="6049" totallines="13402" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="BallCollisionChecker" coverage="0" coveredlines="0" coverablelines="8" totallines="48" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="CarMovement" coverage="0" coveredlines="0" coverablelines="36" totallines="106" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ChannelSelector" coverage="0" coveredlines="0" coverablelines="9" totallines="22" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ChatAppIdCheckerUI" coverage="0" coveredlines="0" coverablelines="9" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ChatGui" coverage="0" coveredlines="0" coverablelines="330" totallines="614" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="FriendItem" coverage="0" coveredlines="0" coverablelines="40" totallines="80" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="GoalPostCollisionManager" coverage="0" coveredlines="0" coverablelines="21" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="IgnoreUiRaycastWhenInactive" coverage="0" coveredlines="0" coverablelines="3" totallines="10" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="MultiKeyDictionary[T1,T2,T3]" coverage="0" coveredlines="0" coverablelines="12" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="NamePickGui" coverage="0" coveredlines="0" coverablelines="21" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.UtilityScripts.EventSystemSpawner" coverage="0" coveredlines="0" coverablelines="9" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.UtilityScripts.OnStartDelete" coverage="0" coveredlines="0" coverablelines="3" totallines="24" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.UtilityScripts.TextButtonTransition" coverage="0" coveredlines="0" coverablelines="21" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.UtilityScripts.TextToggleIsOnTransition" coverage="0" coveredlines="0" coverablelines="23" totallines="86" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.Asteroid" coverage="0" coveredlines="0" coverablelines="63" totallines="121" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.AsteroidsGame" coverage="0" coveredlines="0" coverablelines="12" totallines="35" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.AsteroidsGameManager" coverage="0" coveredlines="0" coverablelines="136" totallines="250" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.Bullet" coverage="0" coveredlines="0" coverablelines="14" totallines="31" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.LobbyMainPanel" coverage="0" coveredlines="0" coverablelines="202" totallines="361" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.LobbyTopPanel" coverage="0" coveredlines="0" coverablelines="4" totallines="22" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.PlayerListEntry" coverage="0" coveredlines="0" coverablelines="45" totallines="97" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.PlayerOverviewPanel" coverage="0" coveredlines="0" coverablelines="22" totallines="67" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.RoomListEntry" coverage="0" coveredlines="0" coverablelines="15" totallines="35" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Asteroids.Spaceship" coverage="0" coveredlines="0" coverablelines="103" totallines="212" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.AppVersionProperty" coverage="0" coveredlines="0" coverablelines="7" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.AutoSyncSceneToggle" coverage="0" coveredlines="0" coverablelines="24" totallines="61" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.BackgroundTimeOutField" coverage="0" coveredlines="0" coverablelines="31" totallines="68" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.BestRegionInPrefsProperty" coverage="0" coveredlines="0" coverablelines="14" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.BoolInputField" coverage="0" coveredlines="0" coverablelines="17" totallines="54" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CloudRegionProperty" coverage="0" coveredlines="0" coverablelines="14" totallines="38" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CountOfPlayersInRoomProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CountOfPlayersOnMasterProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CountOfPlayersProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CountOfRoomsProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="43" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CrcCheckToggle" coverage="0" coveredlines="0" coverablelines="24" totallines="61" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomAutoCleanupProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomEmptyRoomTtlProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="43" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomExpectedUsersProperty" coverage="0" coveredlines="0" coverablelines="21" totallines="58" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomIsOfflineProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomIsOpenProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomIsVisibleProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomMasterClientIdProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomMaxPlayersProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomNameProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="43" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomPlayerCountProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomPlayerTtlProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="43" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.CurrentRoomPropertiesListedInLobbyProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.DocLinkButton" coverage="0" coveredlines="0" coverablelines="6" totallines="33" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.Forms.ConnectToRegionUIForm" coverage="0" coveredlines="0" coverablelines="17" totallines="57" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.Forms.CreateRoomUiForm" coverage="0" coveredlines="0" coverablelines="21" totallines="71" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.Forms.LoadLevelUIForm" coverage="0" coveredlines="0" coverablelines="11" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.Forms.SetRoomCustomPropertyUIForm" coverage="0" coveredlines="0" coverablelines="11" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.Forms.UserIdUiForm" coverage="0" coveredlines="0" coverablelines="17" totallines="54" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.FriendListCell" coverage="0" coveredlines="0" coverablelines="18" totallines="63" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.FriendListView" coverage="0" coveredlines="0" coverablelines="74" totallines="162" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.GameVersionField" coverage="0" coveredlines="0" coverablelines="31" totallines="68" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.GameVersionProperty" coverage="0" coveredlines="0" coverablelines="6" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.InfosPanelPlaceholder" coverage="0" coveredlines="0" coverablelines="3" totallines="24" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.IntInputField" coverage="0" coveredlines="0" coverablelines="28" totallines="67" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.IsConnectedAndReadyProperty" coverage="0" coveredlines="0" coverablelines="9" totallines="33" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.IsConnectedProperty" coverage="0" coveredlines="0" coverablelines="9" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.LayoutElementMatchSize" coverage="0" coveredlines="0" coverablelines="10" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.NickNameField" coverage="0" coveredlines="0" coverablelines="31" totallines="68" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.OfflineModeProperty" coverage="0" coveredlines="0" coverablelines="9" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.OnlineDocButton" coverage="0" coveredlines="0" coverablelines="4" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PingProperty" coverage="0" coveredlines="0" coverablelines="19" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PlayerDetailsController" coverage="0" coveredlines="0" coverablelines="110" totallines="233" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PlayerListCell" coverage="0" coveredlines="0" coverablelines="53" totallines="134" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PlayerListView" coverage="0" coveredlines="0" coverablelines="80" totallines="177" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PropertyCell" coverage="0" coveredlines="0" coverablelines="50" totallines="101" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PropertyListenerBase" coverage="0" coveredlines="0" coverablelines="16" totallines="43" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PunCockpit" coverage="0" coveredlines="0" coverablelines="409" totallines="788" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.PunCockpitEmbed" coverage="0" coveredlines="0" coverablelines="37" totallines="102" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.RegionListCell" coverage="0" coveredlines="0" coverablelines="31" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.RegionListView" coverage="0" coveredlines="0" coverablelines="26" totallines="64" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.RoomListCell" coverage="0" coveredlines="0" coverablelines="50" totallines="102" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.RoomListView" coverage="0" coveredlines="0" coverablelines="69" totallines="147" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.SendRateField" coverage="0" coveredlines="0" coverablelines="31" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.SendRateOnSerializeField" coverage="0" coveredlines="0" coverablelines="31" totallines="69" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.ServerAddressProperty" coverage="0" coveredlines="0" coverablelines="17" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.ServerProperty" coverage="0" coveredlines="0" coverablelines="8" totallines="35" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.StringInputField" coverage="0" coveredlines="0" coverablelines="26" totallines="65" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.ToggleExpand" coverage="0" coveredlines="0" coverablelines="12" totallines="45" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Cockpit.UserIdField" coverage="0" coveredlines="0" coverablelines="31" totallines="71" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Hub.DemoHubManager" coverage="0" coveredlines="0" coverablelines="56" totallines="311" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Hub.ToDemoHubButton" coverage="0" coveredlines="0" coverablelines="35" totallines="93" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Procedural.Block" coverage="0" coveredlines="0" coverablelines="2" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Procedural.Cluster" coverage="0" coveredlines="0" coverablelines="71" totallines="178" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Procedural.IngameControlPanel" coverage="0" coveredlines="0" coverablelines="139" totallines="269" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Procedural.ProceduralController" coverage="0" coveredlines="0" coverablelines="50" totallines="83" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Procedural.WorldGenerator" coverage="0" coveredlines="0" coverablelines="125" totallines="289" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.CameraWork" coverage="0" coveredlines="0" coverablelines="54" totallines="179" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.GameManager" coverage="0" coveredlines="0" coverablelines="32" totallines="94" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.Launcher" coverage="0" coveredlines="0" coverablelines="72" totallines="193" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.LauncherAltered" coverage="0" coveredlines="0" coverablelines="67" totallines="181" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.LoaderAnime" coverage="0" coveredlines="0" coverablelines="21" totallines="101" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.PlayerAnimatorManager" coverage="0" coveredlines="0" coverablelines="25" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.PlayerManager" coverage="0" coveredlines="0" coverablelines="113" totallines="289" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.PlayerNameInputField" coverage="0" coveredlines="0" coverablelines="21" totallines="74" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.PunBasics.PlayerUI" coverage="0" coveredlines="0" coverablelines="38" totallines="141" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.Shared.DocLinks" coverage="0" coveredlines="0" coverablelines="22" totallines="158" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.PlayerControl" coverage="0" coveredlines="0" coverablelines="83" totallines="232" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.SlotLanes" coverage="0" coveredlines="0" coverablelines="3" totallines="38" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.SlotRacerSplashScreen" coverage="0" coveredlines="0" coverablelines="35" totallines="90" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.Bezier" coverage="0" coveredlines="0" coverablelines="18" totallines="56" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.BezierCurve" coverage="0" coveredlines="0" coverablelines="12" totallines="45" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.BezierSpline" coverage="0" coveredlines="0" coverablelines="205" totallines="332" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.SplinePosition" coverage="0" coveredlines="0" coverablelines="18" totallines="57" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.SplineWalker" coverage="0" coveredlines="0" coverablelines="20" totallines="64" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.Demo.ConnectAndJoinRandomLb" coverage="0" coveredlines="0" coverablelines="72" totallines="136" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Reporter" coverage="0" coveredlines="0" coverablelines="1313" totallines="2033" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ReporterGUI" coverage="0" coveredlines="0" coverablelines="6" totallines="16" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ReporterMessageReceiver" coverage="0" coveredlines="0" coverablelines="17" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Rotate" coverage="0" coveredlines="0" coverablelines="7" totallines="19" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ScoreHelper" coverage="0" coveredlines="0" coverablelines="9" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Simplex.Noise" coverage="0" coveredlines="0" coverablelines="198" totallines="393" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="TestReporter" coverage="0" coveredlines="0" coverablelines="71" totallines="151" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="Assembly-CSharp-Editor" classes="6" coverage="1.3" coveredlines="4" coverablelines="292" totallines="609" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.BezierCurveInspector" coverage="0" coveredlines="0" coverablelines="36" totallines="73" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.BezierSplineInspector" coverage="0" coveredlines="0" coverablelines="97" totallines="154" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.Demo.SlotRacer.Utils.LineInspector" coverage="0" coveredlines="0" coverablelines="23" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="PunStartup" coverage="0" coveredlines="0" coverablelines="81" totallines="153" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ReporterEditor" coverage="0" coveredlines="0" coverablelines="39" totallines="91" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ReporterModificationProcessor" coverage="25" coveredlines="4" coverablelines="16" totallines="91" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="Board" classes="2" coverage="7.7" coveredlines="19" coverablelines="244" totallines="513" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Board" coverage="3.4" coveredlines="8" coverablelines="229" totallines="448" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="BoardSpace.Space" coverage="73.3" coveredlines="11" coverablelines="15" totallines="65" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="EditMode" classes="4" coverage="100" coveredlines="80" coverablelines="80" totallines="159" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Tests.TestBoard" coverage="100" coveredlines="19" coverablelines="19" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Tests.TestPiece" coverage="100" coveredlines="9" coverablelines="9" totallines="24" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Tests.TestPlayer" coverage="100" coveredlines="36" coverablelines="36" totallines="63" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Tests.TestSpace" coverage="100" coveredlines="16" coverablelines="16" totallines="33" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonChat" classes="4" coverage="0" coveredlines="0" coverablelines="753" totallines="2187" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Chat.AuthenticationValues" coverage="0" coveredlines="0" coverablelines="27" totallines="406" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.ChatChannel" coverage="0" coveredlines="0" coverablelines="41" totallines="112" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.ChatClient" coverage="0" coveredlines="0" coverablelines="609" totallines="1263" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Chat.ChatPeer" coverage="0" coveredlines="0" coverablelines="76" totallines="406" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonRealtime" classes="29" coverage="0" coveredlines="0" coverablelines="3216" totallines="39907" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Realtime.AppSettings" coverage="0" coveredlines="0" coverablelines="10" totallines="83" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.AuthenticationValues" coverage="0" coveredlines="0" coverablelines="30" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.ConnectionCallbacksContainer" coverage="0" coveredlines="0" coverablelines="73" totallines="3616" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.ConnectionHandler" coverage="0" coveredlines="0" coverablelines="66" totallines="158" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.EnterRoomParams" coverage="0" coveredlines="0" coverablelines="1" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.Extensions" coverage="0" coveredlines="0" coverablelines="82" totallines="199" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.FriendInfo" coverage="0" coveredlines="0" coverablelines="8" totallines="48" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.InRoomCallbacksContainer" coverage="0" coveredlines="0" coverablelines="66" totallines="3616" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.LoadBalancingClient" coverage="0" coveredlines="0" coverablelines="1173" totallines="3616" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.LoadBalancingPeer" coverage="0" coveredlines="0" coverablelines="487" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.LobbyCallbacksContainer" coverage="0" coveredlines="0" coverablelines="59" totallines="3616" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.MatchMakingCallbacksContainer" coverage="0" coveredlines="0" coverablelines="80" totallines="3616" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.PhotonPing" coverage="0" coveredlines="0" coverablelines="14" totallines="389" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.PingMono" coverage="0" coveredlines="0" coverablelines="46" totallines="389" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.PingMonoEditor" coverage="0" coveredlines="0" coverablelines="45" totallines="139" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.Player" coverage="0" coveredlines="0" coverablelines="154" totallines="428" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.RaiseEventOptions" coverage="0" coveredlines="0" coverablelines="2" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.Region" coverage="0" coveredlines="0" coverablelines="33" totallines="76" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.RegionHandler" coverage="0" coveredlines="0" coverablelines="125" totallines="567" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.RegionPinger" coverage="0" coveredlines="0" coverablelines="159" totallines="567" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.Room" coverage="0" coveredlines="0" coverablelines="187" totallines="532" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.RoomInfo" coverage="0" coveredlines="0" coverablelines="95" totallines="274" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.RoomOptions" coverage="0" coveredlines="0" coverablelines="12" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.SupportLogger" coverage="0" coveredlines="0" coverablelines="116" totallines="266" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.TypedLobby" coverage="0" coveredlines="0" coverablelines="15" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.TypedLobbyInfo" coverage="0" coveredlines="0" coverablelines="3" totallines="1966" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.WebFlags" coverage="0" coveredlines="0" coverablelines="45" totallines="167" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.WebRpcCallbacksContainer" coverage="0" coveredlines="0" coverablelines="12" totallines="3616" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Realtime.WebRpcResponse" coverage="0" coveredlines="0" coverablelines="18" totallines="167" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonUnityNetworking" classes="25" coverage="0.1" coveredlines="5" coverablelines="3854" totallines="21421" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Pun.CustomTypes" coverage="0" coveredlines="0" coverablelines="108" totallines="177" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.DefaultPool" coverage="0" coveredlines="0" coverablelines="24" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.InstantiateParameters" coverage="0" coveredlines="0" coverablelines="11" totallines="3017" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.MonoBehaviourPun" coverage="0" coveredlines="0" coverablelines="7" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.MonoBehaviourPunCallbacks" coverage="0" coveredlines="0" coverablelines="52" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonAnimatorView" coverage="0" coveredlines="0" coverablelines="267" totallines="559" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonHandler" coverage="0" coveredlines="0" coverablelines="91" totallines="203" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonMessageInfo" coverage="0" coveredlines="0" coverablelines="13" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonNetwork" coverage="0" coveredlines="0" coverablelines="2379" totallines="5398" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonRigidbody2DView" coverage="0" coveredlines="0" coverablelines="58" totallines="111" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonRigidbodyView" coverage="0" coveredlines="0" coverablelines="59" totallines="112" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonStream" coverage="0" coveredlines="0" coverablelines="179" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonStreamQueue" coverage="0" coveredlines="0" coverablelines="91" totallines="197" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformView" coverage="0" coveredlines="0" coverablelines="55" totallines="106" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewClassic" coverage="0" coveredlines="0" coverablelines="68" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewPositionControl" coverage="0" coveredlines="0" coverablelines="119" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewPositionModel" coverage="0" coveredlines="0" coverablelines="9" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewRotationControl" coverage="0" coveredlines="0" coverablelines="26" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewRotationModel" coverage="0" coveredlines="0" coverablelines="3" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewScaleControl" coverage="0" coveredlines="0" coverablelines="27" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewScaleModel" coverage="0" coveredlines="0" coverablelines="2" totallines="558" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonView" coverage="0" coveredlines="0" coverablelines="147" totallines="505" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PunExtensions" coverage="0" coveredlines="0" coverablelines="28" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.SceneManagerHelper" coverage="83.3" coveredlines="5" coverablelines="6" totallines="1005" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.ServerSettings" coverage="0" coveredlines="0" coverablelines="25" totallines="95" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonUnityNetworking.Editor" classes="16" coverage="1.7" coveredlines="31" coverablelines="1769" totallines="4197" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Pun.AccountService" coverage="0" coveredlines="0" coverablelines="120" totallines="245" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.CleanUpDefinesOnPunDelete" coverage="0" coveredlines="0" coverablelines="7" totallines="194" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonAnimatorViewEditor" coverage="0" coveredlines="0" coverablelines="195" totallines="297" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonEditor" coverage="2.2" coveredlines="9" coverablelines="407" totallines="701" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonEditorUtils" coverage="0" coveredlines="0" coverablelines="72" totallines="194" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonGUI" coverage="0" coveredlines="0" coverablelines="156" totallines="305" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonRigidbody2DViewEditor" coverage="0" coveredlines="0" coverablelines="19" totallines="48" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonRigidbodyViewEditor" coverage="0" coveredlines="0" coverablelines="19" totallines="48" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewClassicEditor" coverage="0" coveredlines="0" coverablelines="200" totallines="410" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonTransformViewEditor" coverage="0" coveredlines="0" coverablelines="21" totallines="52" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonViewHandler" coverage="15.4" coveredlines="17" coverablelines="110" totallines="208" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PhotonViewInspector" coverage="0" coveredlines="0" coverablelines="218" totallines="333" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PunSceneSettings" coverage="11.3" coveredlines="5" coverablelines="44" totallines="111" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.PunWizardText" coverage="0" coveredlines="0" coverablelines="49" totallines="701" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.ReorderableListResources" coverage="0" coveredlines="0" coverablelines="58" totallines="237" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="ServerSettingsInspector" coverage="0" coveredlines="0" coverablelines="74" totallines="113" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonUnityNetworking.Utilities" classes="33" coverage="0" coveredlines="0" coverablelines="1348" totallines="5345" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Pun.UtilityScripts.ButtonInsideScrollList" coverage="0" coveredlines="0" coverablelines="16" totallines="53" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.CellTree" coverage="0" coveredlines="0" coverablelines="8" totallines="478" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.CellTreeNode" coverage="0" coveredlines="0" coverablelines="79" totallines="478" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.ConnectAndJoinRandom" coverage="0" coveredlines="0" coverablelines="31" totallines="119" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.ConnectAndJoinRandomInspector" coverage="0" coveredlines="0" coverablelines="19" totallines="119" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.CountdownTimer" coverage="0" coveredlines="0" coverablelines="31" totallines="103" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.CullArea" coverage="0" coveredlines="0" coverablelines="119" totallines="478" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.CullingHandler" coverage="0" coveredlines="0" coverablelines="114" totallines="234" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.EventSystemSpawner" coverage="0" coveredlines="0" coverablelines="9" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.GraphicToggleIsOnTransition" coverage="0" coveredlines="0" coverablelines="23" totallines="64" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.MoveByKeys" coverage="0" coveredlines="0" coverablelines="46" totallines="111" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnClickDestroy" coverage="0" coveredlines="0" coverablelines="16" totallines="72" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnClickInstantiate" coverage="0" coveredlines="0" coverablelines="10" totallines="56" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnClickRpc" coverage="0" coveredlines="0" coverablelines="33" totallines="89" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnEscapeQuit" coverage="0" coveredlines="0" coverablelines="6" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnJoinedInstantiate" coverage="0" coveredlines="0" coverablelines="58" totallines="127" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnPointerOverTooltip" coverage="0" coveredlines="0" coverablelines="9" totallines="45" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.OnStartDelete" coverage="0" coveredlines="0" coverablelines="3" totallines="24" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PhotonLagSimulationGui" coverage="0" coveredlines="0" coverablelines="51" totallines="109" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PhotonStatsGui" coverage="0" coveredlines="0" coverablelines="86" totallines="170" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PlayerNumbering" coverage="0" coveredlines="0" coverablelines="76" totallines="267" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PlayerNumberingExtensions" coverage="0" coveredlines="0" coverablelines="34" totallines="267" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PointedAtGameObjectInfo" coverage="0" coveredlines="0" coverablelines="34" totallines="84" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PunTeams" coverage="0" coveredlines="0" coverablelines="39" totallines="149" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PunTurnManager" coverage="0" coveredlines="0" coverablelines="81" totallines="418" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.ScoreExtensions" coverage="0" coveredlines="0" coverablelines="18" totallines="62" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.SmoothSyncMovement" coverage="0" coveredlines="0" coverablelines="35" totallines="72" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.StatesGui" coverage="0" coveredlines="0" coverablelines="123" totallines="185" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.TabViewManager" coverage="0" coveredlines="0" coverablelines="35" totallines="123" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.TeamExtensions" coverage="0" coveredlines="0" coverablelines="17" totallines="149" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.TextButtonTransition" coverage="0" coveredlines="0" coverablelines="21" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.TextToggleIsOnTransition" coverage="0" coveredlines="0" coverablelines="23" totallines="86" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.TurnExtensions" coverage="0" coveredlines="0" coverablelines="45" totallines="418" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonUnityNetworking.Utilities.Culling.Editor" classes="1" coverage="0" coveredlines="0" coverablelines="149" totallines="265" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Pun.UtilityScripts.CullAreaEditor" coverage="0" coveredlines="0" coverablelines="149" totallines="265" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor" classes="2" coverage="0" coveredlines="0" coverablelines="54" totallines="127" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Photon.Pun.UtilityScripts.PlayerNumberingInspector" coverage="0" coveredlines="0" coverablelines="28" totallines="67" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Photon.Pun.UtilityScripts.PunTeamsInspector" coverage="0" coveredlines="0" coverablelines="26" totallines="60" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="Piece" classes="1" coverage="100" coveredlines="5" coverablelines="5" totallines="37" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Piece" coverage="100" coveredlines="5" coverablelines="5" totallines="37" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="Player" classes="1" coverage="22.1" coveredlines="27" coverablelines="122" totallines="307" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="PlayerManager" coverage="22.1" coveredlines="27" coverablelines="122" totallines="307" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+    <Assembly name="PlayMode" classes="1" coverage="0" coveredlines="0" coverablelines="5" totallines="28" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Tests.ExamplePlayModeTest" coverage="0" coveredlines="0" coverablelines="5" totallines="28" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>
