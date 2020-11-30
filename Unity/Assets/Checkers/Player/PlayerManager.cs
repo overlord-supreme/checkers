@@ -176,9 +176,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     bool wasJump = false;
                     allMoves = Board.getInstance().GetAllValidMoves(color);
-                    foreach (ValidMove move in allMoves)
-                        move.targetSpace.setHighlighted(false);
 
+                    bool wasValid = false;
                     //get all moves related to selected piece
                     // Check the Valid Moves
                     foreach (ValidMove move in moves)
@@ -196,10 +195,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                             {
                                 DeletePiece(move.jumped[0],move.jumped[1]);
                             }
+                            wasValid = true;
                             break;
                             
                         }
                     }
+                    if(!wasValid)
+                    {
+                        return;
+                    }
+                    foreach (ValidMove move in allMoves)
+                        move.targetSpace.setHighlighted(false);
                     if(wasJump)
                     {
                         allMoves.Clear();
@@ -208,7 +214,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                         moves = Board.getInstance().GetValidMoves(space.x,space.y,color,currentPieceSelected.isKing);
 
                         if(moves.Count > 0 && moves[0].isJump)
+                        {
+                            foreach (ValidMove move in moves)
+                            {
+                                move.targetSpace.setHighlighted(true);
+                            }
                             return;
+                        }
                     }
                     currentSpaceSelected = null;
                     currentPieceSelected = null;
@@ -280,7 +292,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
         
         // Execute the Move
         Board.getInstance().RequestMove(currentSpaceSelected.x, currentSpaceSelected.y, space.x, space.y);
-
+        currentSpaceSelected = space;
         return;
     }
 
