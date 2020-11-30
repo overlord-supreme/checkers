@@ -136,6 +136,10 @@ Added in the rest of the unit tests to the project.
 ### [`Version 1.0.6`](https://github.com/overlord-supreme/checkers/commit/1925bbdd4dc5a7e8a4b29b03624f0e404dc23c11)
 Fixed logic issues with jumps.
 
+### [`Version 1.0.7 - Final Release`](https://github.com/overlord-supreme/checkers/commit/a786c306f9f0188e589d5cb3c8fdc63d9e8cc184)
+Implemented final missing UI items
+
+
 
 
 
