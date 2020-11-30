@@ -47,7 +47,7 @@
     - A *Prefab* and a *Script*
     - The *Prefab* contains an `8x8` 3D Grid of Cubes with `Tile` components attached to make the "board"
     - The *Script* Handles almost everything, from *Cell Highlighting*, to *Networking*, to *Turn Control*, and so on
-    - Potentially a *GodScript*, is a future issue to consider
+    - Potentially too *Big*
     - Also contains the *non-GameObject* **`Space`** class, which has various stats for a cell/tile/grid/square/space on the board
   - **[`Game`](https://github.com/overlord-supreme/checkers/tree/master/Unity/Assets/Checkers/Game)**
     - Just a *Scene* with an instance of **`Board`** and many **`Pieces`**
