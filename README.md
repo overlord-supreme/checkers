@@ -85,6 +85,14 @@
 - (last updated 2020-11-28T11:55:00-05)
 - **`master`:** The current branch
 
+## Releases
+### [`Version 1.0.0`](https://github.com/overlord-supreme/checkers/commit/1e4f3fb41d439980f801182d9a7f9da6739acc14): Logic and networking code for game reached completion point.
+### [`Version 1.0.1`](https://github.com/overlord-supreme/checkers/commit/0143b7c58fa4d270b07c0e51a4a4e0453dde3562): Functionality for the sound and credits were added.
+### [`Version 1.0.2`](https://github.com/overlord-supreme/checkers/commit/9c29ad27663d046658a8a1547e3f86d3ae9bd97a): Code and sounds credits added to project. As well the functionality for implementing sounds were added.
+### [`Version 1.0.3`](https://github.com/overlord-supreme/checkers/commit/f294755c8f1cfeef8f70d538bfe62dc606695989): Piece path highlighting was added to the game.
+### [`Version 1.0.4`](https://github.com/overlord-supreme/checkers/commit/6751a233b74b06ce2213f8a09c42f8e2342aa376): Process of adding in unit tests was began.
+
+
 ## Future Work
 - We need to add a **Code Reports** folder that details whether our **[Test Cases](https://docs.google.com/spreadsheets/d/1UExj35ewBux2ftpgoRd4cAy85XGLS10_uxYvNaTXQ-8/edit#gid=0)** document is passing *for each test**
 - Delete `test-cases` from `docs`
