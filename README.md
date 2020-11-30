@@ -91,6 +91,8 @@
 ### [`Version 1.0.2`](https://github.com/overlord-supreme/checkers/commit/9c29ad27663d046658a8a1547e3f86d3ae9bd97a): Code and sounds credits added to project. As well the functionality for implementing sounds were added.
 ### [`Version 1.0.3`](https://github.com/overlord-supreme/checkers/commit/f294755c8f1cfeef8f70d538bfe62dc606695989): Piece path highlighting was added to the game.
 ### [`Version 1.0.4`](https://github.com/overlord-supreme/checkers/commit/6751a233b74b06ce2213f8a09c42f8e2342aa376): Process of adding in unit tests was began.
+### [`Version 1.0.5`](https://github.com/overlord-supreme/checkers/commit/acab0972bc7b98b9b97c5539584c0c0296571b47): Added in the rest of the unit tests to the project.
+### [`Version 1.0.6`](https://github.com/overlord-supreme/checkers/commit/1925bbdd4dc5a7e8a4b29b03624f0e404dc23c11): Fixed logic issues with jumps.
 
 
 ## Future Work
