@@ -50,6 +50,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private List<ValidMove> selectedPieceMoves = new List<ValidMove>();
     private List<ValidMove> allMoves = new List<ValidMove>();
     private bool canJump = false;
+    
+    // If we successfully complete a move
+    private bool moved = false;
 
 
     // Audio
@@ -69,6 +72,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [Header("Round Audio")]
     public AudioSource roundAudio;
     public AudioClip roundStart;
+
+
+    // Hover
+    private Space lastHoverSpace = null;
+    private Space thisHoverSpace = null;
 
 
 
@@ -211,120 +219,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     /// DANGER WARNING CAUTION ERROR ALERT BUG FIXME HELP WARN FIX HACK
     void raycastMouse()
     {
-
-        // Draw the RayCast
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        // If we find something
-        if (Physics.Raycast(ray, out hit, 100, mask))
-        {
-            // Check if Empty or Enemy
-            // return + effects
-
-            // If Friendly...
-            // Generate "Current" Moves for THIS SELECTED PIECE
-            // And compare against all other available moves
-
-            // See the Line (Debugging)
-            // Debug.DrawLine(ray.origin, hit.point);
-
-            // Get the Target
-            GameObject hitObject = hit.collider.gameObject;
-            Space space = hitObject.GetComponent<Space>();
-
-            // First we generate all legal moves
-            // TODO: Move this OUTSIDE of this method
-            // If we click on a piece (not empty) then we check if that piece is part of any valid move
-            // begin:   first-click
-            if(currentPieceSelected == null)
-            {
-                allMoves = Board.getInstance().GetAllValidMoves(color);
-                Piece clickedPiece = space.getCurrentOccupant();
-                if(clickedPiece != null && clickedPiece.color == color)
-                {
-                    bool isWithinValidMoves = false;
-                    foreach(ValidMove move in allMoves)
-                    {
-                        if(move.piece == clickedPiece)
-                        {
-                            isWithinValidMoves = true;
-                            selectedPieceMoves.Add(move);
-                        }
-                    }
-                    // if so select that piece
-                    if(isWithinValidMoves)
-                    {
-                        SelectPiece(space);
-                    }
-                    // else do not select piece
-                    // Make an ERROR effect (UI + Sound)
-                    // FIXME
-                }
-                return;
-            }
-            // end:     first-click
-
-
-
-            // begin:   second-click
-            if (currentPieceSelected != null)
-            {
-                bool wasJump = false;
-                //get all moves related to selected piece
-                // Check the Valid Moves
-                foreach (ValidMove move in selectedPieceMoves)
-                {
-                    // If the Desired Move is in Valid Moves
-                    if (move.targetSpace == space)
-                    {
-                        // Execute the Move
-                        if(move.isJump)
-                            wasJump = true;
-                        MovePiece(space);
-                            
-                        // SPECIAL CASE: Is a Jump (Deletes Pieces)
-                        if(move.isJump)
-                        {
-                            DeletePiece(move.jumped[0],move.jumped[1]);
-                        }
-                        break;
-                            
-                    }
-                }
-                if(wasJump)
-                {
-                    allMoves.Clear();
-                    selectedPieceMoves.Clear();
-                    Debug.LogFormat("currentPieceSelected is null? : {0}",(currentPieceSelected == null));
-                    selectedPieceMoves = Board.getInstance().GetValidMoves(space.x, space.y, color, currentPieceSelected.isKing);
-
-                    if(selectedPieceMoves.Count > 0 && selectedPieceMoves[0].isJump)
-                    {
-                        return;
-                    }
-                }
-
-                // Clear References
-                currentSpaceSelected = null;
-                currentPieceSelected = null;
-                selectedPieceMoves.Clear();
-
-                //Change turn
-                RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
-        
-                // Raise the Event
-                PhotonNetwork.RaiseEvent(playerSwapCode, true, raiseEventOptions, SendOptions.SendReliable);
-
-                // Return
-                return;
-            }
-            // end:     second-click
-
-
-        }
-
-        // begin:       control-mode
         // If Player is Trying to Select
         if (Input.GetMouseButtonDown(0))
         {
@@ -340,11 +234,161 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 // Return
                 return;
             }
-
-            // If the player IS selecting on their turn
-            // SelectPiece(space); // NOTE: ONLY ADD ONCE RE-ORG DONE!
         }
-        // end:         control-mode
+
+
+        // Draw the RayCast
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        // If we find something
+        if (Physics.Raycast(ray, out hit, 100, mask))
+        {
+            // Generate "Current" Moves for THIS SELECTED PIECE
+            // And compare against all other available moves
+
+            // See the Line (Debugging)
+            // Debug.DrawLine(ray.origin, hit.point);
+
+            // Get the Target
+            GameObject hitObject = hit.collider.gameObject;
+            Space space = hitObject.GetComponent<Space>();
+
+            // If we are only hovering
+            if (!Input.GetMouseButtonDown(0))
+            {
+                if (lastHoverSpace != thisHoverSpace)
+                {
+                    // Play Sound
+                    pieceAudio.PlayOneShot(pieceHover, 1F);
+
+                    // Play UI
+                    // FIXME
+
+                    // Save It
+                    lastHoverSpace = thisHoverSpace;
+                }
+
+                // Stop
+                return;
+            }
+
+            // TOTAL HACK!
+            // OTHERWISE, we must be SELECTING
+
+            // First we generate all legal moves for this piece
+
+            // TODO: Move this OUTSIDE of this method
+            // begin:   first-click
+            // If we click on a piece (not empty) then we check if that piece is part of any valid move
+            if (!currentPieceSelected)
+            {
+                // Get all possible moves for the player
+                allMoves = Board.getInstance().GetAllValidMoves(color);
+                Piece clickedPiece = space.getCurrentOccupant();
+                
+                // Check that the piece is not empy and is friendly
+                if(clickedPiece != null && clickedPiece.color == color)
+                {
+                    // Check that the piece has any moves
+                    // And add all moves for this piece
+                    bool isWithinValidMoves = false;
+                    foreach(ValidMove move in allMoves)
+                    {
+                        if(move.piece == clickedPiece)
+                        {
+                            isWithinValidMoves = true;
+                            selectedPieceMoves.Add(move);
+                        }
+                    }
+
+                    // if so select that piece
+                    if(isWithinValidMoves)
+                    {
+                        SelectPiece(space);
+                    }
+                    
+                    // else do not select piece
+                    // Make an ERROR effect (UI + Sound)
+                    // FIXME
+                }
+                return;
+            }
+            // end:     first-click
+
+
+
+            // begin:   second-click
+            if (currentPieceSelected != null)
+            {
+                bool wasJump = false;
+                
+                // Check the Valid Moves for this piece
+                foreach (ValidMove move in selectedPieceMoves)
+                {
+                    // If the Desired Move is in Valid Moves
+                    if (move.targetSpace == space)
+                    {
+                        // If the move involved a jump (kills a piece)
+                        if(move.isJump)
+                        {
+                            // note it and kill the victim
+                            wasJump = true;
+                            DeletePiece(move.jumped[0], move.jumped[1]);
+                        }
+
+                        // Execute the Move and note it
+                        MovePiece(space);
+                        moved = true;
+
+                        // Stop looping
+                        break;
+                    }
+                }
+
+                // For multi-step hopping
+                if(wasJump)
+                {
+                    // Reset our total moves and current selected moves
+                    allMoves.Clear();
+                    selectedPieceMoves.Clear();
+                    
+                    // Debug
+                    Debug.LogFormat("currentPieceSelected is null? : {0}",(currentPieceSelected == null));
+                    
+                    // Get new moves
+                    selectedPieceMoves = Board.getInstance().GetValidMoves(space.x, space.y, color, currentPieceSelected.isKing);
+
+                    // If we have more than 1 new move and they are jumps, STOP, do not proceed
+                    // (Implicitly lets the player GO AGAIN)
+                    if(selectedPieceMoves.Count > 0 && selectedPieceMoves[0].isJump)
+                    {
+                        // Possible Bug? (FIXME)
+                        return;
+                    }
+                }
+
+                // Only change turns IF we moved, otherwise do not give up
+                if (moved)
+                {
+                    // Clear References
+                    currentSpaceSelected = null;
+                    currentPieceSelected = null;
+                    selectedPieceMoves.Clear();
+
+                    // Change turn
+                    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                    PhotonNetwork.RaiseEvent(playerSwapCode, true, raiseEventOptions, SendOptions.SendReliable);
+
+                    // Reset Move
+                    moved = false;
+                }
+
+                // Return
+                return;
+            }
+            // end:     second-click
+        }
     }
 
 
@@ -366,7 +410,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
         if (space.getCurrentOccupant() && space.getCurrentOccupant().color == color)
         {
             // Log it
-            Debug.Log("FIRST click: FRIENDLY, SELECT ME");
+            Debug.Log("_____1st_____: yes");
 
             // Play UI Effect
             // FIXME
@@ -385,7 +429,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
         // If it is NOT occupied or NOT friendly
         {
             // Log It
-            Debug.Log("FIRST click: FAILURE       EMPTY/UNFRIENDLY, DO NOT select me");
+            Debug.Log("_____1st_____: NO (empty or unfriendly)");
 
             // Play UI Effect
             // FIXME
@@ -397,8 +441,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
             currentSpaceSelected = null;
             currentPieceSelected = null;
 
-            // Generate Moves for the UN Selected Piece (clears the move variables)
-            GenerateSelectedPieceMoves();
+            // Generate Moves for the UN-Selected Piece (clears the move variables)
+            // GenerateSelectedPieceMoves();
 
             // Return
             return;
@@ -409,17 +453,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
     /// <summary>
-    /// Upon a user mouse click *following* a successful mouse click
+    /// Upon a user mouse click* following* a successful mouse click
     /// Checks to see if the END LOCATION is valid
     /// Part of <see cref="Board.RequestMove" />
     /// Manages Side Effects
     /// Manages SELECTION Validation
     /// NOT the possible moves, see <see cref="Board.GetValidMoves" />
     /// </summary>
+    /// <param name="space">Where we send our currently selected piece to</param>
     private void MovePiece(Space space)
     {
         // Log it
-        Debug.Log("SECOND click: EMPTY, SELECT ME");
+        Debug.Log("_____2nd_____: EMPTY, SELECT ME");
 
         // Play UI Effect
         // FIXME
@@ -429,7 +474,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         // Execute the Move
         Board.getInstance().RequestMove(currentSpaceSelected.x, currentSpaceSelected.y, space.x, space.y);
-
 
         // Return
         return;
@@ -449,11 +493,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
 
+
     /// <summary>
-    /// Called from <see cref="Board"></see>
+    /// Called from <see cref="Board">the Board</see>
     /// </summary>
     /// <param name="color">The color of the destroyed piece</param>
-    /// NOTE: NOT CONNECTED YET!!!
     public void PieceWasDeleted(Piece.PieceColor pieceColor)
     {
         // THEY captured OUR piece
