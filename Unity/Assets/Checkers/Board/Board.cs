@@ -39,6 +39,13 @@ public struct ValidMove
 /// <see href="https://doc.photonengine.com/en-us/pun/v1/demos-and-tutorials/package-demos/rockpaperscissors-demo">RPCs and RaiseEvent | Photon Engine</see>
 public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
 {
+    // start:   endgame-hack-variables
+    private int redCount    = 0;
+    private int blackCount  = 0;
+    public GameObject gameOverUI;
+    // end:     endgame-hack-variables
+
+
 
     // Piece Management (LOCAL)
     [SerializeField] private GameObject RedPiecePrefab;
@@ -79,8 +86,14 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// Sets up Board with Single Reference and Logical Positions
     /// Builds the Board
     /// </summary>
-    private void Start() 
+    private void Start()
     {
+        // start:   endgame-hack-init
+        redCount    = 12;
+        blackCount  = 12;
+        // end:     endgame-hack-init
+
+
         // Ensure this is the only Board in Existence
         if (singleton == null)
             singleton = this;
@@ -196,6 +209,21 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     public virtual void DestroyPiece(int x, int y)
     {
         Piece piece = GetPieceByLoc(x,y);
+
+        // start:   endgame-hack-update
+        if (piece.color == PieceColor.RED)
+        {
+            redCount --;
+        }
+        if (piece.color == PieceColor.BLACK)
+        {
+            blackCount --;
+        }
+        if (redCount <= 0 || blackCount <= 0)
+        {
+            gameOverUI.SetActive(true);
+        }
+        // end:   endgame-hack-update
 
         // Get the Piece and Delete it
         // gameObject != GameObject
