@@ -34,6 +34,10 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
+// begin:   audio-import
+using UnityEngine.Audio;
+// end:     audio-import
+
 namespace Photon.Pun.Demo.PunBasics
 {
     public class Launcher : MonoBehaviourPunCallbacks
@@ -65,13 +69,37 @@ namespace Photon.Pun.Demo.PunBasics
         public GameObject buttonLoadArena;
         public GameObject buttonJoinRoom;
         public GameObject mainMenuUI;
-        public GameObject buttonStartGame;
         public GameObject buttonOptions;
         public GameObject buttonEndGame;
+
+        // begin:   options-variables
+        // added:   2020-11-29
+        // by:      Overlord-Supreme
+        // why:     Options
+        [Space(5)]
+        [Header("Options Refs")]
+        public GameObject optionsMenuUI;
+        public GameObject optionsCancel;
+        public GameObject optionsConfirm;
+        public GameObject optionsButtonAudioToggle;
+        public AudioMixer masterMixer;
+        
+        // Each Option has a Current and Prior State (set on confirm/cancel)
+        private bool muted = false;
+        private bool wasMuted = false;
+
+        private float volume = 0f;
+        private float oldVolume = 0f;
+        
+        // end:     options-variables
 
         string playerName = "";
         string roomName = "";
 
+        // begin:   sound-variables
+        // added:   2020-11-28
+        // by:      Overlord-Supreme
+        // why:     sound effects
         [Header("Menu Audio")]
         public AudioSource menuAudio;
         public AudioClip audioHover;
@@ -79,6 +107,7 @@ namespace Photon.Pun.Demo.PunBasics
         public AudioClip audioBack;
         public AudioClip audioConfirm;
         public AudioClip audioError;
+        // end:     sound-variables
 
 
 
@@ -92,6 +121,7 @@ namespace Photon.Pun.Demo.PunBasics
 
             //2
             mainMenuUI.SetActive(true);
+            optionsMenuUI.SetActive(false);
             roomJoinUI.SetActive(false);
             buttonLoadArena.SetActive(false);
 
@@ -109,17 +139,26 @@ namespace Photon.Pun.Demo.PunBasics
         public void SetPlayerName(string name)
         {
             playerName = name;
+
+            // Play Confirmation
+            menuAudio.PlayOneShot(audioConfirm, 1f);
         }
 
         public void SetRoomName(string name)
         {
             roomName = name;
+
+            // Play Confirmation
+            menuAudio.PlayOneShot(audioConfirm, 1f);
         }
 
         public void EnterLobbyMenu()
         {
-            mainMenuUI.SetActive(false);
+            // mainMenuUI.SetActive(false); // Disabled to allow exiting at any time
             roomJoinUI.SetActive(true);
+
+            // Play Confirmation
+            menuAudio.PlayOneShot(audioConfirm, 1f);
         }
         
         // Tutorial Methods
@@ -149,12 +188,157 @@ namespace Photon.Pun.Demo.PunBasics
             if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
             {
                 PhotonNetwork.LoadLevel("CheckersGame");
+
+                // Play Confirmation
+                menuAudio.PlayOneShot(audioConfirm, 1f);
             }
             else
             {
                 playerStatus.text = "Minimum 2 Players required to Load Arena!";
+
+                // Play Error
+                menuAudio.PlayOneShot(audioError, 1f);
             }
         }
+
+
+        // begin:   ExitGame
+        // added:   2020-11-29
+        // by:      Overlord-Supreme
+        /// <summary>
+        /// Close the game from the main menu
+        /// </summary>
+        /// Why the macros? <see href="https://stackoverflow.com/questions/45636512/application-quit-wont-work-on-android">Application.Quit() won't work on Android</see>
+        public void ExitGame()
+        {
+            // Play Back
+            menuAudio.PlayOneShot(audioBack, 1f);
+
+            // Exit
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
+        }
+        // end:     ExitGame
+
+
+
+
+        // begin:   options-methods
+        // added:   2020-11-29
+        // by:      Overlord-Supreme
+        // why:     Basic Options Configuration
+        public void OpenOptions()
+        {
+            // Play Confirmation
+            menuAudio.PlayOneShot(audioConfirm, 1f);
+
+            // Close all other Menus
+            mainMenuUI.SetActive(false);
+            roomJoinUI.SetActive(false);
+
+            // Open the Menu
+            optionsMenuUI.SetActive(true);
+        }
+
+        public void ConfirmOptions()
+        {
+            // Play Confirmation
+            menuAudio.PlayOneShot(audioConfirm, 1f);
+
+            // Close the Menu
+            optionsMenuUI.SetActive(false);
+
+            // Check Muted
+            if (muted)
+            {
+                wasMuted = true;
+            }
+            if (!muted)
+            {
+                wasMuted = false;
+            }
+
+            // Check Volume
+            oldVolume = volume;
+
+            // Re-open all other Menus
+            mainMenuUI.SetActive(true);
+            roomJoinUI.SetActive(true);
+        }
+
+        public void CancelOptions()
+        {
+            // Play Cancel
+            menuAudio.PlayOneShot(audioBack, 1f);
+
+            // Close the Menu
+            optionsMenuUI.SetActive(false);
+
+            // Check Muted
+            if (muted != wasMuted)
+            {
+                muteAudio();
+            }
+
+            // Check Volume
+            if (volume != oldVolume)
+            {
+                setAudio(oldVolume);
+            }
+
+            // Re-open all other Menus
+            mainMenuUI.SetActive(true);
+            roomJoinUI.SetActive(true);
+        }
+
+        public void setAudio(float newVolume)
+        {
+            // Play Select
+            menuAudio.PlayOneShot(audioSelect, 0.1f);
+
+            // Handle Mute State
+            if (muted)
+            {
+                // UN-Mute it
+                muted = false;
+            }
+
+            // DEBUG
+            // Debug.Log(newVolume);
+
+            // Set it
+            masterMixer.SetFloat("volume", newVolume);
+            volume = newVolume;
+        }
+
+        public void muteAudio()
+        {
+            // Play Select
+            menuAudio.PlayOneShot(audioSelect, 1f);
+
+            if (!muted)
+            {
+                // Mute it
+                masterMixer.SetFloat("volume", -80f);
+                muted = true;
+                return;
+            }
+
+            if (muted)
+            {
+                // UN-Mute it
+                masterMixer.SetFloat("volume", volume);
+                muted = false;
+                return;
+            }
+        }
+        // end:     options-methods
+
+
+
 
         // Photon Methods
         public override void OnConnected()
