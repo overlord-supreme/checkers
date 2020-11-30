@@ -53,6 +53,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] private GameObject PiecesList;
     public Material selectableMaterial;
 
+
     // How we Track Logical Position
     public Space[,] boardGrid = new Space[8,8];
 
@@ -91,6 +92,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         // start:   endgame-hack-init
         redCount    = 12;
         blackCount  = 12;
+        gameOverUI.SetActive(false);
         // end:     endgame-hack-init
 
 
@@ -145,6 +147,21 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
             }
         }
     }
+
+
+    // start:   endgame-hack-exit
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
+    // end:     endgame-hack-exit
+
+
+
 
 
     /// <summary>
@@ -211,13 +228,13 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         Piece piece = GetPieceByLoc(x,y);
 
         // start:   endgame-hack-update
-        if (piece.color == PieceColor.RED)
+        if (piece.color == Piece.PieceColor.RED)
         {
-            redCount --;
+            redCount--;
         }
-        if (piece.color == PieceColor.BLACK)
+        if (piece.color == Piece.PieceColor.BLACK)
         {
-            blackCount --;
+            blackCount--;
         }
         if (redCount <= 0 || blackCount <= 0)
         {
