@@ -3,10 +3,13 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
+        "RW",
         "Board",
         "Piece",
         "Player",
-        "RW"
+        "PhotonUnityNetworking",
+        "PhotonRealtime",
+        "PhotonWebSocket"
     ],
     "includePlatforms": [
         "Editor"
@@ -15,7 +18,12 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll"
+        "nunit.framework.dll",
+        "System.Runtime.CompilerServices.Unsafe.dll",
+        "Castle.Core.dll",
+        "System.Threading.Tasks.Extensions.dll",
+        "Moq.dll",
+        "Photon3Unity3D.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [
