@@ -52,7 +52,10 @@ namespace BoardSpace
         /// <summary>
         /// sets held piece
         /// </summary>
-        public void setCurrentOccupant(Piece occupant) { currentOccupant = occupant; currentOccupant.transform.position = piecePosition.position; }
+        public void setCurrentOccupant(Piece occupant) { 
+            currentOccupant = occupant;
+            currentOccupant.transform.position = piecePosition.position;
+        }
 
         /// <summary>
         /// sets whether the highlight is visible
