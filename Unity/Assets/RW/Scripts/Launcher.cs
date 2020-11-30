@@ -137,6 +137,7 @@ namespace Photon.Pun.Demo.PunBasics
                 PhotonNetwork.LocalPlayer.NickName = playerName; //1
                 Debug.Log("PhotonNetwork.IsConnected! | Trying to Create/Join Room " + roomNameField.text);
                 RoomOptions roomOptions = new RoomOptions(); //2
+                roomOptions.MaxPlayers = maxPlayersPerRoom;
                 TypedLobby typedLobby = new TypedLobby(roomName, LobbyType.Default); //3
                 PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, typedLobby); //4
             }
