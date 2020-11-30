@@ -46,7 +46,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     public Material selectableMaterial;
 
     // How we Track Logical Position
-    private Space[,] boardGrid = new Space[8,8];
+    public Space[,] boardGrid = new Space[8,8];
 
 
     // Totally a hack, no "gameObject" in "MonoBehaviourPunCallbacks"
@@ -152,7 +152,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// 2020-11-27: WORKS
     /// </summary>
     /// <see href="https://doc.photonengine.com/en-us/pun/current/gameplay/rpcsandraiseevent#ioneventcallback_callback">IOnEventCallback Callback</see>
-    public void OnEvent(EventData photonEvent)
+    public virtual void OnEvent(EventData photonEvent)
     {
         // Extract the Event Code (to switch on)
         byte eventCode = photonEvent.Code;
@@ -188,7 +188,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// Destroys a Piece by LOGICAL POSITION
     /// 2020-11-27: WIP
     /// </summary>
-    private void DestroyPiece(int x, int y)
+    public virtual void DestroyPiece(int x, int y)
     {
         Piece piece = GetPieceByLoc(x,y);
 
@@ -210,7 +210,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// (Disagreement on the Network is not good)
     /// 2020-11-27: WORKS!
     /// </summary>
-    private void MovePiece(int startX, int startY, int endX, int endY)
+    public virtual void MovePiece(int startX, int startY, int endX, int endY)
     {   
         // Find the Piece
         Piece piece = GetPieceByLoc(startX,startY);
@@ -250,7 +250,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>
     /// Use a LOGICAL position on board to get a <see cref="Piece" />
     /// </summary>
-    private Piece GetPieceByLoc(int x, int y)
+    public Piece GetPieceByLoc(int x, int y)
     {
         return boardGrid[x,y].getCurrentOccupant();
     }
@@ -259,7 +259,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>
     /// Use a LOGICAL position on the board to get a <see cref="Space.cs" />
     /// </summary>
-    private Space GetSpaceByLoc(int x, int y)
+    public Space GetSpaceByLoc(int x, int y)
     {
         return boardGrid[x,y];
     }

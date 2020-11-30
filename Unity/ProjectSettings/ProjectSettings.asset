@@ -641,10 +641,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: dce428ae-61a9-45e4-ab92-11021732ef79
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: GG
+  organizationId: hd349
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

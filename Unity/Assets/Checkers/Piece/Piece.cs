@@ -10,7 +10,7 @@ public class Piece : MonoBehaviour
 {
 
     // Allow us to Promote to King
-    [SerializeField] private GameObject king;
+    [SerializeField] public GameObject king;
 
 
     // Identify which player we belong to
