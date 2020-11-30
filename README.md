@@ -24,7 +24,7 @@
   - The **Game Files** are stored in [**`Unity`**](https://github.com/overlord-supreme/checkers/tree/master/Unity)
   - The **Document Source Code** is stored in [**`docs`**](https://github.com/overlord-supreme/checkers/tree/master/docs)
   - The **Rendered Documents** are in [**`gen`**](https://github.com/overlord-supreme/checkers/tree/master/gen)
-  - The **Code Coverage** is in [`**`CodeReport`**](https://github.com/overlord-supreme/checkers/tree/master/CodeReport)
+  - The **Code Coverage** is in [**`CodeReport`**](https://github.com/overlord-supreme/checkers/tree/master/CodeReport)
   - Within [**`Unity/Assets`**](https://github.com/overlord-supreme/checkers/tree/master/Unity/Assets), there are **two** folders
     - The **Checkers Game** in [**`Checkers`**](https://github.com/overlord-supreme/checkers/tree/master/Unity/Assets/Checkers)
     - The **Networking Tutorial** in [**`RW`**](https://github.com/overlord-supreme/checkers/tree/master/Unity/Assets/RW)
