@@ -11,6 +11,7 @@
 - A networked Unity-2D Checkers game for Drexel's **`SE-181:`** *Intro to Software Engineering*.
 - **[Click Here to Get Started](https://github.com/overlord-supreme/checkers/wiki/getting-started)**
 - In general, check the **[Wiki](https://github.com/overlord-supreme/checkers/wiki)** if you have a question, or refer to one of the developers on **[Discord]** (contact `peter201943#8017` for access)
+- [This project can be accessed on *GitHub*, where it is hosted along with its *Issues* (Bug Trackers), *Releases* (Builds), *Wiki* (Discussion/Knowledge), and other features](https://github.com/overlord-supreme/checkers)
 
 
 
