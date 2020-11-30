@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
@@ -63,6 +64,10 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     private const byte piecePromoteCode = 2;
     private const byte pieceDestroyCode = 3;
     private const byte playerSwapCode = 4;
+
+
+    // Turn Text Object
+    public Text turnText;
 
 
     // Board MUST BE SINGLETON
@@ -285,6 +290,11 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         
         // Raise the Event
         PhotonNetwork.RaiseEvent(pieceMoveCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    public void SwapPlayerText(Piece.PieceColor color)
+    {
+        turnText.text = color.ToString() + "'s Turn";
     }
 
 
