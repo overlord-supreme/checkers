@@ -2,56 +2,88 @@
 credits:
 
 - filename: ui-hover.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  UI Element Hover Sound
   creator:  https://freesound.org/people/broumbroum/
   location: https://freesound.org/people/broumbroum/sounds/50561/
 
 - filename: ui-confirm.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  UI Element Confirm Sound
   creator:  https://freesound.org/people/ryusa/
   location: https://freesound.org/people/ryusa/sounds/531091/
 
 - filename: piece-captured.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  Piece Captured
   creator:  https://freesound.org/people/blackstalian/
   location: https://freesound.org/people/blackstalian/sounds/140509/
 
 - filename: ui-back.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  Going Back/Escaping/Cancelling
   creator:  https://freesound.org/people/LorenzoTheGreat/
   datetime: FIXME
   location: https://freesound.org/people/LorenzoTheGreat/sounds/417792/
 
 - filename: ui-no.ogg
-  filepath: FIXME
-  utility:  FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
+  utility:  Indicate Cancel/Error
   creator:  https://freesound.org/people/newlocknew/
   location: https://freesound.org/people/newlocknew/sounds/515837/
 
 - filename: game-over.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  Game Over
   creator:  https://freesound.org/people/Sandermotions/
   location: https://freesound.org/people/Sandermotions/sounds/277021/
 
 - filename: game-turn.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  It's Your Turn Indicator
   creator:  https://freesound.org/people/BOSS%20MUSIC/
   location: https://freesound.org/people/BOSS%20MUSIC/sounds/121800/
 
 - filename: piece-lost.ogg
-  filepath: FIXME
+  filepath: 
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  Loss of Piece
   creator:  https://freesound.org/people/zgump/
   location: https://freesound.org/people/zgump/sounds/82523/
 
 - filename: ui-select.ogg
-  filepath: FIXME
+  filepath:
+  - Unity/Assets/Checkers/Player
+  - Unity/Assets/Checkers/Board
   utility:  First Part of Two-Part Audio Sequence for UI Elements
   creator:  https://freesound.org/people/patchytherat/
   location: https://freesound.org/people/patchytherat/sounds/531404/
+
+- filename: [Launcher.cs, Launcher.unity, GameManager.cs]
+  filepath:
+  - Unity/Assets/Checkers/Launcher
+  - Unity/Assets/RW/Scripts
+  utilty:  Multiplayer Lobby Basics
+  creator:
+    name:   Gur Raunaq Singh
+    link:   https://www.raywenderlich.com/u/raunaqness
+  location:
+    name:   Introduction to Multiplayer Games With Unity and Photon
+    link:   https://www.raywenderlich.com/1142814-introduction-to-multiplayer-games-with-unity-and-photon
+
+
