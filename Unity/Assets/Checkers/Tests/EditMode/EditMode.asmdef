@@ -5,7 +5,11 @@
         "UnityEditor.TestRunner",
         "RW",
         "Board",
-        "Piece"
+        "Piece",
+        "Player",
+        "PhotonUnityNetworking",
+        "PhotonRealtime",
+        "PhotonWebSocket"
     ],
     "includePlatforms": [
         "Editor"
@@ -18,7 +22,8 @@
         "System.Runtime.CompilerServices.Unsafe.dll",
         "Castle.Core.dll",
         "System.Threading.Tasks.Extensions.dll",
-        "Moq.dll"
+        "Moq.dll",
+        "Photon3Unity3D.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

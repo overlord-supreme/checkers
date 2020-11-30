@@ -40,7 +40,7 @@ namespace BoardSpace
         /// <summary>
         /// returns reference to current occupant
         /// </summary>
-        public Piece getCurrentOccupant() { return currentOccupant; }
+        public virtual Piece getCurrentOccupant() { return currentOccupant; }
 
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace BoardSpace
         /// <summary>
         /// sets held piece
         /// </summary>
-        public void setCurrentOccupant(Piece occupant) { 
+        public virtual void setCurrentOccupant(Piece occupant) { 
             currentOccupant = occupant;
             currentOccupant.transform.position = piecePosition.position;
         }

@@ -35,8 +35,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     
     // Holds a reference to the currently selected piece of the user
     // Set below in the raycastMouse() function
-    private Piece currentPieceSelected = null;
-    private Space currentSpaceSelected = null;
+    public Piece currentPieceSelected = null;
+    public Space currentSpaceSelected = null;
 
     private List<ValidMove> moves = new List<ValidMove>();
     private List<ValidMove> allMoves = new List<ValidMove>();
@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public AudioClip roundStart;
     public AudioClip gameOver;
 
-    private void Start() {
+    public virtual void Start() {
         if(PhotonNetwork.IsMasterClient)
         {
             color = Piece.PieceColor.BLACK;
@@ -107,7 +107,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>
     /// Check for Mouse Clicks each frame
     /// </summary>
-    void Update()
+    public void Update()
     {
         raycastMouse();
     }
@@ -121,7 +121,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     /// We Expect ONLY Tile GameObjects (Locked by mask)
     /// FIXME: DOCS INVALID
     /// </summary>
-    void raycastMouse()
+    public virtual void raycastMouse()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -237,7 +237,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
     /// NOT the possible moves, see <see cref="Board.GetValidMoves" />
     /// Does not Return anything, instead sets <see cref="currentPieceSelected" /> and <see cref="currentSpaceSelected" />
     /// </summary>
-    private void SelectPiece(Space space)
+    public void SelectPiece(Space space)
     {
         // If it is Occupied and a Friendly Piece
         if (space.getCurrentOccupant() != null && space.getCurrentOccupant().color == color)
@@ -298,7 +298,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
 
-    private void SwapPlayer()
+    public virtual void SwapPlayer()
     {
         currentPlayer = !currentPlayer;
     }
