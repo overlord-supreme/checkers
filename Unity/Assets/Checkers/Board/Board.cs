@@ -338,12 +338,6 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
         PhotonNetwork.RaiseEvent(pieceMoveCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
-    public void SwapPlayerText(Piece.PieceColor color)
-    {
-        turnText.text = color.ToString() + "'s Turn";
-    }
-
-
     private object checkSpace(int x, int y, int directionX, int directionY, Piece.PieceColor color, Piece originalPiece)
     {
         

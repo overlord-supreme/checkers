@@ -227,7 +227,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     moves.Clear();
                     //Change turn
                     RaiseEventOptions raiseEventOptions = new RaiseEventOptions{Receivers = ReceiverGroup.All};
-                    //Board.getInstance().SwapPlayerText(color);
 
                     // Raise the Event
                     PhotonNetwork.RaiseEvent(playerSwapCode, true, raiseEventOptions, SendOptions.SendReliable);
