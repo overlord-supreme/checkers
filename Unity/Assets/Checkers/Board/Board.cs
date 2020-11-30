@@ -152,6 +152,7 @@ public class Board : MonoBehaviourPunCallbacks, IOnEventCallback
     // start:   endgame-hack-exit
     public void ExitGame()
     {
+        Debug.Log("KILL ME");
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #else
